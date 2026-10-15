@@ -1,0 +1,29 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { YEAR, LAST_UPDATED, AUTHOR_NAME, CONTACT_EMAIL, AUTHOR_ROLE, SITE_NAMES, LANG_TAGS } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema } from '../../lib/seo';
+import { displayDate } from '../../lib/format';
+import { KASSEN } from '../../lib/engine/kassen';
+const lang = 'en';
+---
+<PageLayout title="Zusatzbeitragrechner: Who Publishes This Fund Comparison" description="Who is behind the German health insurance contribution calculator, where each fund's rate comes from, how it is checked and why we earn nothing if you switch." lang={lang} jsonLd={[personSchema(lang), organizationSchema(lang), profilePageSchema({ path: route('about', lang), lang }), breadcrumbSchema([{ name: 'Home', path: route('home', lang) }, { name: 'About', path: route('about', lang) }])]} breadcrumbs={[{ label: 'About' }]}>
+  <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">About {SITE_NAMES.en}</h1></header>
+  <div class="prose prose-slate max-w-none">
+    <div class="not-prose mb-6"><p class="text-lg font-semibold text-navy-900">{AUTHOR_NAME}</p><p class="text-navy-700">{AUTHOR_ROLE[lang]}</p></div>
+    <p>{SITE_NAMES.en} is published by Radif Partners. It started from something anyone sees when searching for German health insurance rates in the autumn: comparison portals with a tariff calculator that ends by asking for a phone number or a sign-up, news stories about forecasts that never name a single fund’s rate, and undated lists where nobody can tell whether the figures are from January or October. What is rarely there is the one number that matters: how many euros a month you pay at your own fund, and how many at the cheapest fund you are actually allowed to join.</p>
+    <h2>What this site does differently</h2>
+    <p>It reads the official list of all {KASSEN.length} statutory health funds every day, works out the contribution for your income and situation (employee, pensioner, self-employed, student) and ranks only the funds open in your state. It adds the deadlines: the earliest date a new fund can start, whether the special termination right applies, how many months the higher rate still runs. No field asks for your name, phone or email, and no result waits behind a button.</p>
+    <h2>How it is checked</h2>
+    <p>The basis is Books V, XI and IV of the German Social Code as currently in force, the Labour Ministry’s annual reference values and the Federal Gazette notice of the average additional rate. More than thirty cases worked out by hand run as tests before each release. How each figure is produced is set out under <a href={route('method', lang)}>How we calculate</a>.</p>
+    <h2>What we are not</h2>
+    <p>Not a health fund, not a comparison portal, not an insurance broker and not a benefits adviser. We sign no one up, have no partner link to any fund and receive no money from any fund, whether you switch or stay. We do not rate bonus schemes or extra benefits, because they cannot honestly be priced in euros; the funds’ own pages are the right source for that.</p>
+    <h2>Funding and your data</h2>
+    <p>The calculator is free and needs no account. What you type about income, pension or children never leaves your browser. If the site ever shows advertising, it will never sit above a calculator or inside a result, and it will never come from a health fund.</p>
+    <h2>Written for people new to the system</h2>
+    <p>The English pages are written for people who work, study or retire in Germany without having grown up with its health insurance: terms such as Zusatzbeitrag, Beitragsbemessungsgrenze or Familienversicherung are explained, and amounts stay in euros.</p>
+    <h2>Contact</h2>
+    <p>A rate is out of date, your payslip differs from the calculator, a case is missing? Write to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. See also the <a href={route('editorial', lang)}>editorial policy</a> and the <a href={route('terms', lang)}>legal notice</a>.</p>
+    <p class="text-sm text-navy-600">Legal position {YEAR}, read on <time datetime={LAST_UPDATED}>{displayDate(LAST_UPDATED, LANG_TAGS[lang])}</time>.</p>
+  </div>
+</PageLayout>

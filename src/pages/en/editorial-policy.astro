@@ -1,0 +1,28 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { AUTHOR_NAME, CONTACT_EMAIL, LAST_UPDATED, REVIEW_CYCLE_MONTHS, SITE_NAMES } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+const lang = 'en';
+---
+<PageLayout title={`Editorial Policy of ${SITE_NAMES[lang]}: Sources and Checks`} description="Where every fund's additional rate and the thresholds come from, when they are checked, who is responsible, how errors are corrected and why no fund pays us anything." lang={lang} noindex={true} breadcrumbs={[{ label: 'Editorial policy' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Editorial policy and corrections</h1>
+    <p>A wrong figure here could push someone into a switch that does not pay, or keep them from one that does. So this page says where every figure comes from and what happens when one is wrong.</p>
+    <h2>Responsibility</h2><p>{AUTHOR_NAME} is responsible for content and calculators. Contact: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>Primary sources only</h2>
+    <ul>
+      <li><strong>GKV-Spitzenverband</strong>: the list of health funds with their current additional rates and the states where they are open;</li>
+      <li><strong>gesetze-im-internet.de</strong>: Books V, XI and IV of the Social Code and the BAföG act as in force;</li>
+      <li><strong>Federal Law Gazette and Federal Gazette</strong>: amending acts and the notice of the average additional rate;</li>
+      <li><strong>Federal Labour Ministry</strong>: social insurance reference values, dated by draft, cabinet decision and publication;</li>
+      <li><strong>Federal Health Ministry</strong>: care insurance rates and the status of bills.</li>
+    </ul>
+    <p>Comparison portals, blogs and press releases are not sources, even when they rank first.</p>
+    <h2>Checks before every release</h2><p>More than thirty cases worked out by hand run as automatic tests, including the published worked example for the transition zone. A deviating value stops the release. The daily fund download aborts if the list looks incomplete.</p>
+    <h2>Rhythm</h2><p>Fund list daily; thresholds and rates with every ordinance, notice or amendment; a full review at least every {REVIEW_CYCLE_MONTHS} months. Bills are described as bills and never calculated before they are law; provisional 2027 values carry their status and are replaced once final.</p>
+    <h2>Handling errors</h2>
+    <ol><li>Check against the primary source.</li><li>Fix the parameter file or calculator and add a test that catches the error in future.</li><li>New date on every page; a substantive correction is noted on the page concerned.</li></ol>
+    <h2>Independence</h2><p>No money from health funds, comparison portals, brokers or supplementary insurers, no partner links and no recommendation of any single fund. The ranking order comes from the additional rate alone.</p>
+    <p>See also <a href={route('method', lang)}>How we calculate</a>. Version: {LAST_UPDATED}.</p>
+  </div>
+</PageLayout>

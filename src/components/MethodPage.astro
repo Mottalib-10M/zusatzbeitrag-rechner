@@ -1,0 +1,85 @@
+---
+/** So rechnen wir (Vertrauensseite, RECETTE §8.2): Datenabruf, Rechenregeln, Prüfungen, Grenzen, alle Quellen. */
+import PageLayout from '../layouts/PageLayout.astro';
+import { route, type Locale } from '../i18n/routes';
+import { P, J } from '../lib/engine/params';
+import { KASSEN, STAND, ABRUF, offen } from '../lib/engine/kassen';
+import { angestellt } from '../lib/engine/beitrag';
+import { formatMoney, formatDecimal, displayDate } from '../lib/format';
+import { breadcrumbSchema, webPageSchema } from '../lib/seo';
+import { LAST_UPDATED, CONTACT_EMAIL, REVIEW_CYCLE_MONTHS, LANG_TAGS } from '../data/site-config';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const de = lang === 'de';
+const $ = (n: number, d = 0) => formatMoney(n, d, lang);
+const pz = (x: number) => `${formatDecimal(x, 2, lang)} %`;
+const n4 = (x: number) => formatDecimal(x, 4, lang);
+const dt = (iso: string) => displayDate(iso, LANG_TAGS[lang]);
+const title = de ? 'So rechnen wir: Zusatzbeitrag, Beitrag und Fristen 2026/2027' : 'Method 2026/2027: Additional Rate, Contribution, Deadlines';
+const description = de ? 'Methode: täglicher Abruf der GKV-Kassenliste, Formeln nach SGB V und SGB XI für Beschäftigte, Rentner, Selbstständige und Studierende, Tests und Grenzen.' : 'Method: daily download of the GKV fund list, formulas under Books V and XI for employees, pensioners, the self-employed and students, tests and limits.';
+const h1 = de ? 'So rechnen wir' : 'How we calculate';
+const path = route('method', lang);
+const sources = Object.values(P.sources);
+const a = J(2026), b = J(2027);
+const bsp = angestellt({ brutto: 1000, zb: 3.0, jahr: 2026, eltern: 'k1' });
+const nOffen = offen().length;
+---
+<PageLayout title={title} description={description} lang={lang} jsonLd={[webPageSchema({ name: h1, description, path, lang }), breadcrumbSchema([{ name: de ? 'Start' : 'Home', path: route('home', lang) }, { name: h1, path }])]} breadcrumbs={[{ label: h1 }]}>
+  <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">{h1}</h1></header>
+  {de ? (
+  <div class="prose prose-slate max-w-none">
+    <p>Der Rechner hat zwei Datenquellen. Die Zusatzbeiträge der einzelnen Kassen kommen aus der Liste, die der GKV-Spitzenverband nach § 242 Abs. 5 SGB V tagesaktuell veröffentlichen muss. Alle anderen Werte (Beitragssätze, Grenzen, Pflegezuschläge) stehen in einer Parameterdatei, die am <time datetime={P.retrieved_at}>{dt(P.retrieved_at)}</time> an Gesetzestext, Verordnung und Bekanntmachung gelesen wurde. Rechner und Texte lesen nur aus diesen beiden Dateien.</p>
+    <h2>Die Kassenliste, jeden Tag</h2>
+    <p>Ein Skript liest jeden Morgen die {KASSEN.length} Einträge der Liste (Name, Satz, Länder, in denen die Kasse geöffnet ist) und vergleicht sie mit dem Vortag. Ändert sich ein Satz, öffnet sich eine Kasse für ein weiteres Land oder verschwindet eine Kasse durch Fusion, wird das mit Datum in einer Historie festgehalten und die Seite neu gebaut. Fehlen mehr als 15 Prozent der Kassen auf einmal oder weniger als 80 insgesamt, bricht der Abruf ab und die alte Liste bleibt stehen: Ein Lesefehler soll nie eine leere Rangliste erzeugen. Stand der Liste: {dt(STAND)}, zuletzt abgerufen am {dt(ABRUF.abgerufen_am)}; davon sind {nOffen} Kassen in mindestens einem Land frei wählbar.</p>
+    <p>Wichtig: Der Spitzenverband zeigt einen neuen Satz erst ab dem Tag, an dem er gilt. Eine Erhöhung zum 1. Januar 2027 steht also am 1. Januar in der Liste, nicht im Dezember, wenn die Verwaltungsräte sie beschließen. Bis dahin rechnet der Rechner auch für 2027 mit dem heutigen Satz und sagt das.</p>
+    <h2>Beschäftigte</h2>
+    <p>Beitrag = beitragspflichtiges Entgelt bis zur Beitragsbemessungsgrenze ({$(a.bbgKv, 2)} im Monat 2026, {$(b.bbgKv)} 2027) × ({pz(a.kv_allgemein)} + Zusatzbeitrag der Kasse), je zur Hälfte von Ihnen und vom Arbeitgeber (§§ 223, 241, 249 SGB V). Pflege: {pz(a.pv_satz)} je zur Hälfte, Kinderlose ab 23 zahlen {pz(a.pv_kinderlos)} allein dazu, Eltern ab dem zweiten Kind unter 25 je {pz(a.pv_abschlag_kind)} weniger bis zum fünften Kind (§ 55 Abs. 3 SGB XI). In Sachsen tragen Beschäftigte {pz(a.pv_sachsen_an_mehr)} mehr und der Arbeitgeber entsprechend weniger (§ 58 Abs. 3). Für 2027 setzt der Rechner die Pflege-Grenze nach dem geltenden § 55 Abs. 2 SGB XI auf {$(b.bbgPv)}, ein Zwölftel der Jahresarbeitsentgeltgrenze nach § 6 Abs. 7 SGB V; die Krankenversicherung liegt seit dem GKV-Beitragssatzstabilisierungsgesetz {$(3600)} im Jahr höher.</p>
+    <p>Übergangsbereich ({$(a.geringfuegigkeit + 0.01, 2)} bis {$(a.uebergang_oben)}): zwei beitragspflichtige Einnahmen nach § 20 Abs. 2a SGB IV mit dem Faktor F {n4(a.faktor_f)}. Der Gesamtbeitrag ist der halbe Beitrag auf die erste Einnahme, gerundet und verdoppelt; Ihr Anteil ist der halbe Satz auf die zweite. Bei 1.000 € und 3,0 % ergibt das {$(bsp.weg.beGes, 2)} und {$(bsp.weg.beAn, 2)}, Krankenversicherung {$(bsp.kv.gesamt, 2)} davon {$(bsp.kv.mitglied, 2)} für Sie; dieser Fall steht als Test im Code. Bis {$(a.geringfuegigkeit)} (Minijob) zahlen Sie nichts.</p>
+    <h2>Rentner, Selbstständige, Studierende</h2>
+    <p><strong>Rente</strong> (Pflichtversicherung der Rentner): halber Satz plus halber Zusatzbeitrag, die andere Hälfte trägt die Rentenversicherung (§§ 247, 249a SGB V); Pflege allein. Betriebsrenten zahlen den vollen Satz allein; in der Krankenversicherung bleiben {$(a.vbFrei, 2)} frei, in der Pflege gilt dieser Betrag nur als Freigrenze (§ 226 Abs. 2 SGB V). Ein neuer Zusatzbeitrag wirkt bei der Rente erst ab dem zweiten Folgemonat (§ 247 Satz 3). <strong>Selbstständige</strong> zahlen alles allein auf den Gewinn, mindestens auf {$(a.mindestFreiwillig, 2)} (§ 240 Abs. 4), mit {pz(a.kv_ermaessigt)} ohne oder {pz(a.kv_allgemein)} mit Krankengeld. <strong>Studierende</strong> zahlen sieben Zehntel des allgemeinen Satzes ({pz(a.kvStudent)}) plus Zusatzbeitrag auf den BAföG-Bedarf von {$(a.bafoeg_bedarf)} (§§ 236, 245).</p>
+    <h2>Rangliste, Ersparnis, Fristen</h2>
+    <p>Die Rangliste zeigt alle Kassen, die bundesweit oder im gewählten Land geöffnet sind; maßgeblich ist Wohn- oder Arbeitsort. Betriebskrankenkassen, die nur Beschäftigten ihres Trägers offenstehen, fehlen in der Rangliste und erscheinen in der Gesamtliste nur auf Wunsch. Die Ersparnis ist der Unterschied Ihres eigenen Anteils mal zwölf. Der Wechseltermin folgt § 175 Abs. 4 SGB V: zwölf Monate Bindung, Kündigung zum Ablauf des übernächsten Monats, bei einer Erhöhung Sonderkündigung bis zum Ende des Monats, ab dem sie gilt.</p>
+    <h2>Tests, ohne die nichts veröffentlicht wird</h2>
+    <p>Über dreißig Fälle sind von Hand nachgerechnet und laufen vor jedem Build: Beschäftigte mit und ohne Kinder, Sachsen, über der Grenze, 2026 und 2027, Übergangsbereich (das veröffentlichte Beispiel mit 1.000 €), Minijob, Rente mit und ohne Betriebsrente, Selbstständige an der Mindestbemessung, Studierende, Familienversicherung und fünf Fristfälle. Weicht ein Wert um mehr als einen Cent ab, wird nicht veröffentlicht.</p>
+    <h2>Was der Rechner nicht kann</h2>
+    <ul>
+      <li>Leistungen vergleichen: Bonusprogramme, Satzungsleistungen und Service unterscheiden sich, lassen sich aber nicht seriös in Euro fassen; wir zeigen nur den Preis.</li>
+      <li>Private Krankenversicherung, Beamte mit Beihilfe, Auslandsrenten und mehrere Beschäftigungen.</li>
+      <li>Die sächsische Sonderteilung der Pflege im Übergangsbereich; Krankengeld-Wahltarife einzelner Kassen.</li>
+      <li>Gesetzentwürfe: Das Pflegeneuordnungsgesetz (höherer Kinderlosenzuschlag, gleiche Pflege-Grenze) wird erst gerechnet, wenn es verkündet ist.</li>
+    </ul>
+    <h2>Aktualisierung</h2>
+    <p>Kassenliste täglich, Rechengrößen bei jeder Verordnung und Bekanntmachung (die Werte 2027 werden mit der Verkündung der Rechengrößenverordnung und der Bekanntmachung des durchschnittlichen Zusatzbeitrags im Bundesanzeiger endgültig), volle Durchsicht spätestens alle {REVIEW_CYCLE_MONTHS} Monate. Fehler bitte an <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Siehe auch die <a href={route('editorial', lang)}>Redaktionsgrundsätze</a>.</p>
+    <h2>Alle Quellen</h2>
+    <ul>{sources.map((s) => <li><a href={s.url} rel="nofollow noopener" target="_blank">{s.label.de}</a></li>)}</ul>
+  </div>
+  ) : (
+  <div class="prose prose-slate max-w-none">
+    <p>The calculator has two data sources. Each fund’s additional rate (Zusatzbeitrag) comes from the list the GKV-Spitzenverband, the umbrella body of the statutory funds, must publish day by day under section 242(5) of Book V of the Social Code (SGB V). Every other value (contribution rates, ceilings, care insurance surcharges) sits in one parameter file read against the statute, ordinance and official notice on <time datetime={P.retrieved_at}>{dt(P.retrieved_at)}</time>. Calculators and pages read only from these two files.</p>
+    <h2>The fund list, every day</h2>
+    <p>A script reads the {KASSEN.length} entries every morning (name, rate, states where the fund is open) and compares them with the day before. A new rate, a fund opening to another state or a fund disappearing in a merger is logged with its date and the site is rebuilt. If more than 15 percent of funds vanish at once, or fewer than 80 are read, the download stops and yesterday’s list stays: a reading error must never produce an empty ranking. List as of {dt(STAND)}, last downloaded on {dt(ABRUF.abgerufen_am)}; {nOffen} funds are open to the public in at least one state.</p>
+    <p>One catch: the umbrella body only shows a new rate from the day it applies. A rise on 1 January 2027 appears on 1 January, not in December when the boards decide it. Until then the calculator uses today’s rate for 2027 too, and says so.</p>
+    <h2>Employees</h2>
+    <p>Contribution = pay up to the contribution ceiling ({$(a.bbgKv, 2)} a month in 2026, {$(b.bbgKv)} in 2027) × ({pz(a.kv_allgemein)} + the fund’s additional rate), split half and half with your employer (sections 223, 241, 249 SGB V). Care insurance: {pz(a.pv_satz)} split in half; childless members aged 23 and over pay {pz(a.pv_kinderlos)} on top alone, parents pay {pz(a.pv_abschlag_kind)} less for each child under 25 from the second to the fifth (section 55(3) SGB XI). In Saxony employees pay {pz(a.pv_sachsen_an_mehr)} more and employers that much less (section 58(3)). For 2027 the calculator sets the care ceiling at {$(b.bbgPv)} under the current section 55(2) SGB XI, one twelfth of the threshold in section 6(7) SGB V; health insurance is {$(3600)} a year higher since the 2026 contribution stabilisation act.</p>
+    <p>Transition zone ({$(a.geringfuegigkeit + 0.01, 2)} to {$(a.uebergang_oben)}): two contributory amounts under section 20(2a) SGB IV with factor F {n4(a.faktor_f)}. The total is half the rate on the first amount, rounded and doubled; your share is half the rate on the second. At €1,000 and 3.0 percent that gives {$(bsp.weg.beGes, 2)} and {$(bsp.weg.beAn, 2)}, health insurance {$(bsp.kv.gesamt, 2)} of which {$(bsp.kv.mitglied, 2)} is yours; this case is a test in the code. Up to {$(a.geringfuegigkeit)} (minijob) you pay nothing.</p>
+    <h2>Pensioners, self-employed, students</h2>
+    <p><strong>State pension</strong> (compulsory pensioners’ cover): half the rate plus half the additional rate, the pension fund pays the other half (sections 247, 249a SGB V); care insurance alone. Company pensions pay the full rate alone; {$(a.vbFrei, 2)} is exempt for health insurance, but for care insurance that amount is only a threshold (section 226(2)). A new additional rate reaches pensions only from the second month after it changes (section 247, sentence 3). <strong>Self-employed</strong> members pay everything themselves on profit, at least on {$(a.mindestFreiwillig, 2)} (section 240(4)), at {pz(a.kv_ermaessigt)} without or {pz(a.kv_allgemein)} with sick pay. <strong>Students</strong> pay seven tenths of the general rate ({pz(a.kvStudent)}) plus the additional rate on the BAföG need rate of {$(a.bafoeg_bedarf)} (sections 236, 245).</p>
+    <h2>Ranking, savings, deadlines</h2>
+    <p>The ranking shows every fund open nationwide or in the chosen state; your home or work address counts. Company funds open only to their own staff are left out of the ranking and appear in the full list only on request. Savings are the difference in your own share times twelve. The switch date follows section 175(4) SGB V: twelve months’ lock-in, notice to the end of the month after next, and after a rate rise a special right to leave until the end of the month it takes effect.</p>
+    <h2>Tests that block every release</h2>
+    <p>More than thirty cases worked out by hand run before each build: employees with and without children, Saxony, above the ceiling, 2026 and 2027, the transition zone (the published €1,000 example), minijob, pension with and without a company pension, self-employed at the minimum base, students, family cover and five deadline cases. A difference of more than one cent stops the release.</p>
+    <h2>What the calculator cannot do</h2>
+    <ul>
+      <li>Compare benefits: bonus schemes, extra services and service quality differ but cannot honestly be priced in euros; we show the price only.</li>
+      <li>Private health insurance, civil servants with Beihilfe, foreign pensions, several jobs at once.</li>
+      <li>The Saxon split of care contributions in the transition zone; sick-pay options of individual funds.</li>
+      <li>Draft laws: the Care Reorganisation Act (higher childless surcharge, single care ceiling) is built in only once enacted.</li>
+    </ul>
+    <h2>Updates</h2>
+    <p>Fund list daily, thresholds with each ordinance and notice (2027 values become final with the published reference-value ordinance and the Federal Gazette notice of the average additional rate), full review at least every {REVIEW_CYCLE_MONTHS} months. Report errors to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. See the <a href={route('editorial', lang)}>editorial policy</a>.</p>
+    <h2>All sources</h2>
+    <ul>{sources.map((s) => <li><a href={s.url} rel="nofollow noopener" target="_blank">{s.label.en}</a></li>)}</ul>
+  </div>
+  )}
+  <p class="mt-6 text-sm text-navy-600">{de ? 'Zuletzt geprüft' : 'Last checked'}: <time datetime={LAST_UPDATED}>{dt(LAST_UPDATED)}</time>.</p>
+</PageLayout>

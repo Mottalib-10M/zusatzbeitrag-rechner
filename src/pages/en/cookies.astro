@@ -1,0 +1,24 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { CONTACT_EMAIL, LAST_UPDATED } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+const lang = 'en';
+---
+<PageLayout title="Cookies: None, Not Even in the Contribution Calculator" description="No cookies and no banner: the contribution calculator remembers neither your income nor your health fund. At most we measure, anonymously, whether a page loads cleanly." lang={lang} noindex={true} breadcrumbs={[{ label: 'Cookies' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Cookies</h1>
+    <p>This site <strong>sets no cookies</strong> and therefore needs no consent banner. Details in the <a href={route('privacy', lang)}>privacy policy</a>.</p>
+    <h2>Your income stays on your device</h2>
+    <p>Gross pay, pension, fund and number of children are never stored in a cookie or in browser storage. Close the tab and it is gone; only a link you copy yourself contains the values.</p>
+    <h2>Anonymous error measurement</h2>
+    <p>When enabled, Microsoft Clarity checks in <strong>cookieless</strong> mode whether pages load without errors. Cookies such as <code>_clck</code>, <code>_clsk</code>, <code>MUID</code> or <code>CLID</code> are not created and inputs are masked.</p>
+    <ul>
+      <li>Provider: Microsoft Ireland Operations Limited, Dublin, Ireland;</li>
+      <li>Deletion: recordings after 30 days, aggregates after 13 months;</li>
+      <li>Legal basis: Article 6(1)(f) GDPR.</li>
+    </ul>
+    <h2>Embedded calculator</h2>
+    <p>The iframe version loads no measurement and sets no cookies.</p>
+    <p>To block measurement, block clarity.ms in your browser; the calculator keeps working. Questions to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Last updated: {LAST_UPDATED}.</p>
+  </div>
+</PageLayout>

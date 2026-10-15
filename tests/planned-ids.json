@@ -1,0 +1,210 @@
+[
+ {
+  "id": "krankenkasse-wechseln",
+  "group": "rechner"
+ },
+ {
+  "id": "zusatzbeitrag-liste",
+  "group": "rechner"
+ },
+ {
+  "id": "krankenkassenbeitrag-rentner",
+  "group": "rechner"
+ },
+ {
+  "id": "krankenkassenbeitrag-selbststaendige",
+  "group": "rechner"
+ },
+ {
+  "id": "krankenkasse-studenten",
+  "group": "rechner"
+ },
+ {
+  "id": "familienversicherung",
+  "group": "rechner"
+ },
+ {
+  "id": "zusatzbeitrag-2027",
+  "group": "wissen"
+ },
+ {
+  "id": "durchschnittlicher-zusatzbeitrag",
+  "group": "wissen"
+ },
+ {
+  "id": "beitragsbemessungsgrenze",
+  "group": "wissen"
+ },
+ {
+  "id": "sonderkuendigungsrecht",
+  "group": "wissen"
+ },
+ {
+  "id": "pflegeversicherung-beitrag",
+  "group": "wissen"
+ },
+ {
+  "id": "beitragssatz-krankenkasse",
+  "group": "wissen"
+ },
+ {
+  "id": "freiwillig-versichert",
+  "group": "wissen"
+ },
+ {
+  "id": "midijob-krankenversicherung",
+  "group": "wissen"
+ },
+ {
+  "id": "versicherungspflichtgrenze",
+  "group": "wissen"
+ },
+ {
+  "id": "arbeitgeberanteil-krankenversicherung",
+  "group": "wissen"
+ },
+ {
+  "id": "beste-krankenkasse",
+  "group": "wissen"
+ },
+ {
+  "id": "betriebsrente-krankenversicherung",
+  "group": "wissen"
+ },
+ {
+  "id": "techniker-krankenkasse",
+  "group": "kassen"
+ },
+ {
+  "id": "barmer",
+  "group": "kassen"
+ },
+ {
+  "id": "dak-gesundheit",
+  "group": "kassen"
+ },
+ {
+  "id": "aok-bayern-die-gesundheitskasse",
+  "group": "kassen"
+ },
+ {
+  "id": "aok-baden-wurttemberg",
+  "group": "kassen"
+ },
+ {
+  "id": "aok-plus-die-gesundheitskasse-fur-sachsen-und-thuringen",
+  "group": "kassen"
+ },
+ {
+  "id": "aok-nordwest-die-gesundheitskasse",
+  "group": "kassen"
+ },
+ {
+  "id": "aok-die-gesundheitskasse-fur-niedersachsen",
+  "group": "kassen"
+ },
+ {
+  "id": "aok-nordost-die-gesundheitskasse",
+  "group": "kassen"
+ },
+ {
+  "id": "aok-rheinland-hamburg-die-gesundheitskasse",
+  "group": "kassen"
+ },
+ {
+  "id": "aok-die-gesundheitskasse-in-hessen",
+  "group": "kassen"
+ },
+ {
+  "id": "ikk-classic",
+  "group": "kassen"
+ },
+ {
+  "id": "kaufmannische-krankenkasse-kkh",
+  "group": "kassen"
+ },
+ {
+  "id": "handelskrankenkasse-hkk",
+  "group": "kassen"
+ },
+ {
+  "id": "hek-hanseatische-krankenkasse",
+  "group": "kassen"
+ },
+ {
+  "id": "knappschaft",
+  "group": "kassen"
+ },
+ {
+  "id": "siemens-betriebskrankenkasse-sbk",
+  "group": "kassen"
+ },
+ {
+  "id": "bkk-firmus",
+  "group": "kassen"
+ },
+ {
+  "id": "guenstigste-krankenkasse-baden-wuerttemberg",
+  "group": "laender"
+ },
+ {
+  "id": "guenstigste-krankenkasse-bayern",
+  "group": "laender"
+ },
+ {
+  "id": "guenstigste-krankenkasse-berlin",
+  "group": "laender"
+ },
+ {
+  "id": "guenstigste-krankenkasse-brandenburg",
+  "group": "laender"
+ },
+ {
+  "id": "guenstigste-krankenkasse-bremen",
+  "group": "laender"
+ },
+ {
+  "id": "guenstigste-krankenkasse-hamburg",
+  "group": "laender"
+ },
+ {
+  "id": "guenstigste-krankenkasse-hessen",
+  "group": "laender"
+ },
+ {
+  "id": "guenstigste-krankenkasse-mecklenburg-vorpommern",
+  "group": "laender"
+ },
+ {
+  "id": "guenstigste-krankenkasse-niedersachsen",
+  "group": "laender"
+ },
+ {
+  "id": "guenstigste-krankenkasse-nordrhein-westfalen",
+  "group": "laender"
+ },
+ {
+  "id": "guenstigste-krankenkasse-rheinland-pfalz",
+  "group": "laender"
+ },
+ {
+  "id": "guenstigste-krankenkasse-saarland",
+  "group": "laender"
+ },
+ {
+  "id": "guenstigste-krankenkasse-sachsen",
+  "group": "laender"
+ },
+ {
+  "id": "guenstigste-krankenkasse-sachsen-anhalt",
+  "group": "laender"
+ },
+ {
+  "id": "guenstigste-krankenkasse-schleswig-holstein",
+  "group": "laender"
+ },
+ {
+  "id": "guenstigste-krankenkasse-thueringen",
+  "group": "laender"
+ }
+]

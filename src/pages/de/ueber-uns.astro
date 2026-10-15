@@ -1,0 +1,29 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { YEAR, LAST_UPDATED, AUTHOR_NAME, CONTACT_EMAIL, AUTHOR_ROLE, SITE_NAMES, LANG_TAGS } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema } from '../../lib/seo';
+import { displayDate } from '../../lib/format';
+import { KASSEN } from '../../lib/engine/kassen';
+const lang = 'de';
+---
+<PageLayout title="Zusatzbeitragrechner: wer den Kassenvergleich herausgibt" description="Wer hinter dem Rechner für Zusatzbeitrag und Kassenbeitrag steht, woher die Sätze aller Kassen kommen, wie geprüft wird, warum wir an keinem Wechsel verdienen." lang={lang} jsonLd={[personSchema(lang), organizationSchema(lang), profilePageSchema({ path: route('about', lang), lang }), breadcrumbSchema([{ name: 'Start', path: route('home', lang) }, { name: 'Über uns', path: route('about', lang) }])]} breadcrumbs={[{ label: 'Über uns' }]}>
+  <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">Über {SITE_NAMES.de}</h1></header>
+  <div class="prose prose-slate max-w-none">
+    <div class="not-prose mb-6"><p class="text-lg font-semibold text-navy-900">{AUTHOR_NAME}</p><p class="text-navy-700">{AUTHOR_ROLE[lang]}</p></div>
+    <p>{SITE_NAMES.de} wird von Radif Partners herausgegeben. Der Anlass war eine Beobachtung, die jeder machen kann, der im Herbst „Zusatzbeitrag“ sucht: Ganz oben stehen Vergleichsportale, die einen Tarifrechner zeigen und am Ende eine Telefonnummer oder eine Anmeldung wollen, daneben Nachrichtenartikel über Prognosen, die keinen einzigen Kassensatz nennen, und Listen ohne Datum, bei denen niemand sagen kann, ob sie vom Januar oder vom Oktober sind. Was dort selten steht, ist die eine Zahl, auf die es ankommt: wie viel Euro im Monat man bei seiner eigenen Kasse zahlt und wie viel bei der günstigsten, die man tatsächlich wählen darf.</p>
+    <h2>Was diese Seite anders macht</h2>
+    <p>Sie liest die amtliche Liste der {KASSEN.length} gesetzlichen Krankenkassen jeden Tag neu, rechnet daraus den Beitrag für Ihr Einkommen und Ihre Lebenslage (angestellt, in Rente, selbstständig, im Studium) und sortiert nur die Kassen, die in Ihrem Bundesland geöffnet sind. Dazu kommen die Fristen: wann die neue Kasse frühestens gilt, ob das Sonderkündigungsrecht greift, wie viele Monate der erhöhte Satz noch läuft. Kein Feld fragt nach Name, Telefon oder E-Mail, und kein Ergebnis wartet hinter einem Knopf.</p>
+    <h2>Wie geprüft wird</h2>
+    <p>Grundlage sind das SGB V, das SGB XI und das SGB IV in der geltenden Fassung, die Rechengrößen des Bundesarbeitsministeriums und die Bekanntmachung des durchschnittlichen Zusatzbeitrags im Bundesanzeiger. Vor jeder Veröffentlichung laufen über dreißig von Hand nachgerechnete Fälle als Test. Wie jeder Betrag entsteht, steht unter <a href={route('method', lang)}>So rechnen wir</a>.</p>
+    <h2>Was wir nicht sind</h2>
+    <p>Keine Krankenkasse, kein Vergleichsportal, kein Versicherungsmakler und keine Sozialberatung. Wir vermitteln keine Mitgliedschaft, haben keinen Partnerlink zu einer Kasse und erhalten von keiner Kasse Geld, gleich ob Sie wechseln oder bleiben. Bonusprogramme und Satzungsleistungen bewerten wir nicht, weil sie sich nicht ehrlich in Euro fassen lassen; dafür sind die Seiten der Kassen selbst die richtige Quelle.</p>
+    <h2>Finanzierung und Ihre Daten</h2>
+    <p>Der Rechner ist kostenlos und ohne Konto. Was Sie über Einkommen, Rente oder Kinder eintippen, verlässt Ihren Browser nicht. Sollte die Seite einmal Werbung zeigen, steht sie nie über einem Rechner und nie mitten in einem Ergebnis, und sie stammt nie von einer Krankenkasse.</p>
+    <h2>Auf Englisch</h2>
+    <p>Jede Seite gibt es auf Englisch, geschrieben für Menschen, die in Deutschland arbeiten, studieren oder in Rente sind und das System nicht von klein auf kennen: Begriffe wie Zusatzbeitrag, Beitragsbemessungsgrenze oder Familienversicherung werden erklärt, die Beträge bleiben in Euro.</p>
+    <h2>Kontakt</h2>
+    <p>Ein Satz stimmt nicht mehr, Ihre Gehaltsabrechnung weicht vom Rechner ab, ein Fall fehlt? Schreiben Sie an <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Siehe auch die <a href={route('editorial', lang)}>Redaktionsgrundsätze</a> und das <a href={route('terms', lang)}>Impressum</a>.</p>
+    <p class="text-sm text-navy-600">Rechtsstand {YEAR}, nachgelesen am <time datetime={LAST_UPDATED}>{displayDate(LAST_UPDATED, LANG_TAGS[lang])}</time>.</p>
+  </div>
+</PageLayout>

@@ -1,0 +1,10 @@
+{
+ "_quelle": "https://www.gkv-spitzenverband.de/service/krankenkassenliste/krankenkassen.jsp",
+ "ereignisse": [
+  {
+   "datum": "2026-10-15",
+   "art": "start",
+   "anzahl": 92
+  }
+ ]
+}

@@ -1,0 +1,1542 @@
+{
+ "_quelle": "https://www.gkv-spitzenverband.de/service/krankenkassenliste/krankenkassen.jsp",
+ "_regel": "§ 242 Abs. 5 SGB V: tagesaktuelle Zusatzbeitragssätze; neue Sätze erscheinen erst am Tag ihrer Gültigkeit",
+ "stand": "2026-10-15",
+ "anzahl": 92,
+ "kassen": [
+  {
+   "id": "aok-die-gesundheitskasse-fur-niedersachsen",
+   "name": "AOK - Die Gesundheitskasse für Niedersachsen",
+   "zb": 2.98,
+   "zb_text": "2,98 %",
+   "art": "regional",
+   "laender": [
+    "NI"
+   ]
+  },
+  {
+   "id": "aok-die-gesundheitskasse-in-hessen",
+   "name": "AOK - Die Gesundheitskasse in Hessen",
+   "zb": 2.98,
+   "zb_text": "2,98 %",
+   "art": "regional",
+   "laender": [
+    "HE"
+   ]
+  },
+  {
+   "id": "aok-baden-wurttemberg",
+   "name": "AOK Baden-Württemberg",
+   "zb": 2.99,
+   "zb_text": "2,99 %",
+   "art": "regional",
+   "laender": [
+    "BW"
+   ]
+  },
+  {
+   "id": "aok-bayern-die-gesundheitskasse",
+   "name": "AOK Bayern - Die Gesundheitskasse",
+   "zb": 2.69,
+   "zb_text": "2,69 %",
+   "art": "regional",
+   "laender": [
+    "BY"
+   ]
+  },
+  {
+   "id": "aok-bremen-bremerhaven",
+   "name": "AOK Bremen / Bremerhaven",
+   "zb": 3.29,
+   "zb_text": "3,29 %",
+   "art": "regional",
+   "laender": [
+    "HB"
+   ]
+  },
+  {
+   "id": "aok-nordost-die-gesundheitskasse",
+   "name": "AOK Nordost - Die Gesundheitskasse",
+   "zb": 3.5,
+   "zb_text": "3,50 %",
+   "art": "regional",
+   "laender": [
+    "BB",
+    "BE",
+    "MV"
+   ]
+  },
+  {
+   "id": "aok-nordwest-die-gesundheitskasse",
+   "name": "AOK NordWest - Die Gesundheitskasse",
+   "zb": 2.99,
+   "zb_text": "2,99 %",
+   "art": "regional",
+   "laender": [
+    "NW",
+    "SH"
+   ]
+  },
+  {
+   "id": "aok-plus-die-gesundheitskasse-fur-sachsen-und-thuringen",
+   "name": "AOK PLUS - Die Gesundheitskasse für Sachsen und Thüringen",
+   "zb": 3.1,
+   "zb_text": "3,10 %",
+   "art": "regional",
+   "laender": [
+    "SN",
+    "TH"
+   ]
+  },
+  {
+   "id": "aok-rheinland-hamburg-die-gesundheitskasse",
+   "name": "AOK Rheinland/Hamburg - Die Gesundheitskasse",
+   "zb": 3.29,
+   "zb_text": "3,29 %",
+   "art": "regional",
+   "laender": [
+    "HH",
+    "NW"
+   ]
+  },
+  {
+   "id": "aok-rheinland-pfalz-saarland-die-gesundheitskasse",
+   "name": "AOK Rheinland-Pfalz/Saarland-Die Gesundheitskasse",
+   "zb": 2.47,
+   "zb_text": "2,47 %",
+   "art": "regional",
+   "laender": [
+    "RP",
+    "SL"
+   ]
+  },
+  {
+   "id": "aok-sachsen-anhalt-die-gesundheitskasse",
+   "name": "AOK Sachsen-Anhalt - Die Gesundheitskasse",
+   "zb": 2.89,
+   "zb_text": "2,89 %",
+   "art": "regional",
+   "laender": [
+    "ST"
+   ]
+  },
+  {
+   "id": "audi-bkk",
+   "name": "Audi BKK",
+   "zb": 2.6,
+   "zb_text": "2,60 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "bahn-bkk",
+   "name": "BAHN-BKK",
+   "zb": 3.65,
+   "zb_text": "3,65 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "barmer",
+   "name": "BARMER",
+   "zb": 3.29,
+   "zb_text": "3,29 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "bergische-krankenkasse",
+   "name": "BERGISCHE KRANKENKASSE",
+   "zb": 3.79,
+   "zb_text": "3,79 %",
+   "art": "regional",
+   "laender": [
+    "HE",
+    "HH",
+    "NW"
+   ]
+  },
+  {
+   "id": "bertelsmann-bkk",
+   "name": "Bertelsmann BKK",
+   "zb": 3.2,
+   "zb_text": "3,20 %",
+   "art": "regional",
+   "laender": [
+    "BE",
+    "BW",
+    "BY",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "SN",
+    "TH"
+   ]
+  },
+  {
+   "id": "betriebskrankenkasse-der-g-m-pfaff-ag",
+   "name": "Betriebskrankenkasse der G.M. Pfaff AG",
+   "zb": 2.78,
+   "zb_text": "2,78 %",
+   "art": "regional",
+   "laender": [
+    "RP"
+   ]
+  },
+  {
+   "id": "betriebskrankenkasse-ewe",
+   "name": "Betriebskrankenkasse EWE",
+   "zb": 3.19,
+   "zb_text": "3,19 %",
+   "art": "betrieblich",
+   "laender": []
+  },
+  {
+   "id": "betriebskrankenkasse-miele",
+   "name": "Betriebskrankenkasse Miele",
+   "zb": 3.2,
+   "zb_text": "3,20 %",
+   "art": "betrieblich",
+   "laender": []
+  },
+  {
+   "id": "betriebskrankenkasse-mobil",
+   "name": "Betriebskrankenkasse Mobil",
+   "zb": 3.89,
+   "zb_text": "3,89 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "betriebskrankenkasse-pricewaterhousecoopers",
+   "name": "Betriebskrankenkasse PricewaterhouseCoopers",
+   "zb": 2.8,
+   "zb_text": "2,80 %",
+   "art": "betrieblich",
+   "laender": []
+  },
+  {
+   "id": "betriebskrankenkasse-technoform",
+   "name": "Betriebskrankenkasse Technoform",
+   "zb": 3.49,
+   "zb_text": "3,49 %",
+   "art": "regional",
+   "laender": [
+    "BW",
+    "BY",
+    "NI",
+    "RP"
+   ]
+  },
+  {
+   "id": "big-direkt-gesund",
+   "name": "BIG direkt gesund",
+   "zb": 3.69,
+   "zb_text": "3,69 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "bkk-akzo-nobel-bayern",
+   "name": "BKK Akzo Nobel Bayern",
+   "zb": 3.39,
+   "zb_text": "3,39 %",
+   "art": "regional",
+   "laender": [
+    "BY"
+   ]
+  },
+  {
+   "id": "bkk-b-braun-aesculap",
+   "name": "BKK B. Braun Aesculap",
+   "zb": 3.65,
+   "zb_text": "3,65 %",
+   "art": "betrieblich",
+   "laender": []
+  },
+  {
+   "id": "bkk-deutsche-bank-ag",
+   "name": "BKK Deutsche Bank AG",
+   "zb": 3.4,
+   "zb_text": "3,40 %",
+   "art": "betrieblich",
+   "laender": []
+  },
+  {
+   "id": "bkk-diakonie",
+   "name": "BKK Diakonie",
+   "zb": 3.8,
+   "zb_text": "3,80 %",
+   "art": "regional",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SN",
+    "ST"
+   ]
+  },
+  {
+   "id": "bkk-euregio",
+   "name": "BKK EUREGIO",
+   "zb": 3.39,
+   "zb_text": "3,39 %",
+   "art": "regional",
+   "laender": [
+    "HH",
+    "NW"
+   ]
+  },
+  {
+   "id": "bkk-evm",
+   "name": "BKK evm",
+   "zb": 2.5,
+   "zb_text": "2,50 %",
+   "art": "betrieblich",
+   "laender": []
+  },
+  {
+   "id": "bkk-exklusiv",
+   "name": "BKK exklusiv",
+   "zb": 3.49,
+   "zb_text": "3,49 %",
+   "art": "regional",
+   "laender": [
+    "HB",
+    "MV",
+    "NI",
+    "NW",
+    "SH",
+    "ST"
+   ]
+  },
+  {
+   "id": "bkk-faber-castell-und-partner",
+   "name": "BKK Faber-Castell & Partner",
+   "zb": 2.48,
+   "zb_text": "2,48 %",
+   "art": "regional",
+   "laender": [
+    "BY"
+   ]
+  },
+  {
+   "id": "bkk-firmus",
+   "name": "BKK firmus",
+   "zb": 2.18,
+   "zb_text": "2,18 %",
+   "art": "regional",
+   "laender": [
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "NI",
+    "NW",
+    "SN",
+    "ST"
+   ]
+  },
+  {
+   "id": "bkk-freudenberg",
+   "name": "BKK Freudenberg",
+   "zb": 2.99,
+   "zb_text": "2,99 %",
+   "art": "regional",
+   "laender": [
+    "BE",
+    "BW",
+    "BY",
+    "HE",
+    "NI",
+    "NW",
+    "RP",
+    "SN"
+   ]
+  },
+  {
+   "id": "bkk-gildemeister-seidensticker",
+   "name": "BKK GILDEMEISTER SEIDENSTICKER",
+   "zb": 3.4,
+   "zb_text": "3,40 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "bkk-groz-beckert",
+   "name": "BKK Groz-Beckert",
+   "zb": 4.2,
+   "zb_text": "4,20 %",
+   "art": "betrieblich",
+   "laender": []
+  },
+  {
+   "id": "bkk-herkules",
+   "name": "BKK Herkules",
+   "zb": 3.48,
+   "zb_text": "3,48 %",
+   "art": "regional",
+   "laender": [
+    "BY",
+    "HE",
+    "NI"
+   ]
+  },
+  {
+   "id": "bkk-linde",
+   "name": "BKK Linde",
+   "zb": 2.99,
+   "zb_text": "2,99 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "bkk-mahle",
+   "name": "BKK MAHLE",
+   "zb": 4.2,
+   "zb_text": "4,20 %",
+   "art": "betrieblich",
+   "laender": []
+  },
+  {
+   "id": "bkk-melitta-hmr",
+   "name": "bkk melitta hmr",
+   "zb": 3.9,
+   "zb_text": "3,90 %",
+   "art": "regional",
+   "laender": [
+    "BB",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "NI",
+    "NW",
+    "SH",
+    "SN",
+    "ST"
+   ]
+  },
+  {
+   "id": "bkk-mkk-meine-krankenkasse",
+   "name": "BKK mkk - meine krankenkasse",
+   "zb": 3.5,
+   "zb_text": "3,50 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "bkk-mtu",
+   "name": "BKK MTU",
+   "zb": 2.8,
+   "zb_text": "2,80 %",
+   "art": "betrieblich",
+   "laender": []
+  },
+  {
+   "id": "bkk-pfalz",
+   "name": "BKK Pfalz",
+   "zb": 3.9,
+   "zb_text": "3,90 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "bkk-provita",
+   "name": "BKK ProVita",
+   "zb": 3.79,
+   "zb_text": "3,79 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "bkk-public",
+   "name": "BKK Public",
+   "zb": 2.5,
+   "zb_text": "2,50 %",
+   "art": "regional",
+   "laender": [
+    "HH",
+    "NI",
+    "NW"
+   ]
+  },
+  {
+   "id": "bkk-rieker-ricosta-weisser",
+   "name": "BKK Rieker.RICOSTA.Weisser",
+   "zb": 4.2,
+   "zb_text": "4,20 %",
+   "art": "betrieblich",
+   "laender": []
+  },
+  {
+   "id": "bkk-salzgitter",
+   "name": "BKK Salzgitter",
+   "zb": 3.5,
+   "zb_text": "3,50 %",
+   "art": "betrieblich",
+   "laender": []
+  },
+  {
+   "id": "bkk-scheufelen",
+   "name": "BKK Scheufelen",
+   "zb": 3.99,
+   "zb_text": "3,99 %",
+   "art": "regional",
+   "laender": [
+    "BW"
+   ]
+  },
+  {
+   "id": "bkk-schwarzwald-baar-heuberg",
+   "name": "BKK Schwarzwald-Baar-Heuberg",
+   "zb": 2.79,
+   "zb_text": "2,79 %",
+   "art": "regional",
+   "laender": [
+    "BW"
+   ]
+  },
+  {
+   "id": "bkk-vdn",
+   "name": "BKK VDN",
+   "zb": 3.19,
+   "zb_text": "3,19 %",
+   "art": "regional",
+   "laender": [
+    "HH",
+    "NW",
+    "SN"
+   ]
+  },
+  {
+   "id": "bkk-verbundplus",
+   "name": "BKK VerbundPlus",
+   "zb": 3.89,
+   "zb_text": "3,89 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "bkk-werra-meissner",
+   "name": "BKK WERRA-MEISSNER",
+   "zb": 4.35,
+   "zb_text": "4,35 %",
+   "art": "regional",
+   "laender": [
+    "BY",
+    "HE"
+   ]
+  },
+  {
+   "id": "bkk-wirtschaft-und-finanzen",
+   "name": "BKK WIRTSCHAFT UND FINANZEN",
+   "zb": 3.99,
+   "zb_text": "3,99 %",
+   "art": "regional",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "NI",
+    "NW",
+    "RP",
+    "SL",
+    "SN"
+   ]
+  },
+  {
+   "id": "bkk-durkoppadler",
+   "name": "BKK_DürkoppAdler",
+   "zb": 3.88,
+   "zb_text": "3,88 %",
+   "art": "regional",
+   "laender": [
+    "NW"
+   ]
+  },
+  {
+   "id": "bkk24",
+   "name": "BKK24",
+   "zb": 4.39,
+   "zb_text": "4,39 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "bkk-wurth",
+   "name": "BKK-Würth",
+   "zb": 3.4,
+   "zb_text": "3,40 %",
+   "art": "betrieblich",
+   "laender": []
+  },
+  {
+   "id": "bmw-bkk",
+   "name": "BMW BKK",
+   "zb": 2.9,
+   "zb_text": "2,90 %",
+   "art": "betrieblich",
+   "laender": []
+  },
+  {
+   "id": "bosch-bkk",
+   "name": "Bosch BKK",
+   "zb": 3.18,
+   "zb_text": "3,18 %",
+   "art": "regional",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "continentale-betriebskrankenkasse",
+   "name": "Continentale Betriebskrankenkasse",
+   "zb": 3.33,
+   "zb_text": "3,33 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "dak-gesundheit",
+   "name": "DAK-Gesundheit",
+   "zb": 3.2,
+   "zb_text": "3,20 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "debeka-bkk",
+   "name": "Debeka BKK",
+   "zb": 3.25,
+   "zb_text": "3,25 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "energie-betriebskrankenkasse",
+   "name": "energie-Betriebskrankenkasse",
+   "zb": 3.98,
+   "zb_text": "3,98 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "ey-betriebskrankenkasse",
+   "name": "EY Betriebskrankenkasse",
+   "zb": 2.75,
+   "zb_text": "2,75 %",
+   "art": "betrieblich",
+   "laender": []
+  },
+  {
+   "id": "handelskrankenkasse-hkk",
+   "name": "Handelskrankenkasse (hkk)",
+   "zb": 2.59,
+   "zb_text": "2,59 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "heimat-krankenkasse",
+   "name": "Heimat Krankenkasse",
+   "zb": 3.9,
+   "zb_text": "3,90 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "hek-hanseatische-krankenkasse",
+   "name": "HEK - Hanseatische Krankenkasse",
+   "zb": 2.89,
+   "zb_text": "2,89 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "ikk-die-innovationskasse",
+   "name": "IKK - Die Innovationskasse",
+   "zb": 4.3,
+   "zb_text": "4,30 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "ikk-classic",
+   "name": "IKK classic",
+   "zb": 3.85,
+   "zb_text": "3,85 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "ikk-gesund-plus",
+   "name": "IKK gesund plus",
+   "zb": 3.39,
+   "zb_text": "3,39 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "ikk-sudwest",
+   "name": "IKK Südwest",
+   "zb": 3.87,
+   "zb_text": "3,87 %",
+   "art": "regional",
+   "laender": [
+    "HE",
+    "RP",
+    "SL"
+   ]
+  },
+  {
+   "id": "karl-mayer-bkk",
+   "name": "KARL MAYER BKK",
+   "zb": 2.99,
+   "zb_text": "2,99 %",
+   "art": "betrieblich",
+   "laender": []
+  },
+  {
+   "id": "kaufmannische-krankenkasse-kkh",
+   "name": "Kaufmännische Krankenkasse - KKH",
+   "zb": 3.78,
+   "zb_text": "3,78 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "knappschaft",
+   "name": "KNAPPSCHAFT",
+   "zb": 4.3,
+   "zb_text": "4,30 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "koenig-und-bauer-bkk",
+   "name": "Koenig & Bauer BKK",
+   "zb": 3.18,
+   "zb_text": "3,18 %",
+   "art": "betrieblich",
+   "laender": []
+  },
+  {
+   "id": "krones-betriebskrankenkasse",
+   "name": "Krones Betriebskrankenkasse",
+   "zb": 2.2,
+   "zb_text": "2,20 %",
+   "art": "betrieblich",
+   "laender": []
+  },
+  {
+   "id": "mercedes-benz-bkk",
+   "name": "Mercedes-Benz BKK",
+   "zb": 3.2,
+   "zb_text": "3,20 %",
+   "art": "betrieblich",
+   "laender": []
+  },
+  {
+   "id": "merck-bkk",
+   "name": "Merck BKK",
+   "zb": 3.97,
+   "zb_text": "3,97 %",
+   "art": "betrieblich",
+   "laender": []
+  },
+  {
+   "id": "mhplus-betriebskrankenkasse",
+   "name": "mhplus Betriebskrankenkasse",
+   "zb": 3.86,
+   "zb_text": "3,86 %",
+   "art": "regional",
+   "laender": [
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "TH"
+   ]
+  },
+  {
+   "id": "novitas-bkk",
+   "name": "novitas bkk",
+   "zb": 3.6,
+   "zb_text": "3,60 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "pronova-bkk",
+   "name": "Pronova BKK",
+   "zb": 3.7,
+   "zb_text": "3,70 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "r-und-v-betriebskrankenkasse",
+   "name": "R+V Betriebskrankenkasse",
+   "zb": 3.49,
+   "zb_text": "3,49 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "salus-bkk",
+   "name": "Salus BKK",
+   "zb": 3.29,
+   "zb_text": "3,29 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "securvita-bkk",
+   "name": "SECURVITA BKK",
+   "zb": 3.9,
+   "zb_text": "3,90 %",
+   "art": "regional",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "siemens-betriebskrankenkasse-sbk",
+   "name": "Siemens-Betriebskrankenkasse (SBK)",
+   "zb": 3.8,
+   "zb_text": "3,80 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "skd-bkk",
+   "name": "SKD BKK",
+   "zb": 2.98,
+   "zb_text": "2,98 %",
+   "art": "regional",
+   "laender": [
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "NI",
+    "NW",
+    "SH",
+    "SL",
+    "SN"
+   ]
+  },
+  {
+   "id": "sozialversicherung-fur-landwirtschaft-forsten-und-gartenbau-svlfg",
+   "name": "Sozialversicherung für Landwirtschaft, Forsten und Gartenbau (SVLFG)",
+   "zb": null,
+   "zb_text": "wird nicht erhoben",
+   "art": "branche",
+   "laender": []
+  },
+  {
+   "id": "sudzucker-bkk",
+   "name": "Südzucker BKK",
+   "zb": 3.5,
+   "zb_text": "3,50 %",
+   "art": "betrieblich",
+   "laender": []
+  },
+  {
+   "id": "techniker-krankenkasse",
+   "name": "Techniker Krankenkasse",
+   "zb": 2.69,
+   "zb_text": "2,69 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "tui-bkk",
+   "name": "TUI BKK",
+   "zb": 2.5,
+   "zb_text": "2,50 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "viactiv-krankenkasse",
+   "name": "VIACTIV Krankenkasse",
+   "zb": 4.19,
+   "zb_text": "4,19 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "vivida-bkk",
+   "name": "vivida bkk",
+   "zb": 3.79,
+   "zb_text": "3,79 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "wmf-bkk",
+   "name": "WMF BKK",
+   "zb": 2.85,
+   "zb_text": "2,85 %",
+   "art": "bundesweit",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "MV",
+    "NI",
+    "NW",
+    "RP",
+    "SH",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  },
+  {
+   "id": "zf-bkk",
+   "name": "ZF BKK",
+   "zb": 3.4,
+   "zb_text": "3,40 %",
+   "art": "regional",
+   "laender": [
+    "BB",
+    "BE",
+    "BW",
+    "BY",
+    "HB",
+    "HE",
+    "HH",
+    "NI",
+    "NW",
+    "RP",
+    "SL",
+    "SN",
+    "ST",
+    "TH"
+   ]
+  }
+ ]
+}

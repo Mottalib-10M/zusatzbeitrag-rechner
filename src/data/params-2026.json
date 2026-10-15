@@ -1,0 +1,364 @@
+{
+  "_lisezmoi": "Alle Rechtswerte des Rechners. Nie fest im Code oder im Text (RECETTE §4, §17.4). Jeder Wert ist an der zitierten amtlichen Quelle nachgelesen; 2027 ist als vorläufig markiert, solange Verordnung oder Bekanntmachung fehlen. Die Zusatzbeiträge der einzelnen Kassen stehen in kassen.json (täglicher Abruf).",
+  "year": 2026,
+  "retrieved_at": "2026-10-15",
+  "valid_from": "2026-01-01",
+  "valid_to": "2027-12-31",
+  "jahre": {
+    "2026": {
+      "status": "in_kraft",
+      "kv_allgemein": 14.6,
+      "kv_ermaessigt": 14.0,
+      "kv_student_faktor": 0.7,
+      "zb_durchschnitt": 2.9,
+      "zb_durchschnitt_status": "bekanntgemacht",
+      "bbg_kv_jahr": 69750,
+      "bbg_pv_jahr": 69750,
+      "jaeg_jahr": 77400,
+      "bezugsgroesse_monat": 3955,
+      "geringfuegigkeit": 603,
+      "uebergang_oben": 2000,
+      "faktor_f": 0.6619,
+      "pv_satz": 3.6,
+      "pv_kinderlos": 0.6,
+      "pv_abschlag_kind": 0.25,
+      "pv_sachsen_an_mehr": 0.5,
+      "rv_satz": 18.6,
+      "av_satz": 2.6,
+      "bafoeg_bedarf": 855,
+      "minijob_ag_kv": 13,
+      "_quelle": "BMAS Rechengrößen 2026 (Verordnung vom 26.11.2025); BAnz AT 10.11.2025 B7 (durchschnittlicher Zusatzbeitragssatz 2,9 %); §§ 241, 243, 245 SGB V; § 55 SGB XI mit PBAV 2025 (3,6 %); § 8 Abs. 1a SGB IV (603 € bei 13,90 € Mindestlohn); § 13 BAföG (475 + 380 €); Faktor F nach § 20 Abs. 2a SGB IV = 28 / 42,3"
+    },
+    "2027": {
+      "status": "vorlaeufig",
+      "kv_allgemein": 14.6,
+      "kv_ermaessigt": 14.0,
+      "kv_student_faktor": 0.7,
+      "zb_durchschnitt": 2.9,
+      "zb_durchschnitt_status": "schaetzung",
+      "bbg_kv_jahr": 76500,
+      "bbg_pv_jahr": 72900,
+      "jaeg_jahr": 84150,
+      "bezugsgroesse_monat": 4130,
+      "geringfuegigkeit": 633,
+      "uebergang_oben": 2000,
+      "faktor_f": 0.6619,
+      "pv_satz": 3.6,
+      "pv_kinderlos": 0.6,
+      "pv_abschlag_kind": 0.25,
+      "pv_sachsen_an_mehr": 0.5,
+      "rv_satz": 18.6,
+      "av_satz": 2.6,
+      "bafoeg_bedarf": 855,
+      "minijob_ag_kv": 17.5,
+      "_quelle": "Kabinettsbeschluss Sozialversicherungsrechengrößen-Verordnung 2027 vom 07.10.2026 (Bundesrat ausstehend): BBG KV 6.375 €, JAEG § 6 Abs. 6 84.150 €, JAEG § 6 Abs. 7 72.900 €, Bezugsgröße 4.130 €; § 223 Abs. 4 SGB V i. d. F. GKV-Beitragssatzstabilisierungsgesetz (BGBl. 2026 I Nr. 228): BBG = JAEG § 6 Abs. 7 + 3.600 €; § 55 Abs. 2 SGB XI: Pflege-BBG = JAEG § 6 Abs. 7 = 72.900 € (der Entwurf des Pflegeneuordnungsgesetzes will sie an die KV-Grenze koppeln, nicht in Kraft); Schätzerkreis vom 14.10.2026: rechnerischer durchschnittlicher Zusatzbeitragssatz 2,9 % (Festlegung durch das BMG bis 1.11.2026 ausstehend); § 8 Abs. 1a SGB IV mit Mindestlohn 14,60 € ab 1.1.2027 (MiLoV5) = 633 €; § 249b SGB V n. F.: Minijob-Pauschale KV = 14,6 % + 2,9 %; Kinderlosenzuschlag 0,9 % nur im Entwurf PNOG, nicht in Kraft, daher 0,6 %; Faktor F 2027 noch nicht bekanntgemacht, hier mit den Sätzen zum 1.1.2027 nach geltendem Recht (18,6 + 2,6 + 3,6 + 14,6 + 2,9 = 42,3) gerechnet"
+    }
+  },
+  "laender_sachsen": [
+    "SN"
+  ],
+  "wechsel": {
+    "bindung_monate": 12,
+    "kuendigung_zum": "Ablauf des übernächsten Kalendermonats",
+    "rentner_zb_verzoegerung_monate": 2,
+    "_quelle": "§ 175 Abs. 4 SGB V (Satz 1: zwölf Monate Bindung; Satz 3: Kündigung zum Ablauf des übernächsten Kalendermonats; Satz 6: bei Erhöhung Sonderkündigung bis zum Ablauf des Monats, für den erhöht wird); § 247 Satz 3 SGB V (Rente: neuer Zusatzbeitrag ab dem ersten Tag des zweiten Folgemonats)"
+  },
+  "ehegattenzuschlag_2028": {
+    "punkte": 2.5,
+    "ab": "2028-01-01",
+    "kind_unter": 12,
+    "_quelle": "§ 242b SGB V, eingefügt durch Art. 1 Nr. 63 GKV-Beitragssatzstabilisierungsgesetz vom 24.07.2026 (BGBl. 2026 I Nr. 228), Inkrafttreten 1.1.2028 (Art. 8 Abs. 3); auf Renten nicht vor dem 1.7.2028 (§ 242b Abs. 4)"
+  },
+  "sources": {
+    "gkvListe": {
+      "url": "https://www.gkv-spitzenverband.de/service/krankenkassenliste/krankenkassen.jsp",
+      "label": {
+        "de": "GKV-Spitzenverband: Krankenkassenliste mit den tagesaktuellen Zusatzbeitragssätzen (§ 242 Abs. 5 SGB V)",
+        "en": "GKV-Spitzenverband: list of statutory health funds with their current additional contribution rates"
+      }
+    },
+    "gkvListePdf": {
+      "url": "https://www.gkv-spitzenverband.de/krankenkassenliste.pdf",
+      "label": {
+        "de": "GKV-Spitzenverband: Krankenkassenliste als PDF",
+        "en": "GKV-Spitzenverband: list of health funds (PDF)"
+      }
+    },
+    "banzZb2026": {
+      "url": "https://www.bundesanzeiger.de/pub/publication/oUJYVk8GYRXybnb9Y4h/content/oUJYVk8GYRXybnb9Y4h/BAnz%20AT%2010.11.2025%20B7.pdf",
+      "label": {
+        "de": "BMG: Bekanntmachung des durchschnittlichen Zusatzbeitragssatzes für 2026, BAnz AT 10.11.2025 B7",
+        "en": "Federal Health Ministry: notice of the average additional contribution rate for 2026 (Federal Gazette)"
+      }
+    },
+    "bmgBeitraege": {
+      "url": "https://www.bundesgesundheitsministerium.de/beitraege",
+      "label": {
+        "de": "BMG: Beiträge der gesetzlichen Krankenversicherung",
+        "en": "Federal Health Ministry: statutory health insurance contributions"
+      }
+    },
+    "bmgPflegeFinanzierung": {
+      "url": "https://www.bundesgesundheitsministerium.de/themen/pflege/online-ratgeber-pflege/die-pflegeversicherung/finanzierung.html",
+      "label": {
+        "de": "BMG: Finanzierung der Pflegeversicherung (Beitragssatz, Kinderlosenzuschlag, Abschläge)",
+        "en": "Federal Health Ministry: how long-term care insurance is financed"
+      }
+    },
+    "bmasRg2026": {
+      "url": "https://www.bmas.de/DE/Service/Gesetze-und-Gesetzesvorhaben/sozialversicherungs-rechengroessenverordnung-2026.html",
+      "label": {
+        "de": "BMAS: Sozialversicherungs-Rechengrößenverordnung 2026",
+        "en": "Labour Ministry: social insurance reference values 2026"
+      }
+    },
+    "bmasRg2027": {
+      "url": "https://www.bmas.de/DE/Service/Gesetze-und-Gesetzesvorhaben/sozialversicherungs-rechengroessenverordnung-2027.html",
+      "label": {
+        "de": "BMAS: Sozialversicherungs-Rechengrößenverordnung 2027 (Kabinettsbeschluss vom 7. Oktober 2026)",
+        "en": "Labour Ministry: social insurance reference values 2027 (cabinet decision of 7 October 2026)"
+      }
+    },
+    "bgblStabG": {
+      "url": "https://www.recht.bund.de/bgbl/1/2026/228/regelungstext.pdf?__blob=publicationFile&v=1",
+      "label": {
+        "de": "GKV-Beitragssatzstabilisierungsgesetz vom 24. Juli 2026, BGBl. 2026 I Nr. 228",
+        "en": "Act to stabilise statutory health insurance contribution rates of 24 July 2026, Federal Law Gazette 2026 I No. 228"
+      }
+    },
+    "sgb5_5": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__5.html",
+      "label": {
+        "de": "§ 5 SGB V: Versicherungspflicht",
+        "en": "Section 5 SGB V: compulsory insurance"
+      }
+    },
+    "sgb5_6": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__6.html",
+      "label": {
+        "de": "§ 6 SGB V: Versicherungsfreiheit und Jahresarbeitsentgeltgrenze",
+        "en": "Section 6 SGB V: exemption and the annual earnings threshold"
+      }
+    },
+    "sgb5_10": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__10.html",
+      "label": {
+        "de": "§ 10 SGB V: Familienversicherung",
+        "en": "Section 10 SGB V: family insurance"
+      }
+    },
+    "sgb5_175": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__175.html",
+      "label": {
+        "de": "§ 175 SGB V: Ausübung des Wahlrechts, Bindung und Kündigung",
+        "en": "Section 175 SGB V: choosing a fund, lock-in and termination"
+      }
+    },
+    "sgb5_223": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__223.html",
+      "label": {
+        "de": "§ 223 SGB V: beitragspflichtige Einnahmen und Beitragsbemessungsgrenze",
+        "en": "Section 223 SGB V: contributory income and contribution ceiling"
+      }
+    },
+    "sgb5_226": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__226.html",
+      "label": {
+        "de": "§ 226 SGB V: Beitragspflichtige Einnahmen Beschäftigter, Freibetrag für Betriebsrenten",
+        "en": "Section 226 SGB V: contributory income of employees, company pension allowance"
+      }
+    },
+    "sgb5_236": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__236.html",
+      "label": {
+        "de": "§ 236 SGB V: Beitragspflichtige Einnahmen der Studenten",
+        "en": "Section 236 SGB V: contributory income of students"
+      }
+    },
+    "sgb5_240": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__240.html",
+      "label": {
+        "de": "§ 240 SGB V: Beitragspflichtige Einnahmen freiwilliger Mitglieder",
+        "en": "Section 240 SGB V: contributory income of voluntary members"
+      }
+    },
+    "sgb5_241": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__241.html",
+      "label": {
+        "de": "§ 241 SGB V: Allgemeiner Beitragssatz",
+        "en": "Section 241 SGB V: general contribution rate"
+      }
+    },
+    "sgb5_242": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__242.html",
+      "label": {
+        "de": "§ 242 SGB V: Zusatzbeitrag",
+        "en": "Section 242 SGB V: additional contribution"
+      }
+    },
+    "sgb5_242a": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__242a.html",
+      "label": {
+        "de": "§ 242a SGB V: Durchschnittlicher Zusatzbeitragssatz",
+        "en": "Section 242a SGB V: average additional contribution rate"
+      }
+    },
+    "sgb5_243": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__243.html",
+      "label": {
+        "de": "§ 243 SGB V: Ermäßigter Beitragssatz",
+        "en": "Section 243 SGB V: reduced contribution rate"
+      }
+    },
+    "sgb5_245": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__245.html",
+      "label": {
+        "de": "§ 245 SGB V: Beitragssatz für Studenten",
+        "en": "Section 245 SGB V: contribution rate for students"
+      }
+    },
+    "sgb5_247": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__247.html",
+      "label": {
+        "de": "§ 247 SGB V: Beitragssatz aus der Rente",
+        "en": "Section 247 SGB V: contribution rate on pensions"
+      }
+    },
+    "sgb5_248": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__248.html",
+      "label": {
+        "de": "§ 248 SGB V: Beitragssatz aus Versorgungsbezügen",
+        "en": "Section 248 SGB V: contribution rate on occupational pensions"
+      }
+    },
+    "sgb5_249": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__249.html",
+      "label": {
+        "de": "§ 249 SGB V: Tragung der Beiträge bei versicherungspflichtiger Beschäftigung",
+        "en": "Section 249 SGB V: how employee and employer share contributions"
+      }
+    },
+    "sgb5_249a": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__249a.html",
+      "label": {
+        "de": "§ 249a SGB V: Tragung der Beiträge bei Versicherungspflichtigen mit Rentenbezug",
+        "en": "Section 249a SGB V: how contributions on pensions are shared"
+      }
+    },
+    "sgb5_257": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__257.html",
+      "label": {
+        "de": "§ 257 SGB V: Beitragszuschüsse für Beschäftigte",
+        "en": "Section 257 SGB V: employer subsidy for employees"
+      }
+    },
+    "sgb4_8": {
+      "url": "https://www.gesetze-im-internet.de/sgb_4/__8.html",
+      "label": {
+        "de": "§ 8 SGB IV: Geringfügige Beschäftigung, Geringfügigkeitsgrenze",
+        "en": "Section 8 SGB IV: marginal employment (minijob) threshold"
+      }
+    },
+    "sgb4_20": {
+      "url": "https://www.gesetze-im-internet.de/sgb_4/__20.html",
+      "label": {
+        "de": "§ 20 SGB IV: Übergangsbereich und Faktor F",
+        "en": "Section 20 SGB IV: transition zone (midijob) and factor F"
+      }
+    },
+    "sgb11_55": {
+      "url": "https://www.gesetze-im-internet.de/sgb_11/__55.html",
+      "label": {
+        "de": "§ 55 SGB XI: Beitragssatz, Kinderlosenzuschlag, Abschläge, Beitragsbemessungsgrenze",
+        "en": "Section 55 SGB XI: care insurance rate, childless surcharge, child discounts, ceiling"
+      }
+    },
+    "sgb11_58": {
+      "url": "https://www.gesetze-im-internet.de/sgb_11/__58.html",
+      "label": {
+        "de": "§ 58 SGB XI: Tragung der Pflegebeiträge, Sonderregel Sachsen",
+        "en": "Section 58 SGB XI: who pays care contributions, the Saxony rule"
+      }
+    },
+    "sgb11_59": {
+      "url": "https://www.gesetze-im-internet.de/sgb_11/__59.html",
+      "label": {
+        "de": "§ 59 SGB XI: Beitragstragung bei anderen Mitgliedern",
+        "en": "Section 59 SGB XI: who pays care contributions for other members"
+      }
+    },
+    "pbav2025": {
+      "url": "https://www.gesetze-im-internet.de/pbav_2025/__1.html",
+      "label": {
+        "de": "§ 1 PBAV 2025: Pflege-Beitragssatz 3,6 Prozent ab 1. Januar 2025",
+        "en": "Section 1 PBAV 2025: care insurance rate of 3.6 percent from 1 January 2025"
+      }
+    },
+    "bafoeg13": {
+      "url": "https://www.gesetze-im-internet.de/baf_g/__13.html",
+      "label": {
+        "de": "§ 13 BAföG: Bedarf für Studierende",
+        "en": "Section 13 BAföG: student need rates"
+      }
+    },
+    "minijob2027": {
+      "url": "https://magazin.minijob-zentrale.de/minijob-grenze-2027",
+      "label": {
+        "de": "Minijob-Zentrale: Minijob-Grenze 2027",
+        "en": "Minijob-Zentrale: minijob threshold 2027"
+      }
+    },
+    "basTableau2027": {
+      "url": "https://www.bundesamtsozialesicherung.de/fileadmin/redaktion/Risikostrukturausgleich/Schaetzerkreis/20261015_Schaetztableau_2026_2027.pdf",
+      "label": {
+        "de": "GKV-Schätzerkreis beim Bundesamt für Soziale Sicherung: Schätztableau 2026 und 2027 vom 14. Oktober 2026",
+        "en": "GKV estimating group at the Federal Office for Social Security: estimate table for 2026 and 2027, 14 October 2026"
+      }
+    },
+    "basSchaetzerkreis": {
+      "url": "https://www.bundesamtsozialesicherung.de/de/themen/risikostrukturausgleich/schaetzerkreis/",
+      "label": {
+        "de": "Bundesamt für Soziale Sicherung: der Schätzerkreis nach § 220 SGB V",
+        "en": "Federal Office for Social Security: the estimating group under section 220 SGB V"
+      }
+    },
+    "sgb5_53": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__53.html",
+      "label": {
+        "de": "§ 53 SGB V: Wahltarife und ihre Bindungsfristen",
+        "en": "Section 53 SGB V: optional tariffs and their lock-in periods"
+      }
+    },
+    "sgb5_44": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__44.html",
+      "label": {
+        "de": "§ 44 SGB V: Krankengeld, Wahlerklärung für Selbstständige",
+        "en": "Section 44 SGB V: sick pay and the opt-in for self-employed members"
+      }
+    },
+    "sgb5_229": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__229.html",
+      "label": {
+        "de": "§ 229 SGB V: Versorgungsbezüge als beitragspflichtige Einnahmen",
+        "en": "Section 229 SGB V: occupational pensions as contributory income"
+      }
+    },
+    "sgb5_232a": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__232a.html",
+      "label": {
+        "de": "§ 232a SGB V: Beitragspflichtige Einnahmen bei Grundsicherungsgeld",
+        "en": "Section 232a SGB V: contributory income of basic income recipients"
+      }
+    }
+  },
+  "schaetzung_2027": {
+    "datum": "2026-10-14",
+    "ausgaben_mrd": 378.148,
+    "zuweisungen_mrd": 318.341,
+    "luecke_mrd": 59.807,
+    "bpe_mrd": 2067.567,
+    "einnahmen_fonds_mrd": 320.744,
+    "ausgaben_2026_mrd": 370.094,
+    "_quelle": "Schätztableau des GKV-Schätzerkreises vom 14.10.2026, Positionen 1c, 2g, 4d, 6c, 7 (€ in Mio.)"
+  }
+}

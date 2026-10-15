@@ -1,0 +1,23 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { SITE_URL } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { breadcrumbSchema } from '../../lib/seo';
+const lang = 'de';
+const code = `<iframe src="${SITE_URL}/embed/beitragsrechner/" title="Zusatzbeitrag und Krankenkassenbeitrag aller Kassen" width="100%" height="1250" style="border:0;max-width:1100px" loading="lazy"></iframe>`;
+---
+<PageLayout title="Zusatzbeitrag-Rechner kostenlos einbinden: Code für Ihre Seite" description="Binden Sie den Rechner für Krankenkassenbeitrag und Zusatzbeitrag aller Kassen kostenlos per iframe ein: Code kopieren, kein Konto, keine Cookies, täglich aktuelle Sätze." lang={lang} noindex={true} jsonLd={[breadcrumbSchema([{ name: 'Start', path: route('home', lang) }, { name: 'Widget', path: route('widget', lang) }])]} breadcrumbs={[{ label: 'Widget' }]} showAuthor={false}>
+  <header class="mb-6">
+    <h1 class="text-3xl font-bold text-navy-900 md:text-4xl">Den Beitragsrechner einbinden</h1>
+    <p class="mt-3 text-lg text-navy-700">Für Personalabteilungen, Lohnbüros, Hochschulen, Gewerkschaften und Lokalredaktionen: einmal kopieren, die Kassensätze aktualisieren sich jeden Tag von selbst.</p>
+  </header>
+  <div class="prose prose-slate max-w-none">
+    <h2>Code zum Kopieren</h2>
+    <pre class="overflow-x-auto rounded-lg bg-navy-900 p-4 text-sm text-white"><code>{code}</code></pre>
+    <p>Bedingungen: Der Quellenlink unter dem Rechner bleibt sichtbar, der Rechner wird nicht verändert, er wird ohne Gewähr bereitgestellt. Für die englische Fassung hängen Sie <code>?lang=en</code> an die Adresse an.</p>
+    <p>Was Ihre Leser eintippen, bleibt auf deren Gerät; der Rahmen speichert nichts und misst nichts. Fragen über die <a href={route('contact', lang)}>Kontaktseite</a>.</p>
+  </div>
+  <div class="mt-8 overflow-hidden rounded-xl border border-navy-200">
+    <iframe src="/embed/beitragsrechner/" title="Zusatzbeitrag und Krankenkassenbeitrag aller Kassen" width="100%" height="1250" style="border:0" loading="lazy"></iframe>
+  </div>
+</PageLayout>

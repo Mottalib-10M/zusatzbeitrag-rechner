@@ -1,0 +1,27 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { CONTACT_EMAIL, LEGAL, SITE_URL, LAST_UPDATED } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+const lang = 'en';
+---
+<PageLayout title="Privacy: Health Insurance Contributions With No Data Stored" description="Privacy under the GDPR: your income, pension, number of children and health fund stay in your browser; no cookies, only host logs and optional anonymous error measurement." lang={lang} noindex={true} breadcrumbs={[{ label: 'Privacy' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Privacy policy</h1>
+    <p>Working out your contribution here means entering your income, your health fund and how many children you have. The site is built so that {SITE_URL} never receives any of it.</p>
+    <h2>1. Controller</h2>
+    <LegalIdentity lang={lang} />
+    <p>Email: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. No data protection officer is required under Article 37 GDPR or appointed.</p>
+    <h2>2. What you type</h2>
+    <p>Gross pay, pension, profit, state, health fund and children are processed only in your browser. <strong>Nothing is sent to us or anyone else, and nothing is stored.</strong> After your first input the calculator writes the values into the address bar so you can share a result; that address stays on your device, and anyone you send it to sees the values in it.</p>
+    <h2>3. Processing</h2>
+    <h3>Host logs</h3><p>When a page loads, GitHub processes technically necessary data (IP address, time, page, browser, referrer) to deliver it and prevent abuse. Legal basis: Article 6(1)(f) GDPR; GitHub sets the retention period.</p>
+    <h3>No cookies</h3><p>The site sets no cookies and stores nothing in browser storage.</p>
+    <h3>Anonymous error measurement (Microsoft Clarity, cookieless)</h3><p>When enabled, Clarity runs in cookieless mode and records loading errors, load times, dead clicks and scrolling so we can find broken calculators. Inputs and content are masked before sending and each visit gets a new identifier. Provider: Microsoft Ireland Operations Limited, One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, Ireland. Legal basis: Article 6(1)(f) GDPR. Recordings are deleted after 30 days, aggregates after 13 months. To object, block clarity.ms or write to us.</p>
+    <h2>4. Recipients</h2><p>We pass nothing to health funds, comparison portals, insurance intermediaries or ad networks. The only processors (Article 28 GDPR) are GitHub as host and Microsoft for anonymous measurement.</p>
+    <h2>5. Transfers outside the EU</h2><p>GitHub, Inc. and Microsoft Corporation are based in the USA and certified under the EU-US Data Privacy Framework; standard contractual clauses apply as well (<a href="https://privacy.microsoft.com/privacystatement" rel="nofollow noopener" target="_blank">Microsoft privacy statement</a>).</p>
+    <h2>6. Your rights</h2><p>Access, rectification, erasure, restriction, objection and portability (Articles 15 to 22 GDPR): write to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> and we reply within one month. Complaints: {LEGAL.supervisoryAuthority} (<a href={LEGAL.supervisoryAuthorityUrl} rel="nofollow noopener" target="_blank">{LEGAL.supervisoryAuthorityUrl}</a>) or the data protection authority of your German state.</p>
+    <h2>7. No automated decisions</h2><p>An estimate here has no legal effect (Article 22 GDPR). Your health fund sets the contribution; for employees the employer calculates it.</p>
+    <p>See also <a href={route('cookies', lang)}>cookies</a>. Last updated: {LAST_UPDATED}.</p>
+  </div>
+</PageLayout>

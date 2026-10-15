@@ -1,0 +1,99 @@
+import { defineGuide } from '../../lib/guide-types';
+import { angestellt } from '../../lib/engine/beitrag';
+import { kasse, offen } from '../../lib/engine/kassen';
+import { J, DE, EN } from '../../lib/fmt';
+
+/** Arbeitgeberanteil § 249 SGB V, § 58 SGB XI, Zuschuss § 257 SGB V. Alle Beträge aus dem Motor. */
+const w = J(2026), w7 = J(2027);
+const zb = w.zb_durchschnitt;
+const LOHN = 3800;
+const ag = (b: number, z = zb, o: { sachsen?: boolean; eltern?: 'k1' | 'kinderlos' } = {}) => { const r = angestellt({ brutto: b, zb: z, jahr: 2026, sachsen: o.sachsen, eltern: o.eltern ?? 'k1' }); return { ag: r.kv.andere + r.pv.andere, an: r.selbst, kv: r.kv.andere, pv: r.pv.andere }; };
+const normal = ag(LOHN), sachsen = ag(LOHN, zb, { sachsen: true }), kinderlos = ag(LOHN, zb, { eltern: 'kinderlos' });
+const alle = offen();
+const billig = alle[0], teuer = alle[alle.length - 1], tk = kasse('techniker-krankenkasse'), barmer = kasse('barmer');
+const reihe = [billig, tk, barmer, teuer];
+const agBillig = ag(LOHN, billig.zb!), agTeuer = ag(LOHN, teuer.zb!);
+const spanneAgJahr = Math.round((agTeuer.ag - agBillig.ag) * 12);
+const loehne = [2500, LOHN, 5000, w.bbgKv, 8000];
+const maxAg26 = ag(w.bbgKv).ag;
+const maxAg27 = (() => { const r = angestellt({ brutto: w7.bbgKv, zb, jahr: 2027, eltern: 'k1' }); return r.kv.andere + r.pv.andere; })();
+const midi = angestellt({ brutto: 1200, zb, jahr: 2026, eltern: 'k1' });
+
+export default defineGuide({
+  id: 'arbeitgeberanteil-krankenversicherung',
+  group: 'wissen',
+  order: 89,
+  mini: 'arbeitgeber',
+  related: ['midijob-krankenversicherung', 'beitragssatz-krankenkasse', 'versicherungspflichtgrenze', 'pflegeversicherung-beitrag', 'guenstigste-krankenkasse-sachsen'],
+  sources: ['sgb5_249', 'sgb5_257', 'sgb11_58', 'sgb5_241', 'sgb5_242'],
+  de: {
+    slug: 'arbeitgeberanteil-krankenversicherung',
+    nav: 'Arbeitgeberanteil',
+    card: `Bei ${DE.eur(LOHN)} brutto zahlt der Arbeitgeber 2026 rund ${DE.eur(normal.ag)} im Monat für Kranken- und Pflegeversicherung, je nach Kasse mehr oder weniger.`,
+    title: 'Arbeitgeberanteil Krankenversicherung 2026: Höhe, Regeln',
+    description: 'Arbeitgeberanteil zur Krankenversicherung 2026 und 2027: halber Beitrag samt Zusatzbeitrag, Pflege, Sonderregel Sachsen, Midijob und Zuschuss für Freiwillige.',
+    h1: 'Arbeitgeberanteil zur Kranken- und Pflegeversicherung',
+    intro: `Bei ${DE.eur(LOHN)} brutto und durchschnittlichem Zusatzbeitrag zahlt der Arbeitgeber ${DE.eur(normal.kv)} Krankenversicherung und ${DE.eur(normal.pv)} Pflegeversicherung im Monat.`,
+    resume: `Arbeitgeber tragen die Hälfte des Krankenversicherungsbeitrags ihrer Beschäftigten, und zwar seit 2019 einschließlich der Hälfte des Zusatzbeitrags der jeweiligen Kasse (§ 249 Abs. 1 SGB V). Bei einem allgemeinen Satz von ${DE.pz(w.kv_allgemein)} und dem durchschnittlichen Zusatzbeitrag von ${DE.pz(zb)} sind das ${DE.pz((w.kv_allgemein + zb) / 2)} des Bruttolohns, höchstens bis zur Beitragsbemessungsgrenze von ${DE.eur(w.bbgKv, 2)} im Monat. In der Pflegeversicherung zahlt der Arbeitgeber ${DE.pz(w.pv_satz / 2)}, in Sachsen nur ${DE.pz(w.pv_satz / 2 - w.pv_sachsen_an_mehr)}; den Zuschlag für Kinderlose und die Abschläge für Eltern trägt allein der Beschäftigte. Bei ${DE.eur(LOHN)} brutto ergibt das ${DE.eur(normal.ag)} im Monat, an der Bemessungsgrenze ${DE.eur(maxAg26)}. Weil der Zusatzbeitrag geteilt wird, kostet eine teure Kasse auch den Arbeitgeber mehr: Zwischen der günstigsten und der teuersten frei wählbaren Kasse liegen bei diesem Lohn ${DE.eur(spanneAgJahr)} im Jahr. Die Wahl der Kasse trifft trotzdem allein der Beschäftigte.`,
+    faqs: [
+      { q: 'Zahlt der Arbeitgeber auch die Hälfte des Zusatzbeitrags?', a: `Ja, seit dem 1. Januar 2019. Vorher trugen Beschäftigte den Zusatzbeitrag allein. Heute teilt § 249 Abs. 1 SGB V den gesamten Beitrag, also allgemeinen Satz und kassenindividuellen Zusatzbeitrag, je zur Hälfte. Bei ${DE.eur(LOHN)} brutto und einem Zusatzbeitrag von ${DE.pz(zb)} übernimmt der Arbeitgeber davon ${DE.eur(LOHN * zb / 200)} im Monat.` },
+      { q: 'Muss ich meinem Arbeitgeber sagen, dass ich die Kasse wechsle?', a: 'Ja, Sie geben ihm die neue Kasse an, am besten mit der Mitgliedsbescheinigung, die die neue Kasse ausstellt. Der Arbeitgeber meldet Sie dort an und führt den Beitrag ab dem Beginn der neuen Mitgliedschaft dorthin ab. Er darf Ihnen keine Kasse vorschreiben und muss den höheren Anteil zahlen, wenn Sie eine teurere wählen.' },
+      { q: 'Warum zahle ich in Sachsen mehr Pflegebeitrag als mein Arbeitgeber?', a: `Weil Sachsen 1995 als einziges Land keinen Feiertag zur Finanzierung der Pflegeversicherung gestrichen hat. Zum Ausgleich tragen Beschäftigte dort ${DE.num(w.pv_sachsen_an_mehr, 1)} Punkte mehr und der Arbeitgeber entsprechend weniger (§ 58 Abs. 3 SGB XI). Bei ${DE.eur(LOHN)} brutto zahlt der Arbeitgeber in Sachsen ${DE.eur(sachsen.pv)} statt ${DE.eur(normal.pv)} Pflegebeitrag im Monat.` },
+      { q: 'Bekomme ich einen Zuschuss, wenn ich privat versichert bin?', a: 'Ja, als Angestellter über der Versicherungspflichtgrenze. Der Arbeitgeber zahlt dann einen Zuschuss zur privaten Kranken- und Pflegeversicherung, höchstens den Betrag, den er bei gesetzlicher Versicherung tragen würde, und höchstens die Hälfte der tatsächlichen Prämie (§ 257 Abs. 2 SGB V). Für freiwillig gesetzlich Versicherte gilt der volle Arbeitgeberanteil als Zuschuss.' },
+      { q: 'Zahlt der Arbeitgeber im Midijob mehr als die Hälfte?', a: `Ja. Im Übergangsbereich wird Ihr Anteil ermäßigt, der Gesamtbeitrag aber nicht im selben Maß; die Differenz trägt der Arbeitgeber. Bei ${DE.eur(1200)} brutto zahlt er mit durchschnittlichem Zusatzbeitrag ${DE.eur(midi.kv.andere + midi.pv.andere)} für Kranken- und Pflegeversicherung, Sie selbst nur ${DE.eur(midi.selbst)}. Die Leistungen sind trotzdem dieselben.` },
+    ],
+    body: (h) => `
+<h2>Wie sich der Arbeitgeberanteil zusammensetzt</h2>
+<p>Für Beschäftigte gilt der Grundsatz der Parität: Was an die Krankenkasse geht, teilen sich Arbeitnehmer und Arbeitgeber. Der allgemeine Beitragssatz von ${h.pz(w.kv_allgemein)} ist bei allen Kassen gleich, also zahlt jeder Arbeitgeber dafür ${h.pz(w.kv_allgemein / 2)} des Bruttolohns. Hinzu kommt die Hälfte des Zusatzbeitrags der Kasse, die der Beschäftigte gewählt hat. In der Pflegeversicherung teilt der Arbeitgeber den Satz von ${h.pz(w.pv_satz)}; was darüber hinausgeht oder darunter liegt, betrifft nur den Beschäftigten. Ein kinderloser Angestellter zahlt bei ${h.eur(LOHN)} brutto ${h.eur(kinderlos.an)} im Monat, ein Angestellter mit einem Kind ${h.eur(normal.an)}; der Arbeitgeber zahlt in beiden Fällen ${h.eur(normal.ag)}.</p>
+<p>Alle Beiträge werden nur bis zur Beitragsbemessungsgrenze berechnet. Darüber steigt auch der Arbeitgeberanteil nicht mehr: 2026 höchstens ${h.eur(maxAg26)} im Monat, 2027 vorläufig ${h.eur(maxAg27)}, jeweils mit dem durchschnittlichen Zusatzbeitrag und für Kranken- und Pflegeversicherung zusammen.</p>
+<h2>Was der Arbeitgeber je nach Lohn zahlt</h2>
+${h.table(['Bruttolohn im Monat', 'Krankenversicherung', 'Pflegeversicherung', 'zusammen'], loehne.map((b) => { const x = ag(b); return [h.eur(b), h.eur(x.kv), h.eur(x.pv), h.eur(x.ag)]; }), `Arbeitgeberanteil 2026, Zusatzbeitrag ${h.pz(zb)}, außerhalb Sachsens`, ['l', 'r', 'r', 'r'])}
+<p>Die Tabelle zeigt, wie der Anteil linear mit dem Lohn wächst und an der Grenze abbricht: Zwischen ${h.eur(w.bbgKv)} und ${h.eur(8000)} brutto ändert sich nichts mehr. Für Gutverdienende sinkt der Anteil der Sozialversicherung an den gesamten Personalkosten deshalb mit jedem Euro über der Grenze.</p>
+<h2>Die Kasse des Beschäftigten kostet auch den Betrieb</h2>
+<p>Weil der Zusatzbeitrag geteilt wird, hängt der Arbeitgeberanteil davon ab, welche Kasse der Beschäftigte wählt. Ein Betrieb mit vielen Mitarbeitenden bei teuren Kassen zahlt spürbar mehr als einer, dessen Belegschaft bei günstigen Kassen versichert ist. Bei ${h.eur(LOHN)} brutto sieht das so aus:</p>
+${h.table(['Kasse', 'Zusatzbeitrag', 'Arbeitgeber im Monat', 'im Jahr'], reihe.map((k) => { const x = ag(LOHN, k.zb!); return [k.kurz, h.pk(k.zb!), h.eur(x.ag), h.eur(x.ag * 12)]; }), 'günstigste und teuerste frei wählbare Kasse, dazu zwei große Ersatzkassen', ['l', 'r', 'r', 'r'])}
+<p>Arbeitgeber dürfen ihren Beschäftigten trotzdem keine Kasse vorschreiben und auch nicht Druck machen, eine günstigere zu wählen; das Wahlrecht liegt nach § 175 SGB V allein beim Mitglied. Viele Personalabteilungen weisen im Herbst aber auf die Zusatzbeiträge hin, denn von einem Wechsel profitieren beide Seiten zu gleichen Teilen. Wer selbst wissen will, wie viel ihm ein Wechsel bringt, nutzt den ${h.a('home', 'Beitragsrechner')}.</p>
+<h2>Sonderfälle: Sachsen, Midijob, Minijob</h2>
+<p>In Sachsen ist der Pflegeanteil des Arbeitgebers um ${h.num(w.pv_sachsen_an_mehr, 1)} Punkte niedriger, bei ${h.eur(LOHN)} brutto also ${h.eur(normal.pv - sachsen.pv)} im Monat weniger, die der Beschäftigte zusätzlich trägt. Im Übergangsbereich bis ${h.eur(w.uebergang_oben)} zahlt der Arbeitgeber mehr als die Hälfte, weil der Anteil des Beschäftigten nach § 20 Abs. 2a SGB IV ermäßigt ist (${h.a('midijob-krankenversicherung', 'Midijob im Detail')}). Bei einem Minijob bis ${h.eur(w.geringfuegigkeit)} zahlt nur der Arbeitgeber, und zwar eine Pauschale von ${h.pz(w.minijob_ag_kv)} des Lohns, ab 2027 ${h.pz(w7.minijob_ag_kv)}; der Minijobber ist darüber nicht versichert.</p>
+<h2>Kurzarbeit, Krankheit, Elternzeit</h2>
+<p>Bei Kurzarbeit fällt ein Teil des Lohns weg, die Versicherung läuft aber weiter. Für den ausgefallenen Teil werden Beiträge aus einem fiktiven Entgelt berechnet, und die trägt der Arbeitgeber allein; das Gesetz sagt es für die Pflege ausdrücklich in § 58 Abs. 1 SGB XI. Bei Krankheit zahlt der Arbeitgeber in den ersten sechs Wochen den Lohn weiter und damit auch seinen Anteil. Danach zahlt die Kasse Krankengeld, und der Arbeitgeberanteil entfällt; aus dem Krankengeld selbst wird kein Krankenversicherungsbeitrag fällig. In der Elternzeit ohne Teilzeitjob bleibt die Mitgliedschaft beitragsfrei bestehen, solange Elterngeld bezogen wird; auch dann zahlt der Arbeitgeber nichts.</p>
+<h2>Freiwillig oder privat versichert: der Zuschuss</h2>
+<p>Wer wegen eines Gehalts über der Versicherungspflichtgrenze freiwillig in der gesetzlichen Kasse bleibt, bekommt vom Arbeitgeber genau den Anteil, den dieser bei Pflichtversicherung zahlen würde (§ 257 Abs. 1 SGB V). Meist führt der Arbeitgeber den gesamten Beitrag direkt an die Kasse ab, das sogenannte Firmenzahlerverfahren; sonst zahlt er den Zuschuss mit dem Gehalt aus. Privat Versicherte erhalten einen Zuschuss bis zur gleichen Höhe, aber nie mehr als die Hälfte ihrer Prämie (§ 257 Abs. 2). Über die Grenze selbst informiert die Seite zur ${h.a('versicherungspflichtgrenze', 'Versicherungspflichtgrenze')}.</p>
+<p>Neben Kranken- und Pflegeversicherung trägt der Arbeitgeber auch die Hälfte der Renten- und Arbeitslosenversicherung, dazu die Umlagen und die Unfallversicherung allein. Diese Seite und der Rechner beschränken sich auf Kranken- und Pflegeversicherung, weil nur dort die Wahl der Kasse den Betrag verändert.</p>`,
+  },
+  en: {
+    slug: 'employer-share-health-insurance',
+    nav: 'Employer share',
+    card: `On ${EN.eur(LOHN)} gross the employer pays about ${EN.eur(normal.ag)} a month for health and care insurance in 2026, more or less depending on the fund.`,
+    title: 'Employer Share Health Insurance Germany 2026: Rules, Amount',
+    description: 'Employer share of German health insurance for 2026 and 2027: half the rate with the additional rate, care insurance, the Saxony rule, midijobs and the subsidy.',
+    h1: 'The employer’s share of health and care insurance',
+    intro: `On ${EN.eur(LOHN)} gross and the average additional rate, the employer pays ${EN.eur(normal.kv)} health insurance and ${EN.eur(normal.pv)} care insurance a month.`,
+    resume: `German employers pay half of their employees’ statutory health insurance contribution, and since 2019 that includes half of the fund’s additional rate (Zusatzbeitrag) (section 249(1) of Book V of the Social Code, SGB V). With the general rate of ${EN.pz(w.kv_allgemein)} and the average additional rate of ${EN.pz(zb)}, that is ${EN.pz((w.kv_allgemein + zb) / 2)} of gross pay, up to the contribution ceiling of ${EN.eur(w.bbgKv, 2)} a month. For long-term care insurance the employer pays ${EN.pz(w.pv_satz / 2)}, in Saxony only ${EN.pz(w.pv_satz / 2 - w.pv_sachsen_an_mehr)}; the childless surcharge and the parents’ discounts affect the employee alone. On ${EN.eur(LOHN)} gross that comes to ${EN.eur(normal.ag)} a month, and ${EN.eur(maxAg26)} at the ceiling. Because the additional rate is shared, an expensive fund costs the employer more too: between the cheapest and the most expensive fund open to the public the difference at this pay is ${EN.eur(spanneAgJahr)} a year. The choice of fund still belongs to the employee alone.`,
+    faqs: [
+      { q: 'Does my employer also pay half of the additional rate?', a: `Yes, since 1 January 2019. Before then employees paid the additional rate on their own. Today section 249(1) SGB V splits the whole contribution, general rate and the fund’s additional rate, half and half. On ${EN.eur(LOHN)} gross and an additional rate of ${EN.pz(zb)}, the employer covers ${EN.eur(LOHN * zb / 200)} of it a month.` },
+      { q: 'Do I have to tell my employer I am switching fund?', a: 'Yes, you give your employer the new fund, ideally with the membership certificate the new fund issues. The employer registers you there and pays contributions to it from the start of the new membership. It may not prescribe a fund and must pay the higher share if you choose a more expensive one.' },
+      { q: 'Why do I pay more care contribution than my employer in Saxony?', a: `Because in 1995 Saxony was the only state that did not abolish a public holiday to finance long-term care insurance. In return, employees there pay ${EN.num(w.pv_sachsen_an_mehr, 1)} points more and employers that much less (section 58(3) SGB XI). On ${EN.eur(LOHN)} gross the employer in Saxony pays ${EN.eur(sachsen.pv)} instead of ${EN.eur(normal.pv)} care contribution a month.` },
+      { q: 'Do I get a subsidy if I am privately insured?', a: 'Yes, as an employee above the compulsory insurance threshold. The employer then pays a subsidy towards private health and care insurance, at most what it would pay under statutory cover and at most half of the actual premium (section 257(2) SGB V). For voluntary statutory members the full employer share counts as the subsidy.' },
+      { q: 'Does the employer pay more than half in a midijob?', a: `Yes. In the transition zone your share is reduced, but the total contribution is not reduced as much; the employer covers the difference. On ${EN.eur(1200)} gross and the average additional rate it pays ${EN.eur(midi.kv.andere + midi.pv.andere)} for health and care insurance, and you pay ${EN.eur(midi.selbst)}.` },
+    ],
+    body: (h) => `
+<h2>What makes up the employer share</h2>
+<p>For employees the principle is parity: what goes to the health fund is shared between employee and employer. The general rate of ${h.pz(w.kv_allgemein)} is the same at every fund, so every employer pays ${h.pz(w.kv_allgemein / 2)} of gross pay for it. On top comes half of the additional rate of the fund the employee has chosen. For long-term care insurance the employer shares the ${h.pz(w.pv_satz)} rate; anything above or below that concerns only the employee. A childless employee on ${h.eur(LOHN)} gross pays ${h.eur(kinderlos.an)} a month and an employee with one child ${h.eur(normal.an)}; the employer pays ${h.eur(normal.ag)} in both cases.</p>
+<p>All contributions stop at the contribution ceiling. Above it the employer share no longer rises either: at most ${h.eur(maxAg26)} a month in 2026 and provisionally ${h.eur(maxAg27)} in 2027, for health and care insurance together at the average additional rate.</p>
+<h2>What the employer pays at different pay levels</h2>
+${h.table(['Gross pay a month', 'Health insurance', 'Care insurance', 'together'], loehne.map((b) => { const x = ag(b); return [h.eur(b), h.eur(x.kv), h.eur(x.pv), h.eur(x.ag)]; }), `Employer share 2026, additional rate ${h.pz(zb)}, outside Saxony`, ['l', 'r', 'r', 'r'])}
+<p>The table shows the share growing in line with pay and stopping at the ceiling: between ${h.eur(w.bbgKv)} and ${h.eur(8000)} gross nothing changes. For high earners, social insurance therefore makes up a smaller part of total staff costs with every euro above the ceiling.</p>
+<h2>The employee’s fund costs the business too</h2>
+<p>Because the additional rate is shared, the employer share depends on which fund the employee picks. A firm with many staff at expensive funds pays noticeably more than one whose workforce is with cheap funds. On ${h.eur(LOHN)} gross it looks like this:</p>
+${h.table(['Fund', 'Additional rate', 'Employer a month', 'a year'], reihe.map((k) => { const x = ag(LOHN, k.zb!); return [k.kurz, h.pk(k.zb!), h.eur(x.ag), h.eur(x.ag * 12)]; }), 'cheapest and most expensive open fund, plus two big substitute funds', ['l', 'r', 'r', 'r'])}
+<p>Employers still may not tell staff which fund to join or push them towards a cheaper one; under section 175 SGB V the choice belongs to the member alone. Many HR departments do point out the additional rates in the autumn, though, as both sides gain equally from a switch. To see what a switch would save you personally, use the ${h.a('home', 'contribution calculator')}.</p>
+<h2>Special cases: Saxony, midijobs, minijobs</h2>
+<p>In Saxony the employer’s care share is ${h.num(w.pv_sachsen_an_mehr, 1)} points lower, so ${h.eur(normal.pv - sachsen.pv)} a month less on ${h.eur(LOHN)} gross, which the employee carries instead. In the transition zone up to ${h.eur(w.uebergang_oben)} the employer pays more than half, because the employee’s share is reduced under section 20(2a) SGB IV (${h.a('midijob-krankenversicherung', 'midijobs in detail')}). For a minijob up to ${h.eur(w.geringfuegigkeit)} only the employer pays, a flat ${h.pz(w.minijob_ag_kv)} of pay, from 2027 ${h.pz(w7.minijob_ag_kv)}; the minijobber is not insured through it.</p>
+<h2>Short-time work, sickness, parental leave</h2>
+<p>Under short-time work (Kurzarbeit) part of the pay is lost but cover continues. Contributions for the lost part are worked out on a notional wage, and the employer pays them alone; for care insurance section 58(1) SGB XI says so expressly. When you are ill, the employer keeps paying your wage for the first six weeks, and with it its share. After that the fund pays sick pay and the employer share stops; no health contribution is due on the sick pay itself. During parental leave without a part-time job, membership continues free of contributions while parental allowance is paid; the employer pays nothing then either.</p>
+<h2>Voluntary or private cover: the subsidy</h2>
+<p>Anyone who stays in a statutory fund voluntarily because their pay is above the compulsory insurance threshold receives from the employer exactly the share it would pay under compulsory cover (section 257(1) SGB V). Usually the employer pays the whole contribution straight to the fund; otherwise it pays the subsidy with the salary. Privately insured employees get a subsidy up to the same amount, but never more than half of their premium (section 257(2)). The threshold itself is explained on the page on the ${h.a('versicherungspflichtgrenze', 'compulsory insurance threshold')}.</p>
+<p>Besides health and care insurance, the employer also pays half of pension and unemployment insurance, plus the levies and accident insurance alone. This page and the calculator stick to health and care insurance, because only there does the choice of fund change the amount.</p>`,
+  },
+});

@@ -1,0 +1,124 @@
+---
+/**
+ * Startseite (Säule, RECETTE §5), eigene Trame: Kopfzeile, sofort der Beitragsrechner mit der Rangliste Ihres
+ * Landes, der zitierbare Absatz (eingeklappt), die Rechengrößen 2026 → 2027 als Gegenüberstellung, die Verteilung
+ * aller Zusatzbeiträge als Streifen, die großen Kassen und die Länder mit ihrer günstigsten Kasse, dann Text und FAQ.
+ */
+import PageLayout from '../layouts/PageLayout.astro';
+import BeitragsRechner from './calc/BeitragsRechner';
+import MiniSim from './calc/MiniSim';
+import Clamp from './Clamp.astro';
+import { HOME } from '../content/home';
+import { route, ROUTES, type Locale } from '../i18n/routes';
+import { label } from '../i18n/nav';
+import { helpers } from '../lib/helpers';
+import { P, J, type SourceKey } from '../lib/engine/params';
+import { offen, statistik, rangliste, LAENDER, LAND_NAME, STAND } from '../lib/engine/kassen';
+import { formatMoney, formatDecimal, formatNumber, displayDate } from '../lib/format';
+import { faqSchema, organizationSchema, websiteSchema, webPageSchema, webApplicationSchema } from '../lib/seo';
+import { PAGES, kassenSeite, landSeite } from '../lib/guides';
+import { LANG_TAGS } from '../data/site-config';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const de = lang === 'de';
+const x = HOME[lang];
+const h = helpers(lang);
+const path = route('home', lang);
+const parts = x.body(h).split(/<!--mini:([A-Za-z0-9_]+)-->/);
+const faqs = x.faqs(h);
+const keys: SourceKey[] = ['gkvListe', 'sgb5_241', 'sgb5_242', 'sgb5_242a', 'sgb5_175', 'sgb5_223', 'sgb5_249', 'sgb11_55', 'sgb11_58', 'banzZb2026', 'bmasRg2026', 'bmasRg2027', 'bgblStabG'];
+const sources = keys.map((k) => ({ name: P.sources[k].label[lang], url: P.sources[k].url }));
+const jsonLd = [websiteSchema(lang), organizationSchema(lang), webPageSchema({ name: x.h1, description: x.description, path, lang }), webApplicationSchema({ name: x.h1, description: x.description, path, lang }), faqSchema(faqs, lang)];
+const $ = (n: number, d = 0) => formatMoney(n, d, lang);
+const pz = (n: number) => `${formatDecimal(n, 2, lang)}\u00a0%`;
+const pk = (n: number) => `${formatNumber(n, 2, lang)}\u00a0%`;
+const has = (id: string) => ROUTES.some((r) => r.id === id);
+const r = (id: string) => (has(id) ? route(id, lang) : undefined);
+const kassenHref = Object.fromEntries(PAGES.filter((p) => p.group === 'kassen' && p.kasse).map((p) => [p.kasse!, route(p.id, lang)]));
+const a = J(2026), b = J(2027);
+const vergleich = [
+  { t: de ? 'Beitragsbemessungsgrenze Krankenversicherung' : 'Health insurance contribution ceiling', v: $(a.bbgKv, 2), n: $(b.bbgKv), q: 'sgb5_223' as SourceKey },
+  { t: de ? 'Beitragsbemessungsgrenze Pflegeversicherung' : 'Care insurance contribution ceiling', v: $(a.bbgPv, 2), n: $(b.bbgPv), q: 'sgb11_55' as SourceKey },
+  { t: de ? 'Versicherungspflichtgrenze im Jahr' : 'Compulsory insurance threshold a year', v: $(a.jaeg_jahr), n: $(b.jaeg_jahr), q: 'sgb5_6' as SourceKey },
+  { t: de ? 'Durchschnittlicher Zusatzbeitrag' : 'Average additional contribution', v: pz(a.zb_durchschnitt), n: `${pz(b.zb_durchschnitt)}${de ? ' (Schätzung)' : ' (estimate)'}`, q: 'sgb5_242a' as SourceKey },
+  { t: de ? 'Familienversicherung bis' : 'Family cover up to', v: $(a.famGrenze), n: $(b.famGrenze), q: 'sgb5_10' as SourceKey },
+  { t: de ? 'Minijob-Grenze' : 'Minijob limit', v: $(a.geringfuegigkeit), n: $(b.geringfuegigkeit), q: 'sgb4_8' as SourceKey },
+];
+// Verteilung aller frei wählbaren Kassen in Schritten von 0,25 Punkten.
+const alle = offen();
+const st = statistik(alle);
+const lo = Math.floor(st.min * 4) / 4, hi = Math.ceil(st.max * 4) / 4 + 0.0001;
+const bins: Array<{ von: number; n: number; namen: string[] }> = [];
+for (let v = lo; v < hi; v += 0.25) { const ks = alle.filter((k) => k.zb! >= v - 1e-9 && k.zb! < v + 0.25 - 1e-9); bins.push({ von: v, n: ks.length, namen: ks.map((k) => k.kurz) }); }
+const maxN = Math.max(...bins.map((x) => x.n));
+const gross = ['techniker-krankenkasse', 'barmer', 'dak-gesundheit', 'aok-bayern-die-gesundheitskasse', 'aok-baden-wurttemberg', 'aok-plus-die-gesundheitskasse-fur-sachsen-und-thuringen', 'aok-nordwest-die-gesundheitskasse', 'ikk-classic', 'kaufmannische-krankenkasse-kkh', 'handelskrankenkasse-hkk', 'knappschaft', 'siemens-betriebskrankenkasse-sbk']
+  .map((id) => alle.find((k) => k.id === id)).filter((k): k is NonNullable<typeof k> => !!k);
+const laender = [...LAENDER].sort((p, q) => LAND_NAME[p][lang].localeCompare(LAND_NAME[q][lang], 'de')).map((l) => ({ l, best: rangliste(l)[0], n: rangliste(l).length, seite: landSeite(l) }));
+const ab = (k: string) => (kassenSeite(k) ? route(kassenSeite(k)!.id, lang) : undefined);
+---
+<PageLayout title={x.title} description={x.description} lang={lang} jsonLd={jsonLd} faqs={faqs} sources={sources}>
+  <header class="mb-4">
+    <p class="text-sm font-semibold uppercase tracking-wide text-accent-700">{de ? `Zusatzbeiträge aller ${alle.length} frei wählbaren Kassen · Liste des GKV-Spitzenverbands` : `Additional rates of all ${alle.length} open funds · GKV-Spitzenverband list`}</p>
+    <h1 class="mt-1 text-3xl font-bold text-navy-900 md:text-[2.5rem] md:leading-tight">{x.h1}</h1>
+    <p class="mt-2 text-lg text-navy-700">{x.intro}</p>
+  </header>
+  <section id="rechner" data-outil data-chrome aria-label={de ? 'Beitragsrechner' : 'Contribution calculator'}>
+    <BeitragsRechner client:load lang={lang} methodHref={route('method', lang)} kassenHref={kassenHref} />
+  </section>
+  <section class="mt-8" aria-labelledby="kurz">
+    <h2 id="kurz" class="sr-only">{de ? 'Das Wichtigste in Kürze' : 'In short'}</h2>
+    <Clamp text={x.resume(h)} lang={lang} id="clamp-home" sentences={2} />
+  </section>
+  <section class="mt-10 border-t border-navy-200 pt-6" aria-labelledby="neu2027" data-chrome>
+    <h2 id="neu2027" class="text-2xl font-bold text-navy-900">{de ? 'Rechengrößen 2026 und 2027 nebeneinander' : '2026 and 2027 thresholds side by side'}</h2>
+    <p class="mt-2 text-navy-700">{de ? '2027 nach dem Kabinettsbeschluss vom 7. Oktober 2026 und der Schätzung vom 14. Oktober 2026; vorläufig, bis Verordnung und Bekanntmachung erschienen sind.' : '2027 per the cabinet decision of 7 October 2026 and the estimate of 14 October 2026; provisional until the ordinance and notice are published.'}</p>
+    <dl class="mt-4 grid gap-px overflow-hidden rounded-lg border border-navy-200 bg-navy-200 sm:grid-cols-2 lg:grid-cols-3">
+      {vergleich.map((v) => (
+        <div class="bg-white p-4">
+          <dt class="text-sm text-navy-700">{v.t}</dt>
+          <dd class="mt-1 flex items-baseline gap-2 tabular-nums"><span class="text-navy-600 line-through decoration-navy-300">{v.v}</span><span aria-hidden="true" class="text-navy-500">→</span><span class="font-serif text-xl font-bold text-navy-900">{v.n}</span></dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+  <section class="mt-10 border-t border-navy-200 pt-6" aria-labelledby="streuung" data-chrome>
+    <h2 id="streuung" class="text-2xl font-bold text-navy-900">{de ? `Von ${pk(st.min)} bis ${pk(st.max)}: so verteilen sich die Kassen` : `From ${pk(st.min)} to ${pk(st.max)}: how the funds spread`}</h2>
+    <p class="mt-2 text-navy-700">{de ? `Jeder Balken zählt die frei wählbaren Kassen in einem Band von 0,25 Punkten. Mittelwert ${pz(st.mittel)}, Median ${pz(st.median)}; Stand der Liste ${displayDate(STAND, LANG_TAGS[lang])}.` : `Each bar counts the open funds in a 0.25-point band. Mean ${pz(st.mittel)}, median ${pz(st.median)}; list as of ${displayDate(STAND, LANG_TAGS[lang])}.`}</p>
+    <div class="mt-4 grid grid-flow-col auto-cols-fr items-end gap-1 border-b border-navy-300" style="height: 11rem">
+      {bins.map((x) => (
+        <div class="flex h-full flex-col justify-end" title={x.namen.join(', ')}>
+          <span class="text-center text-xs tabular-nums text-navy-700">{x.n || ''}</span>
+          <span class="zb-bar block rounded-t" style={`height:${Math.round((x.n / maxN) * 85)}%`}></span>
+        </div>
+      ))}
+    </div>
+    <div class="mt-1 grid grid-flow-col auto-cols-fr gap-1 text-center text-[0.7rem] tabular-nums text-navy-600">
+      {bins.map((x, i) => <span>{i % 2 === 0 ? formatDecimal(x.von, 2, lang) : ''}</span>)}
+    </div>
+  </section>
+  <section class="mt-10 border-t border-navy-200 pt-6" aria-labelledby="grosse" data-chrome>
+    <h2 id="grosse" class="text-2xl font-bold text-navy-900">{de ? 'Die großen Kassen und ihr Satz heute' : 'The big funds and their rate today'}</h2>
+    <ul class="mt-4 grid gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
+      {gross.map((k) => (
+        <li class="flex items-baseline justify-between gap-3 border-b border-navy-100 py-2">
+          {ab(k.id) ? <a class="text-navy-900 underline" href={ab(k.id)}>{k.kurz}</a> : <span class="text-navy-900">{k.kurz}</span>}
+          <span class="tabular-nums font-semibold text-navy-900">{pk(k.zb!)}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+  <section class="mt-10 border-t border-navy-200 pt-6" aria-labelledby="laender" data-chrome>
+    <h2 id="laender" class="text-2xl font-bold text-navy-900">{de ? 'Günstigste wählbare Kasse in jedem Bundesland' : 'Cheapest fund you can join in each state'}</h2>
+    <ul class="mt-4 grid gap-x-8 md:grid-cols-2">
+      {laender.map(({ l, best, n, seite }) => (
+        <li class="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 border-b border-navy-100 py-2 text-sm">
+          <span>{seite ? <a class="font-medium text-navy-900 underline" href={route(seite.id, lang)}>{LAND_NAME[l][lang]}</a> : <span class="font-medium text-navy-900">{LAND_NAME[l][lang]}</span>} <span class="text-navy-600">· {best.kurz}, {de ? `${n} Kassen wählbar` : `${n} funds open`}</span></span>
+          <span class="tabular-nums font-semibold text-navy-900">{pk(best.zb!)}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+  <div class="prose prose-slate mt-10 max-w-none border-t border-navy-200 pt-4">
+    {parts.map((p, i) => i % 2 === 0 ? <Fragment set:html={p} /> : <MiniSim client:load kind={p} lang={lang} href={r('krankenkasse-wechseln')} />)}
+  </div>
+</PageLayout>

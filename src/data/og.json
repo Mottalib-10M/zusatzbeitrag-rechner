@@ -1,0 +1,20 @@
+{
+ "accent": "#C20E0E",
+ "symbol": "+%",
+ "variants": [
+  {
+   "file": "og-de.png",
+   "title": "Zusatzbeitrag 2027\nalle Krankenkassen in Euro",
+   "subtitle": "Monatsbeitrag je Kasse · Ersparnis · Sonderkündigungsrecht · nach Bundesland",
+   "badge": "Liste GKV-Spitzenverband, täglich",
+   "brand": "Zusatzbeitragrechner"
+  },
+  {
+   "file": "og-en.png",
+   "title": "German health insurance\nevery fund in euros",
+   "subtitle": "Monthly cost per fund · Savings · Switching deadlines · By state",
+   "badge": "GKV-Spitzenverband list, daily",
+   "brand": "Zusatzbeitragrechner"
+  }
+ ]
+}

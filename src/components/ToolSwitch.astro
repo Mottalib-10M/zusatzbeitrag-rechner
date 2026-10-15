@@ -1,0 +1,17 @@
+---
+/** Ein Ort, an dem jede Rechnerart ihrem Komponenten zugeordnet wird (Rechner-, Kassen-, Länderseiten, Einbettung). */
+import BeitragsRechner from './calc/BeitragsRechner';
+import ListeRechner from './calc/ListeRechner';
+import WechselRechner from './calc/WechselRechner';
+import FamilieRechner from './calc/FamilieRechner';
+import { route, type Locale } from '../i18n/routes';
+import { PAGES } from '../lib/guides';
+import type { Tool } from '../lib/guide-types';
+interface Props { tool?: Tool; lang: Locale; methodHref?: string; preset?: Record<string, never>; zeilen?: number }
+const { tool, lang, methodHref, preset = {}, zeilen } = Astro.props;
+const kassenHref = Object.fromEntries(PAGES.filter((p) => p.group === 'kassen' && p.kasse).map((p) => [p.kasse!, route(p.id, lang)]));
+---
+{tool === 'beitrag' && <BeitragsRechner client:load lang={lang} methodHref={methodHref} preset={preset} kassenHref={kassenHref} zeilen={zeilen} />}
+{tool === 'liste' && <ListeRechner client:load lang={lang} kassenHref={kassenHref} preset={preset} />}
+{tool === 'wechsel' && <WechselRechner client:load lang={lang} methodHref={methodHref} />}
+{tool === 'familie' && <FamilieRechner client:load lang={lang} methodHref={methodHref} />}

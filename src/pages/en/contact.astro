@@ -1,0 +1,22 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { CONTACT_EMAIL, SITE_NAMES } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { contactPageSchema } from '../../lib/seo';
+const lang = 'en';
+const description = 'Write to us if a fund rate is out of date, your payslip or contribution notice differs from the calculator, or you would like to embed the calculator on your site.';
+---
+<PageLayout title={`Contact ${SITE_NAMES[lang]}: Report an Error or Embed the Tool`} description={description} lang={lang} noindex={true} jsonLd={[contactPageSchema({ name: 'Contact', description, path: route('contact', lang), lang })]} breadcrumbs={[{ label: 'Contact' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Contact</h1>
+    <p>Email: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. We usually reply within a week.</p>
+    <h2>Your payslip does not match the calculator</h2>
+    <p>Send the share link from the calculator and the relevant lines of your payslip, pension notice or contribution notice, without your name or insurance number. Common reasons for a difference are one-off payments, a part month, a childless surcharge applied because proof of a child has not reached the payroll yet, or a fund that changed its rate during the year. If the mistake is ours, we fix it and add the case as a test.</p>
+    <h2>A rate is out of date</h2>
+    <p>The list is read every day but, like the GKV-Spitzenverband, shows only rates already in force. If your fund has announced an increase, it appears here on the day it applies.</p>
+    <h2>Embedding the calculator</h2>
+    <p>HR departments, payroll offices, universities and newsrooms can embed the calculator for free: <a href={route('widget', lang)}>embed the calculator</a>.</p>
+    <h2>What we do not do</h2>
+    <p>No individual advice, no recommendation of a particular fund, no sign-ups to memberships or supplementary policies. Your health fund gives binding answers; independent patient advice services also help free of charge.</p>
+  </div>
+</PageLayout>

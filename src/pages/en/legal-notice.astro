@@ -1,0 +1,27 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { AUTHOR_NAME, CONTACT_EMAIL, LAST_UPDATED, SITE_URL } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+const lang = 'en';
+---
+<PageLayout title="Legal Notice: Publisher of the Contribution Calculator, Host" description="Legal notice under section 5 DDG and section 18 MStV: who publishes the calculator for additional rates, health insurance contributions and switching, who is responsible, who hosts." lang={lang} noindex={true} breadcrumbs={[{ label: 'Legal notice' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Legal notice (Impressum)</h1>
+    <p>Information under section 5 of the German Digital Services Act (DDG) for {SITE_URL}.</p>
+    <h2>Publisher</h2>
+    <LegalIdentity lang={lang} />
+    <h2>Responsible for content (section 18(2) MStV)</h2>
+    <p>{AUTHOR_NAME}, address as above, email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>Hosting</h2>
+    <LegalIdentity mode="hosting" lang={lang} />
+    <h2>What this site is</h2>
+    <p>The site calculates statutory health and long-term care contributions under Books V and XI of the German Social Code and sets the additional rates of all health funds side by side, from the GKV-Spitzenverband list. It is not offered by any health fund, is not insurance intermediation under section 34d of the Trade Regulation Act and is not legal advice. Only the health fund sets the contribution. Methods are explained under <a href={route('method', lang)}>How we calculate</a>.</p>
+    <h2>Liability</h2>
+    <p>Values are checked after every change in the law, the fund list is read daily and every release is tested automatically; we nevertheless cannot guarantee freedom from errors. Linked third-party sites are the responsibility of their operators. Please report errors via the <a href={route('contact', lang)}>contact page</a>.</p>
+    <h2>Embedding</h2>
+    <p>The contribution calculator may be used free of charge in an iframe as long as the source link stays visible: <a href={route('widget', lang)}>embed the calculator</a>.</p>
+    <h2>Consumer dispute resolution</h2>
+    <p>We are neither willing nor obliged to take part in dispute resolution before a consumer arbitration board. Privacy: <a href={route('privacy', lang)}>privacy policy</a> and <a href={route('cookies', lang)}>cookies</a>. Last updated: {LAST_UPDATED}.</p>
+  </div>
+</PageLayout>
