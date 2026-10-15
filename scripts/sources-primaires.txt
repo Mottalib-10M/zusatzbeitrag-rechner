@@ -6,12 +6,16 @@ gkv-spitzenverband.de
 # Bundesministerium der Justiz / juris : texte consolidé SGB V, SGB XI, SGB IV, BAföG, PBAV
 gesetze-im-internet.de
 
-# Bundesgesetzblatt (GKV-Beitragssatzstabilisierungsgesetz) et Bundesanzeiger (durchschnittlicher Zusatzbeitragssatz)
+# Bundesgesetzblatt : GKV-Beitragssatzstabilisierungsgesetz (BGBl. 2026 I Nr. 228)
 recht.bund.de
+
+# Bundesanzeiger : Bekanntmachung du durchschnittlicher Zusatzbeitragssatz par le BMG
 bundesanzeiger.de
 
-# Ministères fédéraux : Rechengrößen (BMAS), Pflege et Beiträge (BMG)
+# BMAS : Sozialversicherungs-Rechengrößenverordnung
 bmas.de
+
+# BMG : Pflege-Beitragssatz et Beiträge GKV
 bundesgesundheitsministerium.de
 
 # Bundesamt für Soziale Sicherung : Schätzerkreis
