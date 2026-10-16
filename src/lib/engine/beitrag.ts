@@ -48,6 +48,38 @@ function fertig(e: Omit<Ergebnis, 'selbst'>): Ergebnis {
   return { ...e, selbst: c(e.kv.mitglied + e.pv.mitglied) };
 }
 
+/**
+ * Übergangsbereich (Midijob), ein Monat. Rechenweg des Gemeinsamen Rundschreibens von GKV-Spitzenverband,
+ * Deutscher Rentenversicherung Bund und Bundesagentur für Arbeit vom 16.08.2022 (Ziffer 4.3.3.1, Beispiele 8
+ * und 9) und der Grundsätzlichen Hinweise des GKV-Spitzenverbandes vom 31.03.2025 (Abschnitt 3.3):
+ *  - BE gesamt = F × G + (O/(O−G) − G/(O−G) × F) × (AE − G); BE Arbeitnehmer = O/(O−G) × (AE − G) (§ 20 Abs. 2a SGB IV);
+ *  - Gesamtbeitrag je Zweig = halber Satz × BE gesamt, gerundet, verdoppelt (§ 2 Abs. 2 Satz 1 BVV); der
+ *    Zusatzbeitrag wird ebenso, aber getrennt berechnet;
+ *  - Arbeitnehmeranteil = halber Satz × BE Arbeitnehmer (§ 249 Abs. 3 SGB V, § 58 Abs. 5 SGB XI); in Sachsen
+ *    trägt der Beschäftigte in der Pflege 1 Punkt allein, also halber Satz + 0,5 (§ 58 Abs. 3 SGB XI);
+ *  - Arbeitgeberanteil = Gesamtbeitrag − Arbeitnehmeranteil (§ 2 Abs. 2 Satz 4 BVV);
+ *  - Kinderlosenzuschlag auf BE gesamt, vom Beschäftigten allein (§ 2 Abs. 2 Satz 6 BVV); Kinderabschlag auf
+ *    BE Arbeitnehmer, mindert nur dessen Anteil (§ 2 Abs. 2 Satz 7 BVV, § 59a SGB XI).
+ */
+export function uebergangsbereich(o: { ae: number; G: number; O: number; F: number; kvSatz: number; zb: number; pvSatz: number; pvZuAb: number; sachsenMehr: number }) {
+  const { ae, G, O, F } = o;
+  const beGes = c(F * G + (O / (O - G) - (G / (O - G)) * F) * (ae - G));
+  const beAn = c((O / (O - G)) * (ae - G));
+  const kvAllgGes = c(2 * pct(beGes, o.kvSatz / 2)), zbGes = c(2 * pct(beGes, o.zb / 2));
+  const kvAllgAn = pct(beAn, o.kvSatz / 2), zbAn = pct(beAn, o.zb / 2);
+  const kvGes = c(kvAllgGes + zbGes), kvAn = c(kvAllgAn + zbAn);
+  const pvGes = c(2 * pct(beGes, o.pvSatz / 2));
+  const pvAnRechn = pct(beAn, o.pvSatz / 2 + o.sachsenMehr);
+  const pvZuschlag = o.pvZuAb > 0 ? pct(beGes, o.pvZuAb) : 0;
+  const pvAbschlag = o.pvZuAb < 0 ? Math.min(pct(beAn, -o.pvZuAb), pvAnRechn) : 0;
+  const pvAn = c(pvAnRechn + pvZuschlag - pvAbschlag);
+  return {
+    beGes, beAn, zbAn, pvZuschlag, pvAbschlag,
+    kv: { mitglied: kvAn, andere: c(kvGes - kvAn), gesamt: kvGes },
+    pv: { mitglied: pvAn, andere: c(pvGes - pvAnRechn), gesamt: c(pvGes + pvZuschlag - pvAbschlag) },
+  };
+}
+
 /** Beschäftigte: §§ 226, 249 SGB V; § 58 SGB XI; Übergangsbereich § 20 Abs. 2a SGB IV. */
 export function angestellt(o: { brutto: number; zb: number; jahr: Jahr; sachsen?: boolean; eltern: Eltern }): Ergebnis {
   const w = J(o.jahr); const hinweise: HinweisCode[] = [];
@@ -65,17 +97,11 @@ export function angestellt(o: { brutto: number; zb: number; jahr: Jahr; sachsen?
   if (brutto <= w.uebergang_oben) {
     hinweise.push('uebergang');
     if (o.sachsen) hinweise.push('sachsenUebergang');
-    const G = w.geringfuegigkeit, O = w.uebergang_oben, F = w.faktor_f;
-    const beGes = c(F * G + (O / (O - G) - (G / (O - G)) * F) * (brutto - G));
-    const beAn = c((O / (O - G)) * (brutto - G));
-    // Gesamtbeitrag = halber Beitrag auf BE gesamt, gerundet, verdoppelt (Rechenweg der Einzugsstellen).
-    const kvGes = c(2 * pct(beGes, kvSatz / 2)); const kvAn = pct(beAn, kvSatz / 2);
-    const pvGes = c(2 * pct(beGes, w.pv_satz / 2)); const pvAnHalb = pct(beAn, w.pv_satz / 2);
-    const pvZu = pct(beAn, zuab);
-    const pvAn = c(pvAnHalb + pvZu);
-    return fertig({ status: 'angestellt', jahr: o.jahr, zb: o.zb, basisKv: beGes, basisPv: beGes, kvSatz: w.kv_allgemein, pvSatz: w.pv_satz, pvZuAb: zuab,
-      kv: { mitglied: kvAn, andere: c(kvGes - kvAn), gesamt: kvGes }, pv: { mitglied: pvAn, andere: c(pvGes - pvAnHalb), gesamt: c(pvGes + pvZu) },
-      andere: 'arbeitgeber', zbSelbst: pct(beAn, o.zb / 2), hinweise, weg: { brutto, beGes, beAn, F, G, O } });
+    const u = uebergangsbereich({ ae: brutto, G: w.geringfuegigkeit, O: w.uebergang_oben, F: w.faktor_f, kvSatz: w.kv_allgemein, zb: o.zb,
+      pvSatz: w.pv_satz, pvZuAb: zuab, sachsenMehr: o.sachsen ? w.pv_sachsen_an_mehr : 0 });
+    return fertig({ status: 'angestellt', jahr: o.jahr, zb: o.zb, basisKv: u.beGes, basisPv: u.beGes, kvSatz: w.kv_allgemein, pvSatz: w.pv_satz, pvZuAb: zuab,
+      kv: u.kv, pv: u.pv, andere: 'arbeitgeber', zbSelbst: u.zbAn, hinweise,
+      weg: { brutto, beGes: u.beGes, beAn: u.beAn, F: w.faktor_f, G: w.geringfuegigkeit, O: w.uebergang_oben, pvZuschlag: u.pvZuschlag, pvAbschlag: u.pvAbschlag, sachsen: o.sachsen ? w.pv_sachsen_an_mehr : 0 } });
   }
   const basisKv = Math.min(brutto, w.bbgKv); const basisPv = Math.min(brutto, w.bbgPv);
   if (brutto > w.bbgKv) hinweise.push('ueberBbgKv');

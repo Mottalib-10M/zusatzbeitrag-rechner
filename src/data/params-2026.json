@@ -27,7 +27,9 @@
       "av_satz": 2.6,
       "bafoeg_bedarf": 855,
       "minijob_ag_kv": 13,
-      "_quelle": "BMAS Rechengrößen 2026 (Verordnung vom 26.11.2025); BAnz AT 10.11.2025 B7 (durchschnittlicher Zusatzbeitragssatz 2,9 %); §§ 241, 243, 245 SGB V; § 55 SGB XI mit PBAV 2025 (3,6 %); § 8 Abs. 1a SGB IV (603 € bei 13,90 € Mindestlohn); § 13 BAföG (475 + 380 €); Faktor F nach § 20 Abs. 2a SGB IV = 28 / 42,3"
+      "_quelle": "BMAS Rechengrößen 2026 (Verordnung vom 26.11.2025); BAnz AT 10.11.2025 B7 (durchschnittlicher Zusatzbeitragssatz 2,9 %); §§ 241, 243, 245 SGB V; § 55 SGB XI mit PBAV 2025 (3,6 %); § 8 Abs. 1a SGB IV (603 € bei 13,90 € Mindestlohn); § 13 BAföG (475 + 380 €); Faktor F nach § 20 Abs. 2a SGB IV = 28 / 42,3",
+      "rv_minijob_pauschale": 15,
+      "_faktor_f_status": "bekanntgemacht"
     },
     "2027": {
       "status": "vorlaeufig",
@@ -42,7 +44,7 @@
       "bezugsgroesse_monat": 4130,
       "geringfuegigkeit": 633,
       "uebergang_oben": 2000,
-      "faktor_f": 0.6619,
+      "faktor_f": 0.7683,
       "pv_satz": 3.6,
       "pv_kinderlos": 0.6,
       "pv_abschlag_kind": 0.25,
@@ -51,7 +53,9 @@
       "av_satz": 2.6,
       "bafoeg_bedarf": 855,
       "minijob_ag_kv": 17.5,
-      "_quelle": "Kabinettsbeschluss Sozialversicherungsrechengrößen-Verordnung 2027 vom 07.10.2026 (Bundesrat ausstehend): BBG KV 6.375 €, JAEG § 6 Abs. 6 84.150 €, JAEG § 6 Abs. 7 72.900 €, Bezugsgröße 4.130 €; § 223 Abs. 4 SGB V i. d. F. GKV-Beitragssatzstabilisierungsgesetz (BGBl. 2026 I Nr. 228): BBG = JAEG § 6 Abs. 7 + 3.600 €; § 55 Abs. 2 SGB XI: Pflege-BBG = JAEG § 6 Abs. 7 = 72.900 € (der Entwurf des Pflegeneuordnungsgesetzes will sie an die KV-Grenze koppeln, nicht in Kraft); Schätzerkreis vom 14.10.2026: rechnerischer durchschnittlicher Zusatzbeitragssatz 2,9 % (Festlegung durch das BMG bis 1.11.2026 ausstehend); § 8 Abs. 1a SGB IV mit Mindestlohn 14,60 € ab 1.1.2027 (MiLoV5) = 633 €; § 249b SGB V n. F.: Minijob-Pauschale KV = 14,6 % + 2,9 %; Kinderlosenzuschlag 0,9 % nur im Entwurf PNOG, nicht in Kraft, daher 0,6 %; Faktor F 2027 noch nicht bekanntgemacht, hier mit den Sätzen zum 1.1.2027 nach geltendem Recht (18,6 + 2,6 + 3,6 + 14,6 + 2,9 = 42,3) gerechnet"
+      "_quelle": "Kabinettsbeschluss Sozialversicherungsrechengrößen-Verordnung 2027 vom 07.10.2026 (Bundesrat ausstehend): BBG KV 6.375 €, JAEG § 6 Abs. 6 84.150 €, JAEG § 6 Abs. 7 72.900 €, Bezugsgröße 4.130 €; § 223 Abs. 4 SGB V i. d. F. GKV-Beitragssatzstabilisierungsgesetz (BGBl. 2026 I Nr. 228): BBG = JAEG § 6 Abs. 7 + 3.600 €; § 55 Abs. 2 SGB XI: Pflege-BBG = JAEG § 6 Abs. 7 = 72.900 € (der Entwurf des Pflegeneuordnungsgesetzes will sie an die KV-Grenze koppeln, nicht in Kraft); Schätzerkreis vom 14.10.2026: rechnerischer durchschnittlicher Zusatzbeitragssatz 2,9 % (Festlegung durch das BMG bis 1.11.2026 ausstehend); § 8 Abs. 1a SGB IV mit Mindestlohn 14,60 € ab 1.1.2027 (MiLoV5) = 633 €; § 249b SGB V n. F.: Minijob-Pauschale KV = 14,6 % + 2,9 %; Kinderlosenzuschlag 0,9 % nur im Entwurf PNOG, nicht in Kraft, daher 0,6 %; Faktor F 2027 vorläufig: das BMAS gibt ihn bis 31.12.2026 im Bundesanzeiger bekannt (§ 20 Abs. 2a SGB IV); ab 1.1.2027 lautet der Zähler nicht mehr 28 %, sondern allgemeiner Beitragssatz + durchschnittlicher Zusatzbeitragssatz + Minijob-Pauschale RV nach § 168 Abs. 1 Nr. 1b SGB VI (Art. 2 Nr. 1, Art. 8 Abs. 2 GKV-Beitragssatzstabilisierungsgesetz, BGBl. 2026 I Nr. 228): (14,6 + 2,9 + 15) / (18,6 + 2,6 + 3,6 + 14,6 + 2,9) = 32,5 / 42,3 = 0,7683; RV 18,6 % nach Kabinettsbeschluss vom 07.10.2026, Zusatzbeitrag 2,9 % nach Schätzerkreis",
+      "rv_minijob_pauschale": 15,
+      "_faktor_f_status": "vorlaeufig"
     }
   },
   "laender_sachsen": [
@@ -348,6 +352,20 @@
       "label": {
         "de": "§ 232a SGB V: Beitragspflichtige Einnahmen bei Grundsicherungsgeld",
         "en": "Section 232a SGB V: contributory income of basic income recipients"
+      }
+    },
+    "rsUebergang2022": {
+      "url": "https://www.deutsche-rentenversicherung.de/SharedDocs/Downloads/DE/Fachliteratur_Kommentare_Gesetzestexte/summa_summarum/rundschreiben/2022/beschaeftigungen_im_uebergangsbereich.pdf?__blob=publicationFile&v=3",
+      "label": {
+        "de": "GKV-Spitzenverband, DRV Bund, Bundesagentur für Arbeit: Gemeinsames Rundschreiben zum Übergangsbereich vom 16.08.2022, Ziffer 4.3.3.1 und Beispiel 9 (Sachsen)",
+        "en": "GKV-Spitzenverband, DRV Bund, Federal Employment Agency: joint circular on the transition zone of 16 August 2022, section 4.3.3.1 and example 9 (Saxony)"
+      }
+    },
+    "ghPvKinder2025": {
+      "url": "https://www.gkv-spitzenverband.de/media/dokumente/pflegeversicherung/grundprinzipien/2025-03-31_GH_Beitragssatzdifferenzierung_sPV.pdf",
+      "label": {
+        "de": "GKV-Spitzenverband: Grundsätzliche Hinweise zur Differenzierung der Pflegebeitragssätze nach Kinderzahl vom 31.03.2025, Abschnitt 3.3 (Übergangsbereich)",
+        "en": "GKV-Spitzenverband: guidance on care contribution rates by number of children of 31 March 2025, section 3.3 (transition zone)"
       }
     }
   },

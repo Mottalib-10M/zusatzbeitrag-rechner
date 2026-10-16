@@ -5,7 +5,7 @@
  */
 import { describe, expect, it } from 'vitest';
 import { J } from '../src/lib/engine/params';
-import { angestellt, rentner, selbststaendig, student, familienversicherung, ersparnisJahr, pvZuAb } from '../src/lib/engine/beitrag';
+import { angestellt, rentner, selbststaendig, student, familienversicherung, ersparnisJahr, pvZuAb, uebergangsbereich } from '../src/lib/engine/beitrag';
 import { wechsel, renteAb } from '../src/lib/engine/wechsel';
 import { KASSEN, rangliste, waehlbar, offen, statistik, kasse, rangIn } from '../src/lib/engine/kassen';
 
@@ -24,6 +24,16 @@ describe('Rechengrößen', () => {
   });
   it('Faktor F 2026 = 28 / (18,6 + 3,6 + 2,6 + 14,6 + 2,9) auf vier Stellen', () => {
     const w = J(2026); near(w.faktor_f, Math.round((28 / (w.rv_satz + w.pv_satz + w.av_satz + w.kv_allgemein + w.zb_durchschnitt)) * 10000) / 10000);
+  });
+  it('Faktor F 2027 (vorläufig) = (14,6 + 2,9 + 15) / 42,3 = 0,7683 : neuer Zähler nach Art. 2 Nr. 1 GKV-Beitragssatzstabilisierungsgesetz', () => {
+    const w = J(2027);
+    near(w.faktor_f, Math.round(((w.kv_allgemein + w.zb_durchschnitt + w.rv_minijob_pauschale) / (w.rv_satz + w.pv_satz + w.av_satz + w.kv_allgemein + w.zb_durchschnitt)) * 10000) / 10000);
+    near(w.faktor_f, 0.7683); expect(w.vorlaeufig).toBe(true);
+  });
+  it('Übergangsbereich 2027 (vorläufig), 1.200 € : BE gesamt 0,7683 × 633 + (2000/1367 − 633/1367 × 0,7683) × 567', () => {
+    const r = angestellt({ brutto: 1200, zb: 2.9, jahr: 2027, eltern: 'k1' });
+    near(r.weg.beGes, Math.round((0.7683 * 633 + (2000 / 1367 - (633 / 1367) * 0.7683) * 567) * 100) / 100);
+    near(r.weg.beAn, Math.round((2000 / 1367) * 567 * 100) / 100);
   });
 });
 
@@ -57,13 +67,38 @@ describe('Beschäftigte', () => {
   it('Übergangsbereich 2026, 1.200 € : BE 1.083,25 € gesamt, 854,69 € für den Arbeitnehmeranteil', () => {
     const r = angestellt({ brutto: 1200, zb: 2.9, jahr: 2026, eltern: 'k1' });
     near(r.weg.beGes, 1083.25); near(r.weg.beAn, 854.69);
-    near(r.kv.gesamt, 189.57); near(r.kv.mitglied, 74.79); near(r.kv.andere, 114.78);
+    near(r.kv.gesamt, 189.58); near(r.kv.mitglied, 74.78); near(r.kv.andere, 114.8); // allgemeiner Beitrag und Zusatzbeitrag je getrennt gerundet (Rundschreiben 16.08.2022, Ziffer 4.3.3.1)
     near(r.pv.gesamt, 39); near(r.pv.mitglied, 15.38);
   });
   it('Übergangsbereich 2026, 1.000 €, 3,0 % : 854,06 / 568,36 €, KV 150,32 € davon 50,02 € Arbeitnehmer, PV 30,74 € davon 10,23 € (Beispiel lohn-info.de, nachgerechnet)', () => {
     const r = angestellt({ brutto: 1000, zb: 3.0, jahr: 2026, eltern: 'k1' });
     near(r.weg.beGes, 854.06); near(r.weg.beAn, 568.36); near(r.kv.gesamt, 150.32); near(r.kv.mitglied, 50.02); near(r.kv.andere, 100.3);
     near(r.pv.gesamt, 30.74); near(r.pv.mitglied, 10.23); near(r.pv.andere, 20.51);
+  });
+  it('amtliches Beispiel 9 des Gemeinsamen Rundschreibens vom 16.08.2022 (Sachsen, kinderlos, 1.100 €, F 0,7009, PV 3,05 % + 0,35 %) : 31,36 / 17,40 / 13,96 / Zuschlag 3,60 €', () => {
+    const u = uebergangsbereich({ ae: 1100, G: 520, O: 1600, F: 0.7009, kvSatz: 14.6, zb: 1.5, pvSatz: 3.05, pvZuAb: 0.35, sachsenMehr: 0.5 });
+    near(u.beGes, 1027.99); near(u.beAn, 859.26);
+    near(u.pv.gesamt - u.pvZuschlag, 31.36); near(u.pv.mitglied - u.pvZuschlag, 17.4); near(u.pv.andere, 13.96); near(u.pvZuschlag, 3.6);
+  });
+  it('amtliches Beispiel des GKV-Spitzenverbandes vom 31.03.2025 (zwei Kinder, 950 €, F 0,6683) : 29,38 €, Arbeitgeber 19,56 €, Abschlag 1,36 €, Arbeitnehmer 8,46 €', () => {
+    const u = uebergangsbereich({ ae: 950, G: 556, O: 2000, F: 0.6683, kvSatz: 14.6, zb: 2.5, pvSatz: 3.6, pvZuAb: -0.25, sachsenMehr: 0 });
+    near(u.beGes, 815.9); near(u.beAn, 545.71); near(u.pv.andere, 19.56); near(u.pvAbschlag, 1.36); near(u.pv.mitglied, 8.46);
+  });
+  it('Sachsen im Übergangsbereich 2026, 1.200 €, ein Kind : PV 39,00 €, Beschäftigter 854,69 × 2,3 % = 19,66 €, Arbeitgeber 19,34 €', () => {
+    const r = angestellt({ brutto: 1200, zb: 2.9, jahr: 2026, sachsen: true, eltern: 'k1' });
+    near(r.pv.gesamt, 39); near(r.pv.mitglied, 19.66); near(r.pv.andere, 19.34); expect(r.hinweise).toContain('sachsenUebergang');
+  });
+  it('Sachsen im Übergangsbereich 2026, 1.200 €, kinderlos : Zuschlag 1.083,25 × 0,6 % = 6,50 € allein, Beschäftigter 26,16 €, Arbeitgeber 19,34 €', () => {
+    const r = angestellt({ brutto: 1200, zb: 2.9, jahr: 2026, sachsen: true, eltern: 'kinderlos' });
+    near(r.pv.mitglied, 26.16); near(r.pv.andere, 19.34); near(r.pv.gesamt, 45.5);
+  });
+  it('Sachsen im Übergangsbereich 2026, 1.200 €, drei Kinder : Abschlag 854,69 × 0,5 % = 4,27 €, Beschäftigter 15,39 €, Arbeitgeber unverändert 19,34 €', () => {
+    const r = angestellt({ brutto: 1200, zb: 2.9, jahr: 2026, sachsen: true, eltern: 'k3' });
+    near(r.pv.mitglied, 15.39); near(r.pv.andere, 19.34);
+  });
+  it('kinderlos im Übergangsbereich 2026, 1.200 € : Zuschlag auf BE gesamt (6,50 €), nicht auf BE Arbeitnehmer (§ 2 Abs. 2 Satz 6 BVV)', () => {
+    const r = angestellt({ brutto: 1200, zb: 2.9, jahr: 2026, eltern: 'kinderlos' });
+    near(r.pv.mitglied, 21.88); near(r.pv.andere, 23.62);
   });
   it('Übergangsbereich, obere Grenze 2.000 € : keine Ermäßigung mehr, halber Satz auf 2.000 €', () => {
     const r = angestellt({ brutto: 2000, zb: 2.9, jahr: 2026, eltern: 'k1' });

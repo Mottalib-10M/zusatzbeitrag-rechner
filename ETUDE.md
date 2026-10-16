@@ -52,4 +52,20 @@ aucun formulaire, conformément au brief.
 
 - Les taux 2027 des caisses n'existent pas avant décembre ; la liste officielle ne les montre qu'au jour de validité.
 - Les prestations (Bonusprogramme, Satzungsleistungen) ne sont pas chiffrées.
-- La répartition saxonne de la Pflege dans l'Übergangsbereich n'est pas modélisée (signalé dans le calculateur).
+
+## Passe qualité du 2026-10-16 (BRIEF-QUALITE-2026-10-16)
+
+- **Sachsen dans l'Übergangsbereich modélisé** (avant : « nicht abgebildet ») selon le Gemeinsames Rundschreiben
+  GKV-SV / DRV / BA du 16.08.2022 (Ziffer 4.3.3.1, Beispiel 9) et § 58 Abs. 3 et 5 SGB XI : part du salarié = demi-taux
+  + 0,5 point sur BE Arbeitnehmer, employeur = Gesamtbeitrag − part du salarié. Corrigé au passage : le
+  Kinderlosenzuschlag porte sur BE gesamt (§ 2 Abs. 2 Satz 6 BVV ; avant : sur BE Arbeitnehmer, trop bas) et le
+  Kinderabschlag sur BE Arbeitnehmer (GKV-SV 31.03.2025, Abschnitt 3.3) ; allgemeiner Beitrag et Zusatzbeitrag
+  arrondis séparément. Tests : les deux exemples officiels recalculés au centime (Beispiel 9 : 31,36 / 17,40 / 13,96 /
+  Zuschlag 3,60 € ; GKV-SV 2025 : 29,38 / 19,56 / 8,46 €) + 4 cas saxons 2026.
+- **Faktor F 2027** : pas encore publié par le BMAS (Bundesanzeiger, au plus tard le 31/12/2026), donc « vorläufig ».
+  Mais la formule change au 1/1/2027 (Art. 2 Nr. 1 et Art. 8 Abs. 2 GKV-Beitragssatzstabilisierungsgesetz, BGBl. 2026 I
+  Nr. 228) : numérateur = 14,6 + Ø Zusatzbeitrag + 15 (RV-Pauschale § 168 Abs. 1 Nr. 1b SGB VI) au lieu de 28. Avant :
+  0,6619 (ancienne formule) ; après : 32,5 / 42,3 = 0,7683, testé.
+- **Action quotidienne** : `scripts/fetch-kassen.py` lancé en local le 2026-10-16 : 92 caisses, liste du jour, sortie 0 ;
+  dans GitHub Actions, l'étape de lecture, les tests et le build passent ; seul le déploiement Pages échoue (Pages
+  pas encore activé, hors périmètre).

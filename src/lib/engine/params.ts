@@ -12,7 +12,7 @@ export interface JahrWerte {
   zb_durchschnitt: number; zb_durchschnitt_status: string; bbg_kv_jahr: number; bbg_pv_jahr: number; jaeg_jahr: number;
   bezugsgroesse_monat: number; geringfuegigkeit: number; uebergang_oben: number; faktor_f: number;
   pv_satz: number; pv_kinderlos: number; pv_abschlag_kind: number; pv_sachsen_an_mehr: number;
-  rv_satz: number; av_satz: number; bafoeg_bedarf: number; minijob_ag_kv: number;
+  rv_satz: number; av_satz: number; bafoeg_bedarf: number; minijob_ag_kv: number; rv_minijob_pauschale: number;
 }
 
 /** Werte eines Jahres samt abgeleiteter Monatsgrößen. */
