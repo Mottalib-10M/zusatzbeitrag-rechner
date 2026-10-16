@@ -20,7 +20,7 @@ export default defineGuide({
   order: 82,
   mini: 'bbg',
   related: ['versicherungspflichtgrenze', 'arbeitgeberanteil-krankenversicherung', 'freiwillig-versichert', 'zusatzbeitrag-2027'],
-  sources: ['sgb5_223', 'bgblStabG', 'bmasRg2027', 'bmasRg2026', 'sgb11_55'],
+  sources: ['sgb5_223', 'bgblStabG', 'bmasRg2027', 'bmasRg2026', 'sgb11_55', 'sgb4_23a'],
   de: {
     slug: 'beitragsbemessungsgrenze',
     nav: 'Beitragsbemessungsgrenze',

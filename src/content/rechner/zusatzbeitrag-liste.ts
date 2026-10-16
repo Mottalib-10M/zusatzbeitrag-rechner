@@ -28,7 +28,7 @@ export default defineGuide({
   order: 2,
   tool: 'liste',
   related: ['zusatzbeitrag-2027', 'durchschnittlicher-zusatzbeitrag', 'krankenkasse-wechseln', 'beste-krankenkasse', 'techniker-krankenkasse'],
-  sources: ['gkvListe', 'gkvListePdf', 'sgb5_242', 'sgb5_175'],
+  sources: ['gkvListe', 'gkvListePdf', 'sgb5_242', 'sgb5_175', 'sgb5_173'],
   de: {
     slug: 'zusatzbeitrag-krankenkassen-liste',
     nav: 'Liste aller Zusatzbeiträge',

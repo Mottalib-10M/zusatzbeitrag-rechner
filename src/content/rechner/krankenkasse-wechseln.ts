@@ -20,7 +20,7 @@ export default defineGuide({
   order: 1,
   tool: 'wechsel',
   related: ['sonderkuendigungsrecht', 'zusatzbeitrag-liste', 'zusatzbeitrag-2027', 'beste-krankenkasse', 'krankenkassenbeitrag-rentner'],
-  sources: ['sgb5_175', 'sgb5_247', 'gkvListe', 'sgb5_242'],
+  sources: ['sgb5_175', 'sgb5_247', 'gkvListe', 'sgb5_242', 'sgb5_173'],
   de: {
     slug: 'krankenkasse-wechseln',
     nav: 'Krankenkasse wechseln',

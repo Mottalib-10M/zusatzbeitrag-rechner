@@ -25,7 +25,7 @@ export default defineGuide({
   tool: 'beitrag',
   toolPreset: { status: 'rentner' },
   related: ['betriebsrente-krankenversicherung', 'krankenkasse-wechseln', 'pflegeversicherung-beitrag', 'zusatzbeitrag-liste', 'durchschnittlicher-zusatzbeitrag'],
-  sources: ['sgb5_247', 'sgb5_249a', 'sgb5_226', 'sgb5_248', 'sgb11_59'],
+  sources: ['sgb5_247', 'sgb5_249a', 'sgb5_226', 'sgb5_248', 'sgb11_59', 'sgb5_5', 'sgb6_106'],
   de: {
     slug: 'krankenkassenbeitrag-rentner',
     nav: 'Rentner',

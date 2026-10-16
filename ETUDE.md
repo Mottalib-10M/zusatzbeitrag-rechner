@@ -69,3 +69,6 @@ aucun formulaire, conformément au brief.
 - **Action quotidienne** : `scripts/fetch-kassen.py` lancé en local le 2026-10-16 : 92 caisses, liste du jour, sortie 0 ;
   dans GitHub Actions, l'étape de lecture, les tests et le build passent ; seul le déploiement Pages échoue (Pages
   pas encore activé, hors périmètre).
+- Règles des guides relues : la limite « 14. Fachsemester » n'existe plus dans § 5 Abs. 1 Nr. 9 SGB V (texte du
+  2026-10-16) → corrigé (fin avec le semestre des 30 ans, § 190 Abs. 9) sur 3 pages ; § 173, § 188 Abs. 4, § 65a,
+  § 11 Abs. 6 SGB V, § 23a SGB IV, § 106 SGB VI ajoutés comme sources là où la règle était énoncée sans source.

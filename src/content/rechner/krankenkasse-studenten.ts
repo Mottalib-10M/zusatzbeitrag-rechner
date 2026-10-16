@@ -21,7 +21,7 @@ export default defineGuide({
   tool: 'beitrag',
   toolPreset: { status: 'student' },
   related: ['familienversicherung', 'midijob-krankenversicherung', 'zusatzbeitrag-liste', 'pflegeversicherung-beitrag', 'krankenkasse-wechseln'],
-  sources: ['sgb5_236', 'sgb5_245', 'bafoeg13', 'sgb5_5', 'sgb11_55'],
+  sources: ['sgb5_236', 'sgb5_245', 'bafoeg13', 'sgb5_5', 'sgb5_190', 'sgb11_55'],
   de: {
     slug: 'krankenkasse-studenten',
     nav: 'Studierende',
@@ -34,7 +34,7 @@ export default defineGuide({
     faqs: [
       { q: 'Bis wann bin ich als Student über meine Eltern versichert?', a: `Bis zum 25. Geburtstag, solange Ihr eigenes Gesamteinkommen ${DE.eur(w.famGrenze)} im Monat nicht übersteigt, mit Minijob ${DE.eur(w.geringfuegigkeit)} (§ 10 SGB V). Ein freiwilliger Wehrdienst oder ein Freiwilligendienst verlängert die Frist. Danach, oder wenn ein Elternteil privat versichert ist und mehr verdient, brauchen Sie die eigene studentische Versicherung.` },
       { q: 'Ändert sich der Studentenbeitrag, wenn ich neben dem Studium arbeite?', a: 'Nein, solange Sie als Werkstudent während der Vorlesungszeit nicht mehr als 20 Stunden in der Woche arbeiten: Dann bleiben Sie in der Beschäftigung versicherungsfrei und zahlen weiter den festen Studentenbeitrag. Arbeiten Sie dauerhaft mehr, werden Sie als Beschäftigter versichert und zahlen auf den Lohn. Ein Minijob ändert am Beitrag nichts.' },
-      { q: 'Was zahle ich nach dem 14. Semester oder ab 30?', a: `Dann endet die studentische Pflichtversicherung, und Sie werden freiwilliges Mitglied. Ohne eigenes Einkommen gilt die Mindestbemessung von ${DE.eur(w.mindestFreiwillig, 2)} im Monat mit dem vollen ermäßigten Satz von ${DE.pz(w.kv_ermaessigt)} plus Zusatzbeitrag; das ist deutlich mehr als der Studentenbeitrag. Längere Studienzeiten können aus familiären oder persönlichen Gründen anerkannt werden.` },
+      { q: 'Was zahle ich nach dem 30. Geburtstag?', a: `Die studentische Pflichtversicherung endet mit dem Semester, in dem Sie 30 werden (§ 190 Abs. 9 SGB V); eine Grenze nach Fachsemestern kennt das Gesetz heute nicht mehr. Danach werden Sie freiwilliges Mitglied. Ohne eigenes Einkommen gilt die Mindestbemessung von ${DE.eur(w.mindestFreiwillig, 2)} im Monat mit dem vollen ermäßigten Satz von ${DE.pz(w.kv_ermaessigt)} plus Zusatzbeitrag; das ist deutlich mehr als der Studentenbeitrag. Längere Studienzeiten können aus familiären oder persönlichen Gründen anerkannt werden.` },
       { q: 'Kann ich mich als Student von der gesetzlichen Versicherung befreien lassen?', a: 'Ja, innerhalb von drei Monaten nach Beginn der Versicherungspflicht, wenn Sie privat versichert sind, etwa über die Beihilfe eines Elternteils oder als internationale Studentin mit einem anerkannten Vertrag (§ 8 Abs. 1 Nr. 5 SGB V). Die Befreiung gilt für das ganze Studium und lässt sich nicht widerrufen.' },
     ],
     body: (h) => `
@@ -58,7 +58,7 @@ ${h.table(['Kasse', 'Zusatzbeitrag', 'Krankenversicherung', 'Pflege unter 23', '
     faqs: [
       { q: 'Until when am I covered through my parents as a student?', a: `Until your 25th birthday, as long as your own total income stays at or below ${EN.eur(w.famGrenze)} a month, or ${EN.eur(w.geringfuegigkeit)} with a minijob (section 10 SGB V). Voluntary military or volunteer service extends this. After that, or if one parent is privately insured and earns more, you need your own student cover.` },
       { q: 'Does my student contribution change if I work alongside my studies?', a: 'No, as long as you work no more than 20 hours a week during term as a working student (Werkstudent): the job stays exempt and you keep paying the fixed student contribution. If you regularly work more, you are insured as an employee and pay on your wages. A minijob changes nothing about the contribution.' },
-      { q: 'What do I pay after the 14th semester or from age 30?', a: `Compulsory student cover ends and you become a voluntary member. Without income of your own the minimum base of ${EN.eur(w.mindestFreiwillig, 2)} a month applies, at the full reduced rate of ${EN.pz(w.kv_ermaessigt)} plus the additional rate; that is clearly more than the student contribution. Longer study periods can be recognised for family or personal reasons.` },
+      { q: 'What do I pay after my 30th birthday?', a: `Compulsory student cover ends with the semester in which you turn 30 (section 190(9) SGB V); the law no longer sets a limit by number of semesters. You then become a voluntary member. Without income of your own the minimum base of ${EN.eur(w.mindestFreiwillig, 2)} a month applies, at the full reduced rate of ${EN.pz(w.kv_ermaessigt)} plus the additional rate; that is clearly more than the student contribution. Longer study periods can be recognised for family or personal reasons.` },
       { q: 'Can I opt out of statutory insurance as a student?', a: 'Yes, within three months of becoming compulsorily insured, if you have private cover, for example through a parent’s civil servant allowance or as an international student with a recognised policy (section 8(1) no. 5 SGB V). The exemption lasts for the whole of your studies and cannot be revoked.' },
     ],
     body: (h) => `

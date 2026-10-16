@@ -24,7 +24,7 @@ export default defineGuide({
   order: 90,
   mini: 'jahrevergleich',
   related: ['zusatzbeitrag-liste', 'krankenkasse-wechseln', 'durchschnittlicher-zusatzbeitrag', 'techniker-krankenkasse', 'bkk-firmus'],
-  sources: ['gkvListe', 'sgb5_242', 'sgb5_53', 'sgb5_175'],
+  sources: ['gkvListe', 'sgb5_242', 'sgb5_53', 'sgb5_175', 'sgb5_173', 'sgb5_65a', 'sgb5_11'],
   de: {
     slug: 'beste-krankenkasse',
     nav: 'Die beste Krankenkasse finden',

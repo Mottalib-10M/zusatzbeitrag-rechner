@@ -367,6 +367,55 @@
         "de": "GKV-Spitzenverband: Grundsätzliche Hinweise zur Differenzierung der Pflegebeitragssätze nach Kinderzahl vom 31.03.2025, Abschnitt 3.3 (Übergangsbereich)",
         "en": "GKV-Spitzenverband: guidance on care contribution rates by number of children of 31 March 2025, section 3.3 (transition zone)"
       }
+    },
+    "sgb5_190": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__190.html",
+      "label": {
+        "de": "§ 190 SGB V: Ende der Mitgliedschaft, Abs. 9 Studierende (Semester, in dem das 30. Lebensjahr vollendet wird)",
+        "en": "Section 190 SGB V: end of membership, subsection 9 students (semester in which they turn 30)"
+      }
+    },
+    "sgb5_173": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__173.html",
+      "label": {
+        "de": "§ 173 SGB V: Wahlrecht, Ortskrankenkasse und geöffnete Betriebs- und Innungskrankenkassen des Wohn- oder Beschäftigungsorts, jede Ersatzkasse",
+        "en": "Section 173 SGB V: choice of fund, local, company and guild funds open at your home or work location, any substitute fund"
+      }
+    },
+    "sgb5_188": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__188.html",
+      "label": {
+        "de": "§ 188 SGB V: Beginn der freiwilligen Mitgliedschaft, Abs. 4 Anschlussversicherung und Austritt binnen zwei Wochen",
+        "en": "Section 188 SGB V: start of voluntary membership, subsection 4 follow-on cover and two-week opt-out"
+      }
+    },
+    "sgb5_65a": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__65a.html",
+      "label": {
+        "de": "§ 65a SGB V: Bonus für gesundheitsbewusstes Verhalten",
+        "en": "Section 65a SGB V: bonus for health-conscious behaviour"
+      }
+    },
+    "sgb5_11": {
+      "url": "https://www.gesetze-im-internet.de/sgb_5/__11.html",
+      "label": {
+        "de": "§ 11 SGB V: Leistungsarten, Abs. 6 zusätzliche Satzungsleistungen",
+        "en": "Section 11 SGB V: types of benefit, subsection 6 additional statutory benefits"
+      }
+    },
+    "sgb4_23a": {
+      "url": "https://www.gesetze-im-internet.de/sgb_4/__23a.html",
+      "label": {
+        "de": "§ 23a SGB IV: Einmalig gezahltes Arbeitsentgelt, anteilige Jahres-Beitragsbemessungsgrenze",
+        "en": "Section 23a SGB IV: one-off payments and the pro-rata annual contribution ceiling"
+      }
+    },
+    "sgb6_106": {
+      "url": "https://www.gesetze-im-internet.de/sgb_6/__106.html",
+      "label": {
+        "de": "§ 106 SGB VI: Zuschuss zur Krankenversicherung für freiwillig oder privat versicherte Rentner",
+        "en": "Section 106 SGB VI: health insurance subsidy for voluntarily or privately insured pensioners"
+      }
     }
   },
   "schaetzung_2027": {

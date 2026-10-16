@@ -19,7 +19,7 @@ export default defineGuide({
   order: 86,
   mini: 'freiwillig',
   related: ['krankenkassenbeitrag-selbststaendige', 'versicherungspflichtgrenze', 'beitragsbemessungsgrenze', 'krankenkasse-studenten', 'zusatzbeitrag-liste'],
-  sources: ['sgb5_240', 'sgb5_243', 'sgb5_257', 'sgb5_6', 'bmasRg2026'],
+  sources: ['sgb5_240', 'sgb5_243', 'sgb5_257', 'sgb5_6', 'bmasRg2026', 'sgb5_188'],
   de: {
     slug: 'freiwillig-versichert',
     nav: 'Freiwillig versichert',
