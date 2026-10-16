@@ -1,8 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { route } from '../i18n/routes';
+import { REDIRECTIONS } from '../data/redirections';
+// Weiterleitung der zusammengelegten Seiten (src/data/redirections.ts), vor dem ersten Zeichnen.
+const weiter = `(function(){var m=${JSON.stringify(REDIRECTIONS)};var p=location.pathname;if(p.slice(-1)!=='/')p+='/';if(m[p])location.replace(m[p]);})();`;
 ---
 <BaseLayout title="Seite nicht gefunden · Page not found" description="Unter dieser Adresse gibt es keine Seite zum Krankenkassenbeitrag. There is no page about German health insurance contributions at this address." lang="de" noindex={true}>
+  <script is:inline set:html={weiter} />
   <div class="mx-auto max-w-6xl px-4 py-16">
     <h1 class="text-3xl font-bold text-navy-900">Diese Seite gibt es nicht (mehr)</h1>
     <p class="mt-4 text-navy-700">Vielleicht wurde der Link beim Kopieren abgeschnitten, oder eine Kasse wurde durch eine Fusion umbenannt. Die meisten Besucher wollen den <a class="underline" href={route('home', 'de')}>Zusatzbeitrag aller Kassen in Euro</a> sehen oder wissen, <a class="underline" href={route('krankenkasse-wechseln', 'de')}>ab wann ein Wechsel gilt</a>.</p>

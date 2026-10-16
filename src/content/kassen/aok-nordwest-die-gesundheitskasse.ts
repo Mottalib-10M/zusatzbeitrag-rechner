@@ -27,7 +27,7 @@ export default defineGuide({
   kasse: ID,
   tool: 'beitrag',
   toolPreset: { kasse: ID, land: 'NW' },
-  related: ['aok-rheinland-hamburg-die-gesundheitskasse', 'guenstigste-krankenkasse-nordrhein-westfalen', 'guenstigste-krankenkasse-schleswig-holstein', 'zusatzbeitrag-liste'],
+  related: ['aok-rheinland-hamburg-die-gesundheitskasse', 'zusatzbeitrag-liste', 'krankenkasse-wechseln', 'techniker-krankenkasse'],
   sources: ['gkvListe', 'sgb5_242', 'sgb5_175', 'sgb5_247'],
   de: {
     slug: 'aok-nordwest-zusatzbeitrag',
@@ -57,7 +57,7 @@ ${h.table(['Versichert als', 'Grundlage', 'Ihr Anteil im Monat'], [
   ['Selbstständig', h.eur(BEISPIEL.gewinn), h.eur(p.selbst)],
   ['Studium', h.eur(w.bafoeg_bedarf), h.eur(p.student)],
 ], '2026, ein Kind; selbstständig ohne Krankengeld, Studium unter 23', ['l', 'r', 'r'])}
-<p>Nordrhein-Westfalen ist das Land mit den meisten wählbaren Kassen: ${rNW.n} stehen jedem offen, ${rNW.rang - 1} davon günstiger als die AOK NordWest. Die Rangliste in Euro steht auf der Seite ${h.a('guenstigste-krankenkasse-nordrhein-westfalen', 'günstigste Krankenkasse in Nordrhein-Westfalen')}, für den Norden unter ${h.a('guenstigste-krankenkasse-schleswig-holstein', 'Schleswig-Holstein')}.</p>
+<p>Nordrhein-Westfalen ist das Land mit den meisten wählbaren Kassen: ${rNW.n} stehen jedem offen, ${rNW.rang - 1} davon günstiger als die AOK NordWest. Die Rangliste in Euro für Nordrhein-Westfalen und für Schleswig-Holstein, mit allen dort geöffneten Kassen, steht in der ${h.a('zusatzbeitrag-liste', 'Tabelle nach Bundesland')}.</p>
 <h2>Wechsel in beide Richtungen</h2>
 <p>Ein Wechsel zur AOK NordWest setzt einen Wohnsitz oder Arbeitsplatz in ihrem Gebiet voraus; weg von ihr geht es zu jeder Kasse, die in Ihrem Land geöffnet ist. Die neue Mitgliedschaft beginnt am Ersten des dritten Monats nach Ihrem Antrag, wenn Sie zwölf Monate Mitglied waren oder die Kasse erhöht hat. Familienversicherte Angehörige ziehen mit um.</p>
 <p>Wer bei der AOK NordWest selbstständig versichert ist, merkt einen Wechsel am stärksten: Ohne Arbeitgeber trägt er den Zusatzbeitrag ganz, bei ${h.eur(BEISPIEL.gewinn)} Gewinn zahlt er heute ${h.eur(p.selbst)} im Monat. Studierende dagegen zahlen auf den festen BAföG-Bedarf von ${h.eur(w.bafoeg_bedarf)} und sparen mit einem Wechsel nur wenige Euro im Jahr. Für Beschäftigte, die über der Versicherungspflichtgrenze verdienen und freiwillig gesetzlich bleiben, gilt der Höchstbeitrag von ${h.eur(p.lohnBbg)}; der Arbeitgeberzuschuss deckt dieselbe Hälfte wie bei Pflichtversicherten.</p>`,
@@ -90,7 +90,7 @@ ${h.table(['Insured as', 'Base', 'Your share a month'], [
   ['Self-employed', h.eur(BEISPIEL.gewinn), h.eur(p.selbst)],
   ['Student', h.eur(w.bafoeg_bedarf), h.eur(p.student)],
 ], '2026, one child; self-employed without sick pay, student under 23', ['l', 'r', 'r'])}
-<p>North Rhine-Westphalia offers more funds than any other state: ${rNW.n} are open to anyone, ${rNW.rang - 1} of them cheaper than AOK NordWest. The ranking in euros is on the page ${h.a('guenstigste-krankenkasse-nordrhein-westfalen', 'cheapest health insurance in North Rhine-Westphalia')}, and for the north under ${h.a('guenstigste-krankenkasse-schleswig-holstein', 'Schleswig-Holstein')}.</p>
+<p>North Rhine-Westphalia offers more funds than any other state: ${rNW.n} are open to anyone, ${rNW.rang - 1} of them cheaper than AOK NordWest. The ranking in euros for North Rhine-Westphalia and for Schleswig-Holstein is in the ${h.a('zusatzbeitrag-liste', 'table by state')}.</p>
 <h2>Switching either way</h2>
 <p>Joining AOK NordWest requires a home or workplace in its area; leaving it is possible to any fund open in your state. The new membership starts on the first day of the third month after your application, provided you have been a member for twelve months or the fund has raised its rate. Family members covered free of charge move with you.</p>
 <p>Self-employed AOK NordWest members feel a switch most: with no employer they carry the additional rate in full, paying ${h.eur(p.selbst)} a month today on ${h.eur(BEISPIEL.gewinn)} of profit. Students, by contrast, pay on the fixed BAföG need rate of ${h.eur(w.bafoeg_bedarf)} and save only a few euros a year by switching. Employees earning above the compulsory insurance threshold who stay in statutory insurance voluntarily pay the maximum of ${h.eur(p.lohnBbg)}; the employer subsidy covers the same half as for compulsory members.</p>`,

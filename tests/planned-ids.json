@@ -128,7 +128,7 @@
   "group": "kassen"
  },
  {
-  "id": "hek-hanseatische-krankenkasse",
+  "id": "bkk-firmus",
   "group": "kassen"
  },
  {
@@ -138,73 +138,5 @@
  {
   "id": "siemens-betriebskrankenkasse-sbk",
   "group": "kassen"
- },
- {
-  "id": "bkk-firmus",
-  "group": "kassen"
- },
- {
-  "id": "guenstigste-krankenkasse-baden-wuerttemberg",
-  "group": "laender"
- },
- {
-  "id": "guenstigste-krankenkasse-bayern",
-  "group": "laender"
- },
- {
-  "id": "guenstigste-krankenkasse-berlin",
-  "group": "laender"
- },
- {
-  "id": "guenstigste-krankenkasse-brandenburg",
-  "group": "laender"
- },
- {
-  "id": "guenstigste-krankenkasse-bremen",
-  "group": "laender"
- },
- {
-  "id": "guenstigste-krankenkasse-hamburg",
-  "group": "laender"
- },
- {
-  "id": "guenstigste-krankenkasse-hessen",
-  "group": "laender"
- },
- {
-  "id": "guenstigste-krankenkasse-mecklenburg-vorpommern",
-  "group": "laender"
- },
- {
-  "id": "guenstigste-krankenkasse-niedersachsen",
-  "group": "laender"
- },
- {
-  "id": "guenstigste-krankenkasse-nordrhein-westfalen",
-  "group": "laender"
- },
- {
-  "id": "guenstigste-krankenkasse-rheinland-pfalz",
-  "group": "laender"
- },
- {
-  "id": "guenstigste-krankenkasse-saarland",
-  "group": "laender"
- },
- {
-  "id": "guenstigste-krankenkasse-sachsen",
-  "group": "laender"
- },
- {
-  "id": "guenstigste-krankenkasse-sachsen-anhalt",
-  "group": "laender"
- },
- {
-  "id": "guenstigste-krankenkasse-schleswig-holstein",
-  "group": "laender"
- },
- {
-  "id": "guenstigste-krankenkasse-thueringen",
-  "group": "laender"
  }
 ]

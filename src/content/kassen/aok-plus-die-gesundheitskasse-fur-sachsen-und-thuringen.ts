@@ -29,7 +29,7 @@ export default defineGuide({
   kasse: ID,
   tool: 'beitrag',
   toolPreset: { kasse: ID, land: 'SN' },
-  related: ['guenstigste-krankenkasse-sachsen', 'guenstigste-krankenkasse-thueringen', 'pflegeversicherung-beitrag', 'aok-nordost-die-gesundheitskasse'],
+  related: ['zusatzbeitrag-liste', 'pflegeversicherung-beitrag', 'aok-nordost-die-gesundheitskasse'],
   sources: ['gkvListe', 'sgb11_58', 'sgb11_55', 'sgb5_242'],
   de: {
     slug: 'aok-plus-zusatzbeitrag',
@@ -57,7 +57,7 @@ ${h.table(['Arbeitsort', 'Pflege, Ihr Anteil', 'Pflege, Arbeitgeber', 'Ihr Beitr
 ], `${h.eur(BEISPIEL.lohn)} brutto, ein Kind, AOK PLUS, 2026`, ['l', 'r', 'r', 'r'])}
 <p>Die Regel stammt aus dem Jahr 1995: Damit die Arbeitgeber durch den neuen Pflegebeitrag nicht belastet würden, strichen die Länder einen Feiertag, meist den Buß- und Bettag. Sachsen behielt ihn, und seitdem zahlen sächsische Beschäftigte den Ausgleich selbst. Im Rechner oben wird das berücksichtigt, sobald Sie Sachsen als Land wählen; Kinderlose ab 23 zahlen zusätzlich ${h.pz(w.pv_kinderlos)}. Mehr zur Pflege steht unter ${h.a('pflegeversicherung-beitrag', 'Beitrag zur Pflegeversicherung')}.</p>
 <h2>Bleiben oder wechseln?</h2>
-<p>Gemessen am Preis liegt die AOK PLUS in Sachsen ${lageDe(rSN)} der wählbaren Kassen, in Thüringen ${lageDe(rTH)}. Für Beschäftigte mit ${h.eur(BEISPIEL.lohnNiedrig)} brutto beträgt der eigene Monatsbeitrag ${h.eur(p.lohnNiedrig)} ohne die sächsische Pflegeregel, an der Bemessungsgrenze ${h.eur(p.lohnBbg)}. Wer wechseln will, findet die günstigsten wählbaren Kassen auf den Seiten für ${h.a('guenstigste-krankenkasse-sachsen', 'Sachsen')} und ${h.a('guenstigste-krankenkasse-thueringen', 'Thüringen')}. Der Wechsel wird zum Ende des übernächsten Monats wirksam; erhöht die AOK PLUS ihren Satz, entfällt die zwölfmonatige Bindung. Für Selbstständige mit ${h.eur(BEISPIEL.gewinn)} Gewinn kostet die AOK PLUS ${h.eur(p.selbst)} im Monat, für Studierende ${h.eur(p.student)}.</p>`,
+<p>Gemessen am Preis liegt die AOK PLUS in Sachsen ${lageDe(rSN)} der wählbaren Kassen, in Thüringen ${lageDe(rTH)}. Für Beschäftigte mit ${h.eur(BEISPIEL.lohnNiedrig)} brutto beträgt der eigene Monatsbeitrag ${h.eur(p.lohnNiedrig)} ohne die sächsische Pflegeregel, an der Bemessungsgrenze ${h.eur(p.lohnBbg)}. Wer wechseln will, findet die günstigsten in Sachsen und Thüringen wählbaren Kassen in der ${h.a('zusatzbeitrag-liste', 'Liste aller Kassen nach Land')}. Der Wechsel wird zum Ende des übernächsten Monats wirksam; erhöht die AOK PLUS ihren Satz, entfällt die zwölfmonatige Bindung. Für Selbstständige mit ${h.eur(BEISPIEL.gewinn)} Gewinn kostet die AOK PLUS ${h.eur(p.selbst)} im Monat, für Studierende ${h.eur(p.student)}.</p>`,
   },
   en: {
     slug: 'aok-plus-additional-contribution',
@@ -85,6 +85,6 @@ ${h.table(['Place of work', 'Care, your share', 'Care, employer', 'Your total'],
 ], `${h.eur(BEISPIEL.lohn)} gross, one child, AOK PLUS, 2026`, ['l', 'r', 'r', 'r'])}
 <p>The rule dates from 1995: to spare employers the cost of the new care contribution, the states scrapped a public holiday, mostly the Day of Repentance and Prayer (Buß- und Bettag). Saxony kept it, and Saxon employees have paid the difference themselves ever since. The calculator above applies this as soon as you pick Saxony; childless members aged 23 and over add ${h.pz(w.pv_kinderlos)}. More under ${h.a('pflegeversicherung-beitrag', 'care insurance contributions')}.</p>
 <h2>Stay or switch?</h2>
-<p>On price, AOK PLUS sits ${lageEn(rSN)} of the funds open in Saxony and ${lageEn(rTH)} in Thuringia. Employees on ${h.eur(BEISPIEL.lohnNiedrig)} gross pay ${h.eur(p.lohnNiedrig)} a month without the Saxon care rule, ${h.eur(p.lohnBbg)} at the ceiling. If you want to move, the cheapest funds open to you are listed on the pages for ${h.a('guenstigste-krankenkasse-sachsen', 'Saxony')} and ${h.a('guenstigste-krankenkasse-thueringen', 'Thuringia')}. A switch takes effect at the end of the month after next; if AOK PLUS raises its rate, the twelve-month lock-in falls away. A self-employed member with ${h.eur(BEISPIEL.gewinn)} profit pays ${h.eur(p.selbst)} a month at AOK PLUS, a student ${h.eur(p.student)}.</p>`,
+<p>On price, AOK PLUS sits ${lageEn(rSN)} of the funds open in Saxony and ${lageEn(rTH)} in Thuringia. Employees on ${h.eur(BEISPIEL.lohnNiedrig)} gross pay ${h.eur(p.lohnNiedrig)} a month without the Saxon care rule, ${h.eur(p.lohnBbg)} at the ceiling. If you want to move, the cheapest funds open to you in Saxony and Thuringia are in the ${h.a('zusatzbeitrag-liste', 'list of every fund by state')}. A switch takes effect at the end of the month after next; if AOK PLUS raises its rate, the twelve-month lock-in falls away. A self-employed member with ${h.eur(BEISPIEL.gewinn)} profit pays ${h.eur(p.selbst)} a month at AOK PLUS, a student ${h.eur(p.student)}.</p>`,
   },
 });

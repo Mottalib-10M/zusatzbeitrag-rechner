@@ -1,5 +1,6 @@
 import { defineGuide, type Helpers } from '../../lib/guide-types';
-import { KASSEN, offen, statistik, STAND, HISTORIE, type Kassenart } from '../../lib/engine/kassen';
+import { KASSEN, offen, statistik, STAND, HISTORIE, LAENDER, type Kassenart } from '../../lib/engine/kassen';
+import { landProfil, kLink, BEISPIEL } from '../../lib/kassen-daten';
 import { J, DE, EN } from '../../lib/fmt';
 import { displayDate } from '../../lib/format';
 
@@ -18,6 +19,17 @@ type Ereignis = { datum: string; art: string; name?: string; alt?: number | stri
 const ereignisse = (HISTORIE.ereignisse as Ereignis[]).filter((e) => e.art !== 'start').slice(-12).reverse();
 const start = (HISTORIE.ereignisse as Ereignis[]).find((e) => e.art === 'start');
 const ARTNAME = { de: { AOK: 'AOK', EK: 'Ersatzkassen', BKK: 'Betriebskrankenkassen', IKK: 'Innungskrankenkassen', KBS: 'KNAPPSCHAFT', LKK: 'SVLFG' }, en: { AOK: 'AOK (regional funds)', EK: 'Substitute funds', BKK: 'Company funds (BKK)', IKK: 'Guild funds (IKK)', KBS: 'KNAPPSCHAFT', LKK: 'SVLFG' } };
+/** Ein Land je Zeile: hier stehen die früheren Länderseiten gesammelt (günstigste Kasse, AOK, Spanne). */
+const laender = LAENDER.map((l) => landProfil(l));
+const proLand = (l: 'de' | 'en') => [...laender].sort((p, q) => p.name[l].localeCompare(q.name[l], 'de'));
+const meisteKassen = [...laender].sort((p, q) => q.n - p.n)[0];
+const wenigsteKassen = [...laender].sort((p, q) => p.n - q.n)[0];
+const groessteSpanne = [...laender].sort((p, q) => q.spanneJahr - p.spanneJahr)[0];
+const landTabelle = (h: Helpers, l: 'de' | 'en') => h.table(
+  l === 'de' ? ['Land', 'wählbar', 'günstigste Kasse', 'AOK', 'Spanne im Jahr'] : ['State', 'open', 'cheapest fund', 'AOK', 'spread a year'],
+  proLand(l).map((p) => [p.name[l], String(p.n), `${kLink(h, p.billig)}, ${h.pk(p.billig.zb!)}`, p.aok ? `${kLink(h, p.aok)}, ${h.pk(p.aok.zb!)}` : '–', h.eur(p.spanneJahr)]),
+  l === 'de' ? `Spanne: günstigste gegen teuerste wählbare Kasse, ${h.eur(BEISPIEL.lohn)} brutto, ein Kind, 2026` : `Spread: cheapest against most expensive open fund, ${h.eur(BEISPIEL.lohn)} gross, one child, 2026`,
+  ['l', 'r', 'l', 'l', 'r']);
 const ereignisTabelle = (h: Helpers, l: 'de' | 'en') => ereignisse.length
   ? h.table(l === 'de' ? ['Datum', 'Kasse', 'Änderung'] : ['Date', 'Fund', 'Change'], ereignisse.map((e) => [h.date(e.datum), e.name ?? '', e.art === 'satz' ? `${h.pk(e.alt as number)} → ${h.pk(e.neu as number)}` : e.art === 'neu' ? (l === 'de' ? 'neu in der Liste' : 'new in the list') : e.art === 'weg' ? (l === 'de' ? 'aus der Liste entfernt' : 'removed from the list') : (l === 'de' ? 'Öffnung geändert' : 'opening changed')]), l === 'de' ? 'Aufgezeichnet beim täglichen Abruf' : 'Recorded by the daily download', ['l', 'l', 'l'])
   : `<p>${l === 'de' ? `Seit Beginn der Aufzeichnung am ${h.date(start?.datum ?? STAND)} hat sich kein Satz geändert. Jede Änderung erscheint hier mit dem Tag, an dem sie in der amtlichen Liste steht.` : `No rate has changed since recording began on ${h.date(start?.datum ?? STAND)}. Every change will appear here with the day it shows up in the official list.`}</p>`;
@@ -41,9 +53,14 @@ export default defineGuide({
     faqs: [
       { q: 'Warum stehen manche Betriebskrankenkassen nicht in der Rangliste?', a: `Weil ${betrieb.length} Betriebskrankenkassen ihre Satzung nicht geöffnet haben: Sie nehmen nur Beschäftigte ihres Trägerunternehmens auf, oft auch deren Angehörige. In der Liste lassen sie sich mit dem Filter einblenden. Arbeiten Sie dort, kann eine solche Kasse günstig sein; für alle anderen ist sie nicht wählbar.` },
       { q: 'Was bedeutet „geöffnet in“ bei einer Krankenkasse?', a: 'Eine Kasse kann ihre Satzung für bestimmte Länder öffnen. Wählen dürfen Sie sie, wenn Sie in einem dieser Länder wohnen oder arbeiten; der Wohn- oder der Beschäftigungsort genügt. Die AOK ist immer an ihr Land oder ihre Region gebunden, Ersatzkassen sind bundesweit geöffnet.' },
+      { q: 'In welchem Bundesland kann man unter den meisten Krankenkassen wählen?', a: `In ${meisteKassen.name.de} mit ${meisteKassen.n} wählbaren Kassen, am wenigsten sind es in ${wenigsteKassen.name.de} mit ${wenigsteKassen.n}. Der Unterschied kommt von den regionalen Kassen: Ersatzkassen sind überall geöffnet, AOKs, viele Betriebs- und Innungskassen nur in einzelnen Ländern. Am weitesten liegen günstigste und teuerste Kasse in ${groessteSpanne.name.de} auseinander, bei ${DE.eur(BEISPIEL.lohn)} brutto ${DE.eur(groessteSpanne.spanneJahr)} im Jahr.` },
       { q: 'Wie oft ändern sich die Zusatzbeiträge?', a: 'Die meisten Kassen beschließen ihren Satz einmal im Jahr, im Dezember für den 1. Januar. Reicht das Geld nicht, darf eine Kasse auch unterjährig erhöhen; das löst jedes Mal ein Sonderkündigungsrecht aus. Senkungen sind seltener. Jede Änderung, die in der amtlichen Liste erscheint, halten wir mit Datum fest.' },
     ],
     body: (h) => `
+<h2>Günstigste Krankenkasse in jedem Bundesland</h2>
+<p>Welche Kassen Sie wählen dürfen, hängt vom Land ab, in dem Sie wohnen oder arbeiten; einer der beiden Orte genügt. Wer pendelt, etwa von Niedersachsen nach Bremen oder von Brandenburg nach Berlin, wählt aus beiden Listen. Die Tabelle zeigt für jedes Land die günstigste wählbare Kasse, die eigene AOK und den Abstand zwischen günstigster und teuerster Kasse; die vollständige Rangliste eines Landes zeigt der Filter „Bundesland“ oben.</p>
+${landTabelle(h, 'de')}
+<p>Zwei Besonderheiten verändern den Beitrag je nach Land. In Sachsen tragen Beschäftigte ${h.num(w.pv_sachsen_an_mehr, 1)} Prozentpunkte mehr Pflegebeitrag als anderswo, weil das Land 1995 keinen Feiertag gestrichen hat; maßgeblich ist der Arbeitsort (${h.a('pflegeversicherung-beitrag', 'Pflegebeitrag rechnen')}). Und die AOK ist an ihre Region gebunden: Die AOK Rheinland/Hamburg gilt in Hamburg und im Rheinland, die AOK Nordost in Berlin, Brandenburg und Mecklenburg-Vorpommern, die AOK PLUS in Sachsen und Thüringen, die AOK NordWest in Westfalen-Lippe und Schleswig-Holstein. Der Satz ist überall derselbe, nur die Auswahl daneben ändert sich.</p>
 <h2>Die Kassenarten im Überblick</h2>
 ${h.table(['Kassenart', 'Kassen mit Satz', 'niedrigster', 'höchster'], proArt.map((x) => [ARTNAME.de[x.a], String(x.n), h.pk(x.min), h.pk(x.max)]), 'Alle Kassen mit Zusatzbeitrag, auch geschlossene Betriebskrankenkassen', ['l', 'r', 'r', 'r'])}
 <p>Die Sozialversicherung für Landwirtschaft, Forsten und Gartenbau (SVLFG) erhebt als landwirtschaftliche Krankenkasse keinen Zusatzbeitrag und versichert nur Menschen aus der Landwirtschaft; sie fehlt deshalb in den Zählungen. Für alle anderen gilt: Der Zusatzbeitrag ist der einzige Teil des Beitrags, der sich zwischen den Kassen unterscheidet. Allgemeiner Satz (${h.pz(w.kv_allgemein)}), Beitragsbemessungsgrenze und Pflegebeitrag sind überall gleich.</p>
@@ -64,9 +81,14 @@ ${ereignisTabelle(h, 'de')}
     faqs: [
       { q: 'Why are some company funds missing from the ranking?', a: `Because ${betrieb.length} company funds (Betriebskrankenkassen) have not opened their statutes: they take only staff of their sponsoring company, often relatives too. You can show them in the list with the filter. If you work there, such a fund may be cheap; for everyone else it is not an option.` },
       { q: 'What does “open in” mean for a health fund?', a: 'A fund can open its statutes to particular states. You may join if you live or work in one of them; either your home or your workplace is enough. An AOK is always tied to its state or region, while substitute funds (Ersatzkassen) are open nationwide.' },
+      { q: 'Which state offers the widest choice of health funds?', a: `${meisteKassen.name.en}, with ${meisteKassen.n} funds open; the fewest are in ${wenigsteKassen.name.en}, with ${wenigsteKassen.n}. The difference comes from regional funds: substitute funds are open everywhere, while AOKs and many company and guild funds are open only in particular states. The cheapest and most expensive funds are furthest apart in ${groessteSpanne.name.en}: ${EN.eur(groessteSpanne.spanneJahr)} a year on ${EN.eur(BEISPIEL.lohn)} gross.` },
       { q: 'How often do additional rates change?', a: 'Most funds set their rate once a year, in December for 1 January. If money runs short a fund may also raise it during the year, which each time triggers a special right to leave. Cuts are rarer. Every change that appears in the official list is recorded here with its date.' },
     ],
     body: (h) => `
+<h2>Cheapest health fund in each state</h2>
+<p>Which funds you may join depends on the state where you live or work; either one is enough. Commuters, say from Lower Saxony into Bremen or from Brandenburg into Berlin, can choose from both lists. The table gives each state’s cheapest open fund, its own AOK and the gap between the cheapest and the most expensive fund; the “state” filter above shows a state’s full ranking.</p>
+${landTabelle(h, 'en')}
+<p>Two quirks change the contribution by state. In Saxony employees pay ${h.num(w.pv_sachsen_an_mehr, 1)} percentage points more care contribution than elsewhere, because the state kept its public holiday in 1995; what counts is where you work (${h.a('pflegeversicherung-beitrag', 'work out the care contribution')}). And an AOK is tied to its region: AOK Rheinland/Hamburg covers Hamburg and the Rhineland, AOK Nordost Berlin, Brandenburg and Mecklenburg-Western Pomerania, AOK PLUS Saxony and Thuringia, AOK NordWest Westphalia-Lippe and Schleswig-Holstein. The rate is the same throughout; only the choice alongside it changes.</p>
 <h2>Types of fund at a glance</h2>
 ${h.table(['Type', 'Funds with a rate', 'lowest', 'highest'], proArt.map((x) => [ARTNAME.en[x.a], String(x.n), h.pk(x.min), h.pk(x.max)]), 'Every fund with an additional rate, including closed company funds', ['l', 'r', 'r', 'r'])}
 <p>The social insurance for agriculture, forestry and horticulture (SVLFG) charges no additional rate and only covers people working in farming; it is left out of the counts. For everyone else the additional rate is the only part of the contribution that differs between funds. The general rate (${h.pz(w.kv_allgemein)}), the contribution ceiling and the care contribution are the same everywhere.</p>

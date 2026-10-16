@@ -1,13 +1,13 @@
 /**
  * Eine Seite = EINE Datei in `src/content/<gruppe>/`. Die Datei trägt beide Sprachen, Text, FAQ, Quellen,
  * Mini-Rechner und Verlinkung. Der Kern (Routen, Menüs, Fußzeile, Sitemap, hreflang, Schemas) liest sie selbst.
- * Gruppen: `rechner` (Rechnerseiten), `wissen` (Ratgeber), `kassen` (eine große Kasse), `laender` (ein Bundesland).
+ * Gruppen: `rechner` (Rechnerseiten), `wissen` (Ratgeber), `kassen` (eine große Kasse). Die Bundesländer haben keine eigene Seite mehr: Tabelle nach Land in der Kassenliste.
  */
 import type { SourceKey, Params } from './engine/params';
 import type { Land } from './engine/kassen';
 
 export type Lang = 'de' | 'en';
-export type Group = 'rechner' | 'wissen' | 'kassen' | 'laender';
+export type Group = 'rechner' | 'wissen' | 'kassen';
 export interface FAQ { q: string; a: string }
 
 export interface Helpers {

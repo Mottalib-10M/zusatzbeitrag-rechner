@@ -25,7 +25,7 @@ export default defineGuide({
   kasse: ID,
   tool: 'beitrag',
   toolPreset: { kasse: ID, land: 'BW' },
-  related: ['guenstigste-krankenkasse-baden-wuerttemberg', 'aok-bayern-die-gesundheitskasse', 'bkk-firmus', 'zusatzbeitrag-liste'],
+  related: ['aok-bayern-die-gesundheitskasse', 'zusatzbeitrag-liste', 'krankenkasse-wechseln', 'krankenkassenbeitrag-selbststaendige'],
   sources: ['gkvListe', 'sgb5_242', 'sgb5_175', 'sgb5_249'],
   de: {
     slug: 'aok-baden-wuerttemberg-zusatzbeitrag',
@@ -55,7 +55,7 @@ ${h.table(['Mitglied', 'Grundlage', 'Eigener Anteil im Monat'], [
   ['Selbstständig', h.eur(BEISPIEL.gewinn), h.eur(p.selbst)],
   ['Student', h.eur(w.bafoeg_bedarf), h.eur(p.student)],
 ], '2026, ein Kind; Selbstständig ohne Krankengeld', ['l', 'r', 'r'])}
-<p>Die Tabelle zeigt, warum ein Wechsel für Rentner weniger bringt als für Angestellte mit hohem Lohn: Bei der Rente zahlt die Rentenversicherung die Hälfte des Zusatzbeitrags, und die Grundlage ist meist kleiner. Selbstständige dagegen tragen den Satz ganz. Eine Übersicht aller in Baden-Württemberg wählbaren Kassen bietet die Seite ${h.a('guenstigste-krankenkasse-baden-wuerttemberg', 'günstigste Krankenkasse in Baden-Württemberg')}; die bundesweit niedrigsten Sätze stehen in der ${h.a('zusatzbeitrag-liste', 'Gesamtliste')}.</p>
+<p>Die Tabelle zeigt, warum ein Wechsel für Rentner weniger bringt als für Angestellte mit hohem Lohn: Bei der Rente zahlt die Rentenversicherung die Hälfte des Zusatzbeitrags, und die Grundlage ist meist kleiner. Selbstständige dagegen tragen den Satz ganz. Alle in Baden-Württemberg wählbaren Kassen und die bundesweit niedrigsten Sätze stehen in der ${h.a('zusatzbeitrag-liste', 'Gesamtliste')}, die sich nach Land filtern lässt; dort sehen Sie auch, wie viele Kassen im Land neben der AOK geöffnet sind.</p>
 <h2>Mitgliedschaft und Wechsel</h2>
 <p>Ein Wechsel aus der AOK Baden-Württemberg heraus geht über den Antrag bei der neuen Kasse und wird zum übernächsten Monatsende wirksam. Wer aus einer anderen Kasse zur AOK kommt, braucht einen Wohnsitz oder Arbeitsplatz im Land, gleich in welchem Landkreis. Beschäftigte melden die neue Kasse dem Arbeitgeber, damit er die Beiträge richtig abführt. Rentner müssen nichts tun: Die neue Kasse informiert die Rentenversicherung, die den Beitrag künftig an sie weiterleitet. Wer familienversicherte Angehörige hat, nimmt sie mit; ihre Versicherung hängt am Mitglied und beginnt bei der neuen Kasse am selben Tag. Und noch ein Hinweis zur Pflege: In Baden-Württemberg gilt die normale hälftige Teilung zwischen Beschäftigten und Arbeitgebern, wie in allen Ländern außer Sachsen.</p>`,
   },
@@ -87,7 +87,7 @@ ${h.table(['Member', 'Base', 'Own share a month'], [
   ['Self-employed', h.eur(BEISPIEL.gewinn), h.eur(p.selbst)],
   ['Student', h.eur(w.bafoeg_bedarf), h.eur(p.student)],
 ], '2026, one child; self-employed without sick pay', ['l', 'r', 'r'])}
-<p>The table shows why switching brings pensioners less than well-paid employees: on a pension the pension insurance pays half of the additional rate, and the base is usually smaller. The self-employed, by contrast, carry the whole rate. Every fund open in Baden-Württemberg is on the page ${h.a('guenstigste-krankenkasse-baden-wuerttemberg', 'cheapest health insurance in Baden-Württemberg')}; the lowest rates nationwide are in the ${h.a('zusatzbeitrag-liste', 'full list')}.</p>
+<p>The table shows why switching brings pensioners less than well-paid employees: on a pension the pension insurance pays half of the additional rate, and the base is usually smaller. The self-employed, by contrast, carry the whole rate. Every fund open in Baden-Württemberg, and the lowest rates nationwide, are in the ${h.a('zusatzbeitrag-liste', 'full list')}, which filters by state.</p>
 <h2>Membership and switching</h2>
 <p>Leaving AOK Baden-Württemberg takes an application to the new fund and is effective at the end of the month after next. Joining the AOK from another fund requires a home or job in the state. Employees tell their employer the new fund so contributions go to the right place. Pensioners need do nothing: the new fund informs the pension insurance, which then passes contributions on to it. Family members covered free of charge come along; their cover depends on the member and starts at the new fund on the same day. And on care insurance: Baden-Württemberg uses the normal equal split between employees and employers, as every state except Saxony does.</p>`,
   },

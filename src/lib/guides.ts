@@ -1,7 +1,7 @@
 /** Register der Seiten: jede Datei aus `src/content/<gruppe>/` wird hier geladen. */
 import type { PageDef, Group } from './guide-types';
 
-const mods = import.meta.glob<{ default: PageDef }>(['../content/rechner/*.ts', '../content/wissen/*.ts', '../content/kassen/*.ts', '../content/laender/*.ts'], { eager: true });
+const mods = import.meta.glob<{ default: PageDef }>(['../content/rechner/*.ts', '../content/wissen/*.ts', '../content/kassen/*.ts'], { eager: true });
 
 export const PAGES: PageDef[] = Object.entries(mods)
   .map(([file, m]) => {
@@ -12,8 +12,7 @@ export const PAGES: PageDef[] = Object.entries(mods)
   })
   .sort((a, b) => a.order - b.order || a.id.localeCompare(b.id));
 
-export const GROUPS: Group[] = ['rechner', 'kassen', 'laender', 'wissen'];
+export const GROUPS: Group[] = ['rechner', 'kassen', 'wissen'];
 export const pageById = (id: string) => PAGES.find((p) => p.id === id);
-/** Seite einer Kasse oder eines Landes, falls es eine gibt. */
+/** Seite einer Kasse, falls es eine gibt. Die Länder stehen gesammelt in der Kassenliste (Tabelle nach Bundesland). */
 export const kassenSeite = (kasseId: string) => PAGES.find((p) => p.group === 'kassen' && p.kasse === kasseId);
-export const landSeite = (land: string) => PAGES.find((p) => p.group === 'laender' && p.land === land);

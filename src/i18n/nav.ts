@@ -7,8 +7,8 @@ const CORE: Record<Locale, Record<string, string>> = {
   en: { home: 'Contribution calculator', method: 'How we calculate', about: 'About', widget: 'Embed the calculator', contact: 'Contact', editorial: 'Editorial policy', privacy: 'Privacy', terms: 'Legal notice', cookies: 'Cookies' },
 };
 const GROUP_LABEL: Record<Locale, Record<Group, string>> = {
-  de: { rechner: 'Rechner', kassen: 'Krankenkassen', laender: 'Nach Bundesland', wissen: 'Beitrag verstehen' },
-  en: { rechner: 'Calculators', kassen: 'Health funds', laender: 'By state', wissen: 'How contributions work' },
+  de: { rechner: 'Rechner', kassen: 'Krankenkassen', wissen: 'Beitrag verstehen' },
+  en: { rechner: 'Calculators', kassen: 'Health funds', wissen: 'How contributions work' },
 };
 export const label = (id: string, lang: Locale) => CORE[lang][id] ?? pageById(id)?.[lang].nav ?? id;
 const link = (id: string, lang: Locale): NavLink => ({ href: route(id, lang), label: label(id, lang) });

@@ -8,7 +8,7 @@ import { P } from '../src/lib/engine/params';
 import { MINIS } from '../src/lib/mini-specs';
 import type { PageDef, Helpers, Lang } from '../src/lib/guide-types';
 
-const dirs = ['rechner', 'wissen', 'kassen', 'laender'];
+const dirs = ['rechner', 'wissen', 'kassen'];
 const only = process.env.PAGE_FILES?.split(',').map((s) => s.trim().replace(/\.ts$/, ''));
 const all: PageDef[] = [];
 for (const d of dirs) {
@@ -98,7 +98,7 @@ for (const p of pages) {
         expect(body).not.toMatch(/—|&mdash;/);
         for (const m of body.matchAll(/<!--mini:([A-Za-z0-9_]+)-->/g)) expect(MINIS[m[1]], `mini ${m[1]} absent`).toBeTruthy();
         const total = words(body) + words(p[l].resume) + p[l].faqs.reduce((s, f) => s + words(f.q) + words(f.a), 0);
-        expect(total, 'Länge').toBeGreaterThanOrEqual(p.group === 'kassen' || p.group === 'laender' ? 650 : p.tool ? 450 : 1100);
+        expect(total, 'Länge').toBeGreaterThanOrEqual(p.group === 'kassen' ? 650 : p.tool ? 450 : 1100);
       });
     }
   });

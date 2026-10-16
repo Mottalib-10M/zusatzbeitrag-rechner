@@ -28,7 +28,7 @@ export default defineGuide({
   kasse: ID,
   tool: 'beitrag',
   toolPreset: { kasse: ID, land: 'HH' },
-  related: ['guenstigste-krankenkasse-hamburg', 'guenstigste-krankenkasse-nordrhein-westfalen', 'aok-nordwest-die-gesundheitskasse', 'zusatzbeitrag-liste'],
+  related: ['aok-nordwest-die-gesundheitskasse', 'zusatzbeitrag-liste', 'krankenkasse-wechseln', 'barmer'],
   sources: ['gkvListe', 'sgb5_242', 'sgb5_175', 'sgb5_223'],
   de: {
     slug: 'aok-rheinland-hamburg-zusatzbeitrag',
@@ -58,7 +58,7 @@ ${h.table(['Versicherte', 'Bemessung', 'Ihr Anteil im Monat'], [
   ['Selbstständige', h.eur(BEISPIEL.gewinn), h.eur(p.selbst)],
   ['Studierende', h.eur(w.bafoeg_bedarf), h.eur(p.student)],
 ], '2026, ein Kind; Selbstständige ohne Krankengeld, Studierende unter 23', ['l', 'r', 'r'])}
-<p>Hamburg ist ein Stadtstaat mit vielen Pendlern aus Schleswig-Holstein und Niedersachsen. Für sie zählt neben dem Wohnort auch der Arbeitsort: Die Rangliste im Rechner oben wechselt mit dem Land, das Sie einstellen. Alle in der Stadt wählbaren Kassen stehen auf der Seite ${h.a('guenstigste-krankenkasse-hamburg', 'günstigste Krankenkasse in Hamburg')}, für das Rheinland unter ${h.a('guenstigste-krankenkasse-nordrhein-westfalen', 'Nordrhein-Westfalen')}.</p>
+<p>Hamburg ist ein Stadtstaat mit vielen Pendlern aus Schleswig-Holstein und Niedersachsen. Für sie zählt neben dem Wohnort auch der Arbeitsort: Die Rangliste im Rechner oben wechselt mit dem Land, das Sie einstellen. Alle in Hamburg und in Nordrhein-Westfalen wählbaren Kassen stehen in der ${h.a('zusatzbeitrag-liste', 'Länderübersicht der Kassenliste')}.</p>
 <h2>Wechsel und Sonderkündigung</h2>
 <p>Wer die AOK Rheinland/Hamburg verlassen möchte, stellt den Antrag bei der neuen Kasse. Die Mitgliedschaft endet zum Ende des übernächsten Monats; bis dahin gilt der bisherige Satz. Hebt die Kasse ihren Zusatzbeitrag an, ist ein Wechsel bis zum Ende des Monats der Erhöhung möglich, auch ohne zwölf Monate Mitgliedschaft. Den Termin rechnet der ${h.a('krankenkasse-wechseln', 'Fristenrechner')}.</p>
 <p>Für Selbstständige im Rheinland oder in Hamburg ist der Zusatzbeitrag der größte bewegliche Posten: Sie tragen ihn allein, bei ${h.eur(BEISPIEL.gewinn)} Gewinn zahlen sie heute ${h.eur(p.selbst)} im Monat. Rentner zahlen nur die Hälfte des Satzes, weil die Rentenversicherung die andere Hälfte übernimmt, und spüren eine Änderung erst zwei Monate später auf der Rentenabrechnung. Studierende rechnen auf den festen BAföG-Bedarf von ${h.eur(w.bafoeg_bedarf)}; für sie liegen zwischen den Kassen nur wenige Euro im Jahr.</p>`,
@@ -91,7 +91,7 @@ ${h.table(['Insured', 'Base', 'Your share a month'], [
   ['Self-employed', h.eur(BEISPIEL.gewinn), h.eur(p.selbst)],
   ['Students', h.eur(w.bafoeg_bedarf), h.eur(p.student)],
 ], '2026, one child; self-employed without sick pay, students under 23', ['l', 'r', 'r'])}
-<p>Hamburg is a city-state with many commuters from Schleswig-Holstein and Lower Saxony. For them the workplace counts as well as the home: the ranking in the calculator above changes with the state you set. Every fund open in the city is on the page ${h.a('guenstigste-krankenkasse-hamburg', 'cheapest health insurance in Hamburg')}, and for the Rhineland under ${h.a('guenstigste-krankenkasse-nordrhein-westfalen', 'North Rhine-Westphalia')}.</p>
+<p>Hamburg is a city-state with many commuters from Schleswig-Holstein and Lower Saxony. For them the workplace counts as well as the home: the ranking in the calculator above changes with the state you set. Every fund open in Hamburg and in North Rhine-Westphalia is in the ${h.a('zusatzbeitrag-liste', 'state overview of the fund list')}.</p>
 <h2>Switching and special termination</h2>
 <p>To leave AOK Rheinland/Hamburg, apply to the new fund. Membership ends at the end of the month after next, and the old rate applies until then. If the fund raises its additional rate, you can switch until the end of the month of the rise, even without twelve months of membership. The ${h.a('krankenkasse-wechseln', 'deadline calculator')} works out the date.</p>
 <p>For the self-employed in the Rhineland or Hamburg the additional rate is the biggest moving part: they carry it alone and pay ${h.eur(p.selbst)} a month today on ${h.eur(BEISPIEL.gewinn)} of profit. Pensioners pay only half the rate, since the pension insurance takes the other half, and see a change two months later on the pension statement. Students pay on the fixed BAföG need rate of ${h.eur(w.bafoeg_bedarf)}; for them the funds are only a few euros a year apart.</p>`,

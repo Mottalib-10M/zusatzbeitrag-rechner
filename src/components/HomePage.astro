@@ -16,7 +16,7 @@ import { P, J, type SourceKey } from '../lib/engine/params';
 import { offen, statistik, rangliste, LAENDER, LAND_NAME, STAND } from '../lib/engine/kassen';
 import { formatMoney, formatDecimal, formatNumber, displayDate } from '../lib/format';
 import { faqSchema, organizationSchema, websiteSchema, webPageSchema, webApplicationSchema } from '../lib/seo';
-import { PAGES, kassenSeite, landSeite } from '../lib/guides';
+import { PAGES, kassenSeite } from '../lib/guides';
 import { LANG_TAGS } from '../data/site-config';
 interface Props { lang: Locale }
 const { lang } = Astro.props;
@@ -53,7 +53,7 @@ for (let v = lo; v < hi; v += 0.25) { const ks = alle.filter((k) => k.zb! >= v -
 const maxN = Math.max(...bins.map((x) => x.n));
 const gross = ['techniker-krankenkasse', 'barmer', 'dak-gesundheit', 'aok-bayern-die-gesundheitskasse', 'aok-baden-wurttemberg', 'aok-plus-die-gesundheitskasse-fur-sachsen-und-thuringen', 'aok-nordwest-die-gesundheitskasse', 'ikk-classic', 'kaufmannische-krankenkasse-kkh', 'handelskrankenkasse-hkk', 'knappschaft', 'siemens-betriebskrankenkasse-sbk']
   .map((id) => alle.find((k) => k.id === id)).filter((k): k is NonNullable<typeof k> => !!k);
-const laender = [...LAENDER].sort((p, q) => LAND_NAME[p][lang].localeCompare(LAND_NAME[q][lang], 'de')).map((l) => ({ l, best: rangliste(l)[0], n: rangliste(l).length, seite: landSeite(l) }));
+const laender = [...LAENDER].sort((p, q) => LAND_NAME[p][lang].localeCompare(LAND_NAME[q][lang], 'de')).map((l) => ({ l, best: rangliste(l)[0], n: rangliste(l).length }));
 const ab = (k: string) => (kassenSeite(k) ? route(kassenSeite(k)!.id, lang) : undefined);
 ---
 <PageLayout title={x.title} description={x.description} lang={lang} jsonLd={jsonLd} faqs={faqs} sources={sources}>
@@ -110,13 +110,14 @@ const ab = (k: string) => (kassenSeite(k) ? route(kassenSeite(k)!.id, lang) : un
   <section class="mt-10 border-t border-navy-200 pt-6" aria-labelledby="laender" data-chrome>
     <h2 id="laender" class="text-2xl font-bold text-navy-900">{de ? 'Günstigste wählbare Kasse in jedem Bundesland' : 'Cheapest fund you can join in each state'}</h2>
     <ul class="mt-4 grid gap-x-8 md:grid-cols-2">
-      {laender.map(({ l, best, n, seite }) => (
+      {laender.map(({ l, best, n }) => (
         <li class="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 border-b border-navy-100 py-2 text-sm">
-          <span>{seite ? <a class="font-medium text-navy-900 underline" href={route(seite.id, lang)}>{LAND_NAME[l][lang]}</a> : <span class="font-medium text-navy-900">{LAND_NAME[l][lang]}</span>} <span class="text-navy-600">· {best.kurz}, {de ? `${n} Kassen wählbar` : `${n} funds open`}</span></span>
+          <span><span class="font-medium text-navy-900">{LAND_NAME[l][lang]}</span> <span class="text-navy-600">· {best.kurz}, {de ? `${n} Kassen wählbar` : `${n} funds open`}</span></span>
           <span class="tabular-nums font-semibold text-navy-900">{pk(best.zb!)}</span>
         </li>
       ))}
     </ul>
+    <p class="mt-3 text-sm text-navy-700">{de ? 'Rangliste, AOK und Spanne jedes Landes, und alle dort wählbaren Kassen mit Ihrem Beitrag in Euro: ' : 'Ranking, AOK and spread for each state, and every fund open there with your cost in euros: '}<a class="font-medium underline" href={r('zusatzbeitrag-liste')}>{de ? 'Kassenliste nach Bundesland' : 'fund list by state'}</a>.</p>
   </section>
   <div class="prose prose-slate mt-10 max-w-none border-t border-navy-200 pt-4">
     {parts.map((p, i) => i % 2 === 0 ? <Fragment set:html={p} /> : <MiniSim client:load kind={p} lang={lang} href={r('krankenkasse-wechseln')} />)}

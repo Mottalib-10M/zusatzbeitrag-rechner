@@ -29,7 +29,7 @@ export default defineGuide({
   kasse: ID,
   tool: 'beitrag',
   toolPreset: { kasse: ID, land: 'BE' },
-  related: ['guenstigste-krankenkasse-berlin', 'guenstigste-krankenkasse-brandenburg', 'guenstigste-krankenkasse-mecklenburg-vorpommern', 'krankenkasse-wechseln', 'aok-plus-die-gesundheitskasse-fur-sachsen-und-thuringen'],
+  related: ['zusatzbeitrag-liste', 'krankenkasse-wechseln', 'aok-plus-die-gesundheitskasse-fur-sachsen-und-thuringen'],
   sources: ['gkvListe', 'sgb5_242', 'sgb5_175', 'sgb5_242a'],
   de: {
     slug: 'aok-nordost-zusatzbeitrag',
@@ -63,7 +63,7 @@ ${h.table(['Lage', 'Grundlage', 'Ihr Anteil im Monat'], [
 <h2>Was 2027 auf Gutverdienende zukommt</h2>
 <p>Unabhängig davon, ob die AOK Nordost ihren Satz ändert, steigt 2027 die Beitragsbemessungsgrenze der Krankenversicherung auf ${h.eur(w27.bbgKv)} im Monat (Kabinettsbeschluss, Bundesrat ausstehend). Wer so viel oder mehr verdient, zahlt bei unverändertem Satz dann ${h.eur(max27)} statt ${h.eur(max26)} im Monat, also ${h.eur(Math.round((max27 - max26) * 12))} im Jahr mehr. In der Pflege bleibt die Grenze nach geltendem Recht niedriger. Der neue Satz der Kasse für 2027 erscheint in der amtlichen Liste erst am Tag, an dem er gilt; bis dahin rechnet der Rechner mit dem heutigen.</p>
 <h2>Wechseln im Nordosten</h2>
-<p>Die Rangliste für Ihr Land finden Sie auf den Seiten für ${h.a('guenstigste-krankenkasse-berlin', 'Berlin')}, ${h.a('guenstigste-krankenkasse-brandenburg', 'Brandenburg')} und ${h.a('guenstigste-krankenkasse-mecklenburg-vorpommern', 'Mecklenburg-Vorpommern')}. Den Termin des Wechsels rechnet der ${h.a('krankenkasse-wechseln', 'Fristenrechner')}; erhöht die AOK Nordost zum Jahreswechsel ihren Satz, gilt das Sonderkündigungsrecht unabhängig von der Mitgliedsdauer.</p>`,
+<p>Die Rangliste für Berlin, Brandenburg und Mecklenburg-Vorpommern, mit jeder dort wählbaren Kasse, finden Sie in der ${h.a('zusatzbeitrag-liste', 'Kassenliste nach Bundesland')}. Den Termin des Wechsels rechnet der ${h.a('krankenkasse-wechseln', 'Fristenrechner')}; erhöht die AOK Nordost zum Jahreswechsel ihren Satz, gilt das Sonderkündigungsrecht unabhängig von der Mitgliedsdauer.</p>`,
   },
   en: {
     slug: 'aok-nordost-additional-contribution',
@@ -97,6 +97,6 @@ ${h.table(['Situation', 'Base', 'Your share a month'], [
 <h2>What 2027 brings for higher earners</h2>
 <p>Whether or not AOK Nordost changes its rate, the health insurance contribution ceiling rises to ${h.eur(w27.bbgKv)} a month in 2027 (cabinet decision, Bundesrat pending). Anyone earning that much or more will then pay ${h.eur(max27)} instead of ${h.eur(max26)} a month at an unchanged rate, ${h.eur(Math.round((max27 - max26) * 12))} more a year. For care insurance the ceiling stays lower under current law. The fund’s new 2027 rate appears in the official list only on the day it applies; until then the calculator uses today’s.</p>
 <h2>Switching in the north-east</h2>
-<p>The ranking for your state is on the pages for ${h.a('guenstigste-krankenkasse-berlin', 'Berlin')}, ${h.a('guenstigste-krankenkasse-brandenburg', 'Brandenburg')} and ${h.a('guenstigste-krankenkasse-mecklenburg-vorpommern', 'Mecklenburg-Western Pomerania')}. The ${h.a('krankenkasse-wechseln', 'deadline calculator')} gives the switch date; if AOK Nordost raises its rate at the turn of the year, the special termination right applies however long you have been a member.</p>`,
+<p>The ranking for Berlin, Brandenburg and Mecklenburg-Western Pomerania is in the ${h.a('zusatzbeitrag-liste', 'fund list by state')}. The ${h.a('krankenkasse-wechseln', 'deadline calculator')} gives the switch date; if AOK Nordost raises its rate at the turn of the year, the special termination right applies however long you have been a member.</p>`,
   },
 });

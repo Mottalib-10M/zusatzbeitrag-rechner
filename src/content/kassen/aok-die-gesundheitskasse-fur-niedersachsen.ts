@@ -28,7 +28,7 @@ export default defineGuide({
   kasse: ID,
   tool: 'beitrag',
   toolPreset: { kasse: ID, land: 'NI' },
-  related: ['guenstigste-krankenkasse-niedersachsen', 'guenstigste-krankenkasse-bremen', 'pflegeversicherung-beitrag', 'aok-nordwest-die-gesundheitskasse'],
+  related: ['zusatzbeitrag-liste', 'pflegeversicherung-beitrag', 'aok-nordwest-die-gesundheitskasse'],
   sources: ['gkvListe', 'sgb5_242', 'sgb11_55', 'sgb5_175'],
   de: {
     slug: 'aok-niedersachsen-zusatzbeitrag',
@@ -57,7 +57,7 @@ ${h.table(['Familienlage', 'Ihr Beitrag im Monat', 'im Jahr'], [
 <h2>Niedersachsen, Bremen und die Nachbar-AOKs</h2>
 <p>Niedersachsen umschließt Bremen und grenzt an fünf weitere Länder mit eigener Ortskrankenkasse. Wer in einer Grenzregion lebt, etwa in Osnabrück mit Arbeitsplatz in Westfalen oder in Wolfsburg mit Arbeitsplatz in Sachsen-Anhalt, kann zwischen zwei AOKs wählen. Die Unterschiede in Euro:</p>
 ${h.table(['AOK', 'Zusatzbeitrag', 'Ihr Beitrag im Monat', 'gegenüber AOK Niedersachsen im Jahr'], tab.map((x) => [x.k.id === ID ? `<strong>${x.k.kurz}</strong>` : kLink(h, x.k), h.pk(x.k.zb!), h.eur(x.lohn), x.k.id === ID ? '·' : `${x.lohn > p.lohn ? '+' : '−'}${h.eur(Math.abs(d(x)))}`]), `${h.eur(BEISPIEL.lohn)} brutto, ein Kind`, ['l', 'r', 'r', 'r'])}
-<p>Rentner zahlen bei der AOK Niedersachsen mit ${h.eur(BEISPIEL.rente)} gesetzlicher Rente ${h.eur(p.rente)} im Monat, Selbstständige mit ${h.eur(BEISPIEL.gewinn)} Gewinn ${h.eur(p.selbst)}, Studierende ${h.eur(p.student)}. Alle wählbaren Kassen des Landes stehen auf der Seite ${h.a('guenstigste-krankenkasse-niedersachsen', 'günstigste Krankenkasse in Niedersachsen')}, die Bremer Rangliste unter ${h.a('guenstigste-krankenkasse-bremen', 'Bremen')}.</p>
+<p>Rentner zahlen bei der AOK Niedersachsen mit ${h.eur(BEISPIEL.rente)} gesetzlicher Rente ${h.eur(p.rente)} im Monat, Selbstständige mit ${h.eur(BEISPIEL.gewinn)} Gewinn ${h.eur(p.selbst)}, Studierende ${h.eur(p.student)}. Alle in Niedersachsen und in Bremen wählbaren Kassen zeigt die ${h.a('zusatzbeitrag-liste', 'Rangliste nach Bundesland')}.</p>
 <h2>Kinder nachweisen und Kasse wechseln</h2>
 <p>Damit der Abschlag für Kinder ankommt, müssen Elterneigenschaft und Alter der Kinder nachgewiesen sein, bei Beschäftigten gegenüber dem Arbeitgeber, bei Selbstzahlern gegenüber der Pflegekasse; ein automatisiertes Meldeverfahren übernimmt das zunehmend (§ 55 Abs. 3a SGB XI). Ein Kassenwechsel ändert daran nichts. Er wird zum Ende des übernächsten Monats wirksam, und familienversicherte Kinder wechseln mit. Wer im Herbst über einen Wechsel nachdenkt, kann den Beschluss der AOK für das neue Jahr abwarten: Steigt der Satz, gilt das Sonderkündigungsrecht auch innerhalb der ersten zwölf Monate.</p>`,
   },
@@ -88,7 +88,7 @@ ${h.table(['Family situation', 'You pay a month', 'a year'], [
 <h2>Lower Saxony, Bremen and the neighbouring AOKs</h2>
 <p>Lower Saxony surrounds Bremen and borders five more states with regional funds of their own. If you live near a border, say in Osnabrück with a job in Westphalia or in Wolfsburg with a job in Saxony-Anhalt, you can choose between two AOKs. The differences in euros:</p>
 ${h.table(['AOK', 'Additional rate', 'You pay a month', 'vs AOK Niedersachsen a year'], tab.map((x) => [x.k.id === ID ? `<strong>${x.k.kurz}</strong>` : kLink(h, x.k), h.pk(x.k.zb!), h.eur(x.lohn), x.k.id === ID ? '·' : `${x.lohn > p.lohn ? '+' : '−'}${h.eur(Math.abs(d(x)))}`]), `${h.eur(BEISPIEL.lohn)} gross, one child`, ['l', 'r', 'r', 'r'])}
-<p>Pensioners at AOK Niedersachsen pay ${h.eur(p.rente)} a month on a ${h.eur(BEISPIEL.rente)} state pension, self-employed members ${h.eur(p.selbst)} on ${h.eur(BEISPIEL.gewinn)} profit, students ${h.eur(p.student)}. Every fund open in the state is on the page ${h.a('guenstigste-krankenkasse-niedersachsen', 'cheapest health insurance in Lower Saxony')}, the Bremen ranking under ${h.a('guenstigste-krankenkasse-bremen', 'Bremen')}.</p>
+<p>Pensioners at AOK Niedersachsen pay ${h.eur(p.rente)} a month on a ${h.eur(BEISPIEL.rente)} state pension, self-employed members ${h.eur(p.selbst)} on ${h.eur(BEISPIEL.gewinn)} profit, students ${h.eur(p.student)}. Every fund open in Lower Saxony and in Bremen is in the ${h.a('zusatzbeitrag-liste', 'ranking by state')}.</p>
 <h2>Proving your children and switching fund</h2>
 <p>For the child discount to apply, your parenthood and the children’s ages must be proven, to the employer if you are employed or to the care fund if you pay yourself; an automated reporting procedure increasingly handles this (section 55(3a) SGB XI). Switching fund changes nothing here. A switch takes effect at the end of the month after next, and children covered free of charge move with you.</p>`,
   },

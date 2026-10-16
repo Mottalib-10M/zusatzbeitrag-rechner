@@ -31,7 +31,7 @@ export default defineGuide({
   kasse: ID,
   tool: 'beitrag',
   toolPreset: { kasse: ID, land: 'HE' },
-  related: ['guenstigste-krankenkasse-hessen', 'guenstigste-krankenkasse-rheinland-pfalz', 'aok-bayern-die-gesundheitskasse', 'krankenkasse-wechseln'],
+  related: ['zusatzbeitrag-liste', 'aok-bayern-die-gesundheitskasse', 'krankenkasse-wechseln'],
   sources: ['gkvListe', 'sgb5_242', 'sgb5_175', 'sgb5_249'],
   de: {
     slug: 'aok-hessen-zusatzbeitrag',
@@ -61,9 +61,9 @@ ${h.table(['Situation', 'Bemessung', 'Ihr Anteil im Monat'], [
   ['Selbstständig', h.eur(BEISPIEL.gewinn), h.eur(p.selbst)],
   ['Studium', h.eur(w.bafoeg_bedarf), h.eur(p.student)],
 ], '2026, ein Kind; selbstständig ohne Krankengeld', ['l', 'r', 'r'])}
-<p>Mit einem höheren Gehalt wächst der Unterschied, weil der Zusatzbeitrag bis zur Bemessungsgrenze mitläuft. Gegenüber der günstigsten frei wählbaren Kasse, ${p.billigste.kurz}, zahlen Mitglieder der AOK Hessen bei ${h.eur(BEISPIEL.lohn)} brutto ${h.eur(p.proJahrVsBilligste)} im Jahr mehr, an der Bemessungsgrenze ${h.eur(p.proJahrVsBilligsteBbg)}. Ob ${p.billigste.kurz} in Hessen geöffnet ist, zeigt die Rangliste; die Seite ${h.a('guenstigste-krankenkasse-hessen', 'günstigste Krankenkasse in Hessen')} fasst alle wählbaren Kassen zusammen.</p>
+<p>Mit einem höheren Gehalt wächst der Unterschied, weil der Zusatzbeitrag bis zur Bemessungsgrenze mitläuft. Gegenüber der günstigsten frei wählbaren Kasse, ${p.billigste.kurz}, zahlen Mitglieder der AOK Hessen bei ${h.eur(BEISPIEL.lohn)} brutto ${h.eur(p.proJahrVsBilligste)} im Jahr mehr, an der Bemessungsgrenze ${h.eur(p.proJahrVsBilligsteBbg)}. Ob ${p.billigste.kurz} in Hessen geöffnet ist, zeigt die Rangliste; die ${h.a('zusatzbeitrag-liste', 'Liste nach Bundesland')} fasst alle in Hessen wählbaren Kassen zusammen.</p>
 <h2>Ein- und Austritt</h2>
-<p>Eintreten kann, wer in Hessen wohnt oder beschäftigt ist; für den Austritt genügt der Antrag bei einer anderen Kasse, die den Wechsel meldet. Die Frist endet mit dem übernächsten Monat, gleich an welchem Tag im Monat Sie den Antrag stellen. Erhöht die AOK Hessen ihren Satz, entfällt die Bindung von zwölf Monaten. Familienversicherte Angehörige wechseln mit dem Mitglied, ohne eigenen Antrag. Beschäftigte geben dem Arbeitgeber die neue Kasse an, Rentner müssen nichts tun, weil die neue Kasse die Rentenversicherung informiert. Wer eine Grenzregion im Blick hat, findet die Nachbarseite ${h.a('guenstigste-krankenkasse-rheinland-pfalz', 'Rheinland-Pfalz')} und den ${h.a('krankenkasse-wechseln', 'Fristenrechner')}.</p>`,
+<p>Eintreten kann, wer in Hessen wohnt oder beschäftigt ist; für den Austritt genügt der Antrag bei einer anderen Kasse, die den Wechsel meldet. Die Frist endet mit dem übernächsten Monat, gleich an welchem Tag im Monat Sie den Antrag stellen. Erhöht die AOK Hessen ihren Satz, entfällt die Bindung von zwölf Monaten. Familienversicherte Angehörige wechseln mit dem Mitglied, ohne eigenen Antrag. Beschäftigte geben dem Arbeitgeber die neue Kasse an, Rentner müssen nichts tun, weil die neue Kasse die Rentenversicherung informiert. Wer eine Grenzregion im Blick hat, stellt im Rechner oben das Nachbarland Rheinland-Pfalz ein und nutzt den ${h.a('krankenkasse-wechseln', 'Fristenrechner')}.</p>`,
   },
   en: {
     slug: 'aok-hessen-additional-contribution',
@@ -93,8 +93,8 @@ ${h.table(['Situation', 'Base', 'Your share a month'], [
   ['Self-employed', h.eur(BEISPIEL.gewinn), h.eur(p.selbst)],
   ['Student', h.eur(w.bafoeg_bedarf), h.eur(p.student)],
 ], '2026, one child; self-employed without sick pay', ['l', 'r', 'r'])}
-<p>With higher pay the gap widens, because the additional rate applies up to the contribution ceiling. Compared with the cheapest fund open to everyone, ${p.billigste.kurz}, AOK Hessen members pay ${h.eur(p.proJahrVsBilligste)} a year more on ${h.eur(BEISPIEL.lohn)} gross and ${h.eur(p.proJahrVsBilligsteBbg)} at the ceiling. Whether ${p.billigste.kurz} is open in Hesse is shown in the ranking; the page ${h.a('guenstigste-krankenkasse-hessen', 'cheapest health insurance in Hesse')} brings every open fund together.</p>
+<p>With higher pay the gap widens, because the additional rate applies up to the contribution ceiling. Compared with the cheapest fund open to everyone, ${p.billigste.kurz}, AOK Hessen members pay ${h.eur(p.proJahrVsBilligste)} a year more on ${h.eur(BEISPIEL.lohn)} gross and ${h.eur(p.proJahrVsBilligsteBbg)} at the ceiling. Whether ${p.billigste.kurz} is open in Hesse is shown in the ranking; the ${h.a('zusatzbeitrag-liste', 'list by state')} brings every fund open in Hesse together.</p>
 <h2>Joining and leaving</h2>
-<p>You can join if you live or work in Hesse; to leave, apply to another fund, which reports the switch. Notice runs to the end of the month after next, whatever day of the month you apply. If AOK Hessen raises its rate, the twelve-month lock-in falls away. Family members covered free of charge move with the member, with no application of their own. Employees tell their employer the new fund; pensioners need do nothing, as the new fund informs the pension insurance. If you live near a border, see the neighbouring page ${h.a('guenstigste-krankenkasse-rheinland-pfalz', 'Rhineland-Palatinate')} and the ${h.a('krankenkasse-wechseln', 'deadline calculator')}.</p>`,
+<p>You can join if you live or work in Hesse; to leave, apply to another fund, which reports the switch. Notice runs to the end of the month after next, whatever day of the month you apply. If AOK Hessen raises its rate, the twelve-month lock-in falls away. Family members covered free of charge move with the member, with no application of their own. Employees tell their employer the new fund; pensioners need do nothing, as the new fund informs the pension insurance. If you live near a border, set the neighbouring state, Rhineland-Palatinate, in the calculator above and use the ${h.a('krankenkasse-wechseln', 'deadline calculator')}.</p>`,
   },
 });

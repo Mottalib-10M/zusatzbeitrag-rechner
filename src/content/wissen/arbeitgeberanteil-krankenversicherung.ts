@@ -24,7 +24,7 @@ export default defineGuide({
   group: 'wissen',
   order: 89,
   mini: 'arbeitgeber',
-  related: ['midijob-krankenversicherung', 'beitragssatz-krankenkasse', 'versicherungspflichtgrenze', 'pflegeversicherung-beitrag', 'guenstigste-krankenkasse-sachsen'],
+  related: ['zusatzbeitrag-liste', 'midijob-krankenversicherung', 'beitragssatz-krankenkasse', 'versicherungspflichtgrenze', 'pflegeversicherung-beitrag'],
   sources: ['sgb5_249', 'sgb5_257', 'sgb11_58', 'sgb5_241', 'sgb5_242'],
   de: {
     slug: 'arbeitgeberanteil-krankenversicherung',

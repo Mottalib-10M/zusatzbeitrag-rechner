@@ -24,7 +24,7 @@ export default defineGuide({
   kasse: ID,
   tool: 'beitrag',
   toolPreset: { kasse: ID, land: 'BY' },
-  related: ['guenstigste-krankenkasse-bayern', 'aok-baden-wurttemberg', 'techniker-krankenkasse', 'krankenkasse-wechseln'],
+  related: ['zusatzbeitrag-liste', 'aok-baden-wurttemberg', 'techniker-krankenkasse', 'krankenkasse-wechseln'],
   sources: ['gkvListe', 'sgb5_242', 'sgb5_175', 'sgb11_55'],
   de: {
     slug: 'aok-bayern-zusatzbeitrag',
@@ -54,7 +54,7 @@ ${h.table(['Fall', 'Bemessung', 'Ihr Anteil im Monat'], [
   ['Selbstständig ohne Krankengeld', h.eur(BEISPIEL.gewinn), h.eur(p.selbst)],
   ['Studium, unter 23', h.eur(w.bafoeg_bedarf), h.eur(p.student)],
 ], '2026, Pflege mit einem Kind', ['l', 'r', 'r'])}
-<p>In Bayern teilen sich Beschäftigte und Arbeitgeber auch die Pflegeversicherung hälftig; die sächsische Sonderregel gilt nicht. Ein Wechsel von der AOK zu einer günstigeren Kasse spart beim Durchschnittslohn wenig, für Selbstständige mit hohem Gewinn mehr, weil sie den ganzen Zusatzbeitrag tragen. Alle in Bayern wählbaren Kassen stehen auf der Seite ${h.a('guenstigste-krankenkasse-bayern', 'günstigste Krankenkasse in Bayern')}.</p>
+<p>In Bayern teilen sich Beschäftigte und Arbeitgeber auch die Pflegeversicherung hälftig; die sächsische Sonderregel gilt nicht. Ein Wechsel von der AOK zu einer günstigeren Kasse spart beim Durchschnittslohn wenig, für Selbstständige mit hohem Gewinn mehr, weil sie den ganzen Zusatzbeitrag tragen. Alle in Bayern wählbaren Kassen stehen in der ${h.a('zusatzbeitrag-liste', 'Liste der Zusatzbeiträge nach Land')}.</p>
 <h2>Wenn sich der Satz ändert</h2>
 <p>Ihren Satz für 2027 beschließt der Verwaltungsrat der AOK Bayern im Herbst oder Winter; in der amtlichen Liste steht er erst ab dem Tag, an dem er gilt. Steigt er, haben Mitglieder ein Sonderkündigungsrecht bis zum Ende des Monats der Erhöhung, auch innerhalb der ersten zwölf Monate. Senkt die Kasse ihn, profitieren Sie ohne eigenes Zutun ab dem Monat der Senkung; ein Antrag ist nicht nötig. Den genauen Wechseltermin rechnet der ${h.a('krankenkasse-wechseln', 'Fristenrechner')}.</p>`,
   },
@@ -86,7 +86,7 @@ ${h.table(['Case', 'Base', 'Your share a month'], [
   ['Self-employed, no sick pay', h.eur(BEISPIEL.gewinn), h.eur(p.selbst)],
   ['Student under 23', h.eur(w.bafoeg_bedarf), h.eur(p.student)],
 ], '2026, care insurance with one child', ['l', 'r', 'r'])}
-<p>In Bavaria employees and employers also split care insurance equally; the Saxon exception does not apply. Moving from the AOK to a cheaper fund saves little at an average wage and more for self-employed members with high profits, who pay the whole additional rate. Every fund open in Bavaria is listed on the page ${h.a('guenstigste-krankenkasse-bayern', 'cheapest health insurance in Bavaria')}.</p>
+<p>In Bavaria employees and employers also split care insurance equally; the Saxon exception does not apply. Moving from the AOK to a cheaper fund saves little at an average wage and more for self-employed members with high profits, who pay the whole additional rate. Every fund open in Bavaria is in the ${h.a('zusatzbeitrag-liste', 'list of additional rates by state')}.</p>
 <h2>When the rate changes</h2>
 <p>AOK Bayern’s board sets the 2027 rate in the autumn or winter; the official list shows it only from the day it applies. If it goes up, members have a special right to leave until the end of the month of the increase, even within their first twelve months. If the fund lowers it, you benefit automatically from that month; no application is needed. The ${h.a('krankenkasse-wechseln', 'deadline calculator')} gives the exact switch date.</p>`,
   },
