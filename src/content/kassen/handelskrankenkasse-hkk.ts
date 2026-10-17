@@ -25,7 +25,7 @@ export default defineGuide({
   kasse: ID,
   tool: 'beitrag',
   toolPreset: { kasse: ID },
-  related: ['techniker-krankenkasse', 'bkk-firmus', 'beste-krankenkasse', 'zusatzbeitrag-liste'],
+  related: ['techniker-krankenkasse', 'bkk-firmus', 'hek-hanseatische-krankenkasse', 'beste-krankenkasse', 'zusatzbeitrag-liste'],
   sources: ['gkvListe', 'sgb5_242', 'sgb5_175', 'sgb5_242a'],
   de: {
     slug: 'hkk-zusatzbeitrag',

@@ -24,7 +24,7 @@ export default defineGuide({
   group: 'wissen',
   order: 81,
   mini: 'vsdurchschnitt',
-  related: ['zusatzbeitrag-2027', 'beitragssatz-krankenkasse', 'midijob-krankenversicherung', 'zusatzbeitrag-liste'],
+  related: ['zusatzbeitrag-2027', 'beitragssatz-krankenkasse', 'midijob-krankenversicherung', 'zusatzbeitrag-liste', 'hek-hanseatische-krankenkasse'],
   sources: ['sgb5_242a', 'sgb5_242', 'banzZb2026', 'basTableau2027', 'sgb5_257', 'sgb4_20'],
   de: {
     slug: 'durchschnittlicher-zusatzbeitrag',

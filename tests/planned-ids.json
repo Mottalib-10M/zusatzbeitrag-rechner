@@ -128,6 +128,10 @@
   "group": "kassen"
  },
  {
+  "id": "hek-hanseatische-krankenkasse",
+  "group": "kassen"
+ },
+ {
   "id": "bkk-firmus",
   "group": "kassen"
  },

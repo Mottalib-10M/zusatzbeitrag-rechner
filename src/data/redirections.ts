@@ -1,6 +1,6 @@
 /**
  * Adressen, die es nicht mehr gibt (Regel der 100 Seiten, RECETTE §3, 2026-10-16), und ihr Ersatz.
- * Die 16 Länderseiten und die Seite der HEK sind in der Kassenliste aufgegangen: Tabelle nach
+ * Die 16 Länderseiten sind in der Kassenliste aufgegangen (die HEK-Seite ist seit 2026-10-17 zurück): Tabelle nach
  * Bundesland, Filter „Bundesland“ (Parameter l) und alle Kassen mit Satz. GitHub Pages kennt keine 301;
  * eine Seite pro alter Adresse zählte selbst als Seite, deshalb leitet die 404 diese Adressen weiter.
  */
@@ -22,6 +22,4 @@ export const REDIRECTIONS: Record<string, string> = Object.fromEntries([
     [`/de/guenstigste-krankenkasse-${de}/`, `${LISTE.de}?l=${l}`],
     [`/en/cheapest-health-insurance-${en}/`, `${LISTE.en}?l=${l}`],
   ]),
-  ['/de/hek-zusatzbeitrag/', LISTE.de],
-  ['/en/hek-additional-contribution/', LISTE.en],
 ]);
